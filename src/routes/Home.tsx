@@ -1,13 +1,14 @@
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { View, Text } from "react-native";
 import { TabProps } from "../interfaces/index";
+import HomeScreen from "../screens/HomeScreen/HomeScreen";
+
+const Stack = createNativeStackNavigator();
 
 export default function Home(props: TabProps) {
     return (
-        <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-            <Text>Home!</Text>
-        </View>
+        <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen} />
+        </Stack.Navigator>
     );
 }

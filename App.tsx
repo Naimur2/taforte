@@ -1,4 +1,8 @@
-import { useFonts, Montserrat_600SemiBold ,   Inter_100Thin,
+import { useFonts } from "expo-font";
+
+import { Montserrat_600SemiBold } from "@expo-google-fonts/montserrat";
+import {
+    Inter_100Thin,
     Inter_200ExtraLight,
     Inter_300Light,
     Inter_400Regular,
@@ -6,21 +10,26 @@ import { useFonts, Montserrat_600SemiBold ,   Inter_100Thin,
     Inter_600SemiBold,
     Inter_700Bold,
     Inter_800ExtraBold,
-    Inter_900Black, } from "expo-font";
+    Inter_900Black,
+} from "@expo-google-fonts/inter";
+
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import AppTab from "./src/routes";
 
 export default function App() {
     const [loaded] = useFonts({
-        Montserrat_600SemiBold ,   Inter_100Thin,
-    Inter_200ExtraLight,
-    Inter_300Light,
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_600SemiBold,
-    Inter_700Bold,
-    Inter_800ExtraBold,
-    Inter_900Black, 
+        Montserrat_600SemiBold,
+        Inter_100Thin,
+        Inter_200ExtraLight,
+        Inter_300Light,
+        Inter_400Regular,
+        Inter_500Medium,
+        Inter_600SemiBold,
+        Inter_700Bold,
+        Inter_800ExtraBold,
+        Inter_900Black,
+        Icon: require("./assets/fonts/icon.ttf"),
     });
 
     if (!loaded) {
@@ -28,10 +37,10 @@ export default function App() {
     }
 
     return (
-        <View style={styles.container}>
-            <Text>Open up App.tsx to start working on your app!</Text>
+        <>
             <StatusBar style="auto" />
-        </View>
+            <AppTab />
+        </>
     );
 }
 

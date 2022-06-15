@@ -52,9 +52,9 @@ export default function HomeScreen() {
     return (
         <React.Fragment>
             <Header>
-                {/* <Text fontSize={20} fontWeight={"500"}>
+                <Text fontSize={20} fontWeight={"500"}>
                     Home
-                </Text> */}
+                </Text>
             </Header>
             <Description>
                 <Text color="#fff" fontSize={16} fontWeight="400">
@@ -75,7 +75,7 @@ const Description = styled.View`
 `;
 
 const Header = styled.View`
-    flex: 0.1;
+    flex: 0.05;
     padding: 16px;
     /* justify-content: "space-between"; */
     align-items: center;

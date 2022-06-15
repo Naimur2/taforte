@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components/native";
+import colors from "../themes/colors";
 import fonts from "../themes/fonts";
 import { Spacing } from "./spacing";
 
@@ -32,7 +33,7 @@ export const Text = styled.Text<TProps>`
     ${Spacing}
     font-style: ${(props) => props.fontStyle || "normal"};
     font-size: ${(props) => `${props.fontSize}px` || "16px"};
-    color: ${(props) => props.color || "#000"};
+    color: ${(props) => props.color || colors.secondary};
     text-align: ${(props) => props.textAlign || "left"};
     text-decoration: ${(props) => props.textDecoration || "none"};
     text-transform: ${(props) => props.textTransform || "none"};

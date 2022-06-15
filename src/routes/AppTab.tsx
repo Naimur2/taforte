@@ -7,6 +7,7 @@ import {
     View,
 } from "react-native";
 import { CurvedBottomBar } from "react-native-curved-bottom-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import Icon from "../components/Icon";
 import ContactScreen from "../screens/ContactScreen/ContactScreen";
@@ -79,60 +80,75 @@ const AppTab = () => {
     };
 
     return (
-        <View style={{ flex: 1 }}>
-            <CurvedBottomBar.Navigator
-                style={styles.bottomBar}
-                strokeWidth={0.5}
-                height={55}
-                circleWidth={55}
-                bgColor="white"
-                initialRouteName="home"
-                borderTopLeftRight
-                renderCircle={({ selectedTab, navigate }) => (
-                    <Animated.View style={styles.btnCircle}>
-                        <TouchableOpacity
-                            style={{
-                                flex: 1,
-                                justifyContent: "center",
-                            }}
-                            onPress={() => Alert.alert("Click Action")}
-                        >
-                            <Icon name={"scan"} color="white" size={25} />
-                        </TouchableOpacity>
-                    </Animated.View>
-                )}
-                tabBar={renderTabBar}
+        <React.Fragment>
+            <SafeAreaView
+                style={{ backgroundColor: colors.secondary }}
+                edges={["left", "top", "right"]}
+            />
+            <SafeAreaView
+                edges={["bottom"]}
+                style={{ flex: 1, backgroundColor: "#fff" }}
             >
-                <CurvedBottomBar.Screen
-                    name="home"
-                    position="left"
-                    component={({ navigate }) => (
-                        <HomeScreen navigate={navigate} />
-                    )}
-                />
-                <CurvedBottomBar.Screen
-                    name="contacts"
-                    position="left"
-                    component={({ navigate }) => (
-                        <ContactScreen navigate={navigate} />
-                    )}
-                />
-                <CurvedBottomBar.Screen
-                    name="notifications"
-                    position="right"
-                    component={({ navigate }) => (
-                        <NotificationsScreen navigate={navigate} />
-                    )}
-                />
-                <CurvedBottomBar.Screen
-                    name="profile"
-                    position="right"
-                    component={({ navigate }) => (
-                        <ProfileSCreen navigate={navigate} />
-                    )}
-                />
-            </CurvedBottomBar.Navigator>
-        </View>
+                <View style={{ flex: 1, backgroundColor: colors.secondary }}>
+                    <CurvedBottomBar.Navigator
+                        style={styles.bottomBar}
+                        strokeWidth={0.5}
+                        height={55}
+                        circleWidth={55}
+                        bgColor="white"
+                        initialRouteName="home"
+                        borderTopLeftRight
+                        renderCircle={({ selectedTab, navigate }) => (
+                            <Animated.View style={styles.btnCircle}>
+                                <TouchableOpacity
+                                    style={{
+                                        flex: 1,
+                                        justifyContent: "center",
+                                    }}
+                                    onPress={() => Alert.alert("Click Action")}
+                                >
+                                    <Icon
+                                        name={"scan"}
+                                        color="white"
+                                        size={25}
+                                    />
+                                </TouchableOpacity>
+                            </Animated.View>
+                        )}
+                        tabBar={renderTabBar}
+                    >
+                        <CurvedBottomBar.Screen
+                            name="home"
+                            position="left"
+                            component={({ navigate }) => (
+                                <HomeScreen navigate={navigate} />
+                            )}
+                        />
+                        <CurvedBottomBar.Screen
+                            name="contacts"
+                            position="left"
+                            component={({ navigate }) => (
+                                <ContactScreen navigate={navigate} />
+                            )}
+                        />
+                        <CurvedBottomBar.Screen
+                            name="notifications"
+                            position="right"
+                            component={({ navigate }) => (
+                                <NotificationsScreen navigate={navigate} />
+                            )}
+                        />
+                        <CurvedBottomBar.Screen
+                            name="profile"
+                            position="right"
+                            component={({ navigate }) => (
+                                <ProfileSCreen navigate={navigate} />
+                            )}
+                        />
+                    </CurvedBottomBar.Navigator>
+                </View>
+            </SafeAreaView>
+        </React.Fragment>
     );
 };
 

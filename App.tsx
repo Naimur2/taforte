@@ -1,5 +1,4 @@
 import { useFonts } from "expo-font";
-
 import { Montserrat_600SemiBold } from "@expo-google-fonts/montserrat";
 import {
     Inter_100Thin,

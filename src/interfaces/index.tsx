@@ -1,4 +1,4 @@
-export interface StyledProps {
+export interface SpacingProps {
     p?: number;
     m?: number;
     style?: any;
@@ -18,4 +18,11 @@ export interface StyledProps {
 
 export interface TabProps {
     navigate: any;
+}
+
+export interface TabIcon {
+    [key: string]: {
+        active: string;
+        inactive: string;
+    };
 }

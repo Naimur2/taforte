@@ -1,20 +1,8 @@
 import styled, { css } from "styled-components/native";
+import { TProps } from "../interfaces/styles-interface";
 import colors from "../themes/colors";
 import fonts from "../themes/fonts";
 import { Spacing } from "./spacing";
-
-interface TProps {
-    fontFamily?: string;
-    fontWeight?: string | number;
-    fontSize?: number | string;
-    fontStyle?: string;
-    color?: string;
-    textAlign?: string;
-    textDecoration?: string;
-    textTransform?: string;
-    lineHeight?: number;
-    letterSpacing?: number;
-}
 
 const getFontFamily = (
     fontFamily: string,
@@ -32,7 +20,7 @@ const getFontFamily = (
 export const Text = styled.Text<TProps>`
     ${Spacing}
     font-style: ${(props) => props.fontStyle || "normal"};
-    font-size: ${(props) => `${props.fontSize}px` || "16px"};
+    font-size: ${(props) => `${props.fontSize}` || "14"}px;
     color: ${(props) => props.color || colors.secondary};
     text-align: ${(props) => props.textAlign || "left"};
     text-decoration: ${(props) => props.textDecoration || "none"};
@@ -45,6 +33,5 @@ export const Text = styled.Text<TProps>`
         `}
     }
     font-family: ${(props) =>
-        getFontFamily(props.fontFamily || "Inter", props.fontWeight)};
+        getFontFamily(props.fontFamily || "Inter", props.fontWeight || 400)};
 `;
-// line-height: ${(props) => `${props.lineHeight}px` || "30px"};

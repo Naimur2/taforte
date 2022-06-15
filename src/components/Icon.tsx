@@ -1,6 +1,6 @@
 import { createIconSetFromIcoMoon } from "@expo/vector-icons";
 import styled from "styled-components/native";
-import { StyledProps } from "../interfaces";
+import { SpacingProps } from "../interfaces";
 import { Spacing } from "../styled/spacing";
 
 export const CustomIcon = createIconSetFromIcoMoon(
@@ -16,7 +16,7 @@ interface IconProps {
     onPress?: () => void;
 }
 
-interface Props extends IconProps, StyledProps {}
+interface Props extends IconProps, SpacingProps {}
 
 const StyledIcon = styled(CustomIcon)`
     ${Spacing}

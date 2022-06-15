@@ -15,14 +15,7 @@ import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import NotificationsScreen from "../screens/Notifications/NotificationsScreen";
 import ProfileSCreen from "../screens/ProfileScreen/ProfileScreen";
 import colors from "../themes/colors";
-import Home from "./Home";
-
-interface TabIcon {
-    [key: string]: {
-        active: string;
-        inactive: string;
-    };
-}
+import { TabIcon } from "../interfaces/index";
 
 const AppTab = () => {
     const _renderIcon = (routeName: string, selectedTab: string) => {

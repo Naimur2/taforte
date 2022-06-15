@@ -9,11 +9,12 @@ import {
 import { CurvedBottomBar } from "react-native-curved-bottom-bar";
 
 import Icon from "../components/Icon";
-import Contacts from "./Contacts";
-import Home from "./Home";
-import Notifications from "./Notifications";
-import Profile from "./Profile";
+import ContactScreen from "../screens/ContactScreen/ContactScreen";
+import HomeScreen from "../screens/HomeScreen/HomeScreen";
+import NotificationsScreen from "../screens/Notifications/NotificationsScreen";
+import ProfileSCreen from "../screens/ProfileScreen/ProfileScreen";
 import colors from "../themes/colors";
+import Home from "./Home";
 
 interface TabIcon {
     [key: string]: {
@@ -85,7 +86,7 @@ const AppTab = () => {
                 height={55}
                 circleWidth={55}
                 bgColor="white"
-                initialRouteName="title1"
+                initialRouteName="home"
                 borderTopLeftRight
                 renderCircle={({ selectedTab, navigate }) => (
                     <Animated.View style={styles.btnCircle}>
@@ -105,27 +106,29 @@ const AppTab = () => {
                 <CurvedBottomBar.Screen
                     name="home"
                     position="left"
-                    component={({ navigate }) => <Home navigate={navigate} />}
+                    component={({ navigate }) => (
+                        <HomeScreen navigate={navigate} />
+                    )}
                 />
                 <CurvedBottomBar.Screen
                     name="contacts"
                     position="left"
                     component={({ navigate }) => (
-                        <Contacts navigate={navigate} />
+                        <ContactScreen navigate={navigate} />
                     )}
                 />
                 <CurvedBottomBar.Screen
                     name="notifications"
                     position="right"
                     component={({ navigate }) => (
-                        <Notifications navigate={navigate} />
+                        <NotificationsScreen navigate={navigate} />
                     )}
                 />
                 <CurvedBottomBar.Screen
                     name="profile"
                     position="right"
                     component={({ navigate }) => (
-                        <Profile navigate={navigate} />
+                        <ProfileSCreen navigate={navigate} />
                     )}
                 />
             </CurvedBottomBar.Navigator>

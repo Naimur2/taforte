@@ -15,8 +15,9 @@ import {
 
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import AppTab from "./src/routes";
+
 import { NavigationContainer } from "@react-navigation/native";
+import Home from "./src/routes/Home";
 
 export default function App() {
     const [loaded] = useFonts({
@@ -39,8 +40,8 @@ export default function App() {
 
     return (
         <NavigationContainer>
-            <StatusBar style="auto" />
-            <AppTab />
+            <StatusBar style="auto" hidden />
+            <Home />
         </NavigationContainer>
     );
 }

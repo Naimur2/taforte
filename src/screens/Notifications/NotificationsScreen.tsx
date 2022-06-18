@@ -1,13 +1,8 @@
 import React from "react";
-import { View, Text } from "react-native";
+import Screen from "../../components/Screen";
 
-export default function NotificationsScreen() {
-    type StackParamList = {
-        Home: undefined;
-    };
-    return (
-        <React.Fragment>
-            <Text>Notification</Text>
-        </React.Fragment>
-    );
-}
+const NotificationsScreen: React.FC = () => {
+    return <Screen title={"Notifications"} leftIcon={false}></Screen>;
+};
+
+export default NotificationsScreen;

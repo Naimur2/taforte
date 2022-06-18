@@ -34,4 +34,5 @@ export const Text = styled.Text<TProps>`
     }
     font-family: ${(props) =>
         getFontFamily(props.fontFamily || "Inter", props.fontWeight || 400)};
+    ${(props) => props.maxWidth && `max-width: ${props.maxWidth}px`}
 `;

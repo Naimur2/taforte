@@ -9,4 +9,5 @@ export interface TProps {
     textTransform?: string;
     lineHeight?: number;
     letterSpacing?: number;
+    maxWidth?: number;
 }

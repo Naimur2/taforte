@@ -9,17 +9,21 @@ import { SpacingProps } from "./../interfaces/index";
 
 interface NavProps {
     title: string;
-    icon?: string;
+    leftIcon?: boolean;
     onPress?: () => void;
 }
 
 export default function Header({ leftIcon, title, onNavigate }: NavProps) {
     const navigation = useNavigation();
+    const goBack = () => {
+        navigation.goBack();
+    };
+
     return (
         <Nav>
             {leftIcon && (
-                <Box onPress={onNavigate || navigation.goBack()}>
-                    <Icon name={leftIcon} size={20} color={"#fff"} />
+                <Box onPress={onNavigate || goBack}>
+                    <Icon name={"chevron-left"} size={14} color={"#fff"} />
                 </Box>
             )}
             <Title fontSize={20} fontWeight="700" color="#fff">
@@ -40,7 +44,7 @@ const Nav = styled.View`
 const Box = styled.Pressable<SpacingProps>`
     ${Spacing}
     background-color: #FFFFFF10;
-    padding: 6px;
+    padding: 8px;
     border-radius: 8px;
 `;
 

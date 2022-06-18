@@ -9,16 +9,12 @@ import CustomDrawerContent from "../screens/CustomDrawer/CustomDrawerContent";
 import Faq from "../screens/Faq/Faq";
 import Privacy from "../screens/Privacy/Privacy";
 
-export default function Home(props: TabProps) {
-    type HomeStackParamList = {
+export default function AuthRoute(props: TabProps) {
+    type AuthStackParamList = {
         Home: undefined;
         Contact: undefined;
     };
-    type HomeDrawerParamList = {
-        Tab: undefined;
-    };
 
-    const Drawer = createDrawerNavigator<HomeDrawerParamList>();
     const Stack = createNativeStackNavigator<HomeStackParamList>();
 
     const options = {
@@ -27,19 +23,13 @@ export default function Home(props: TabProps) {
 
     return (
         <React.Fragment>
-            <Drawer.Navigator
+            <Stack.Navigator
                 initialRouteName="Tab"
                 screenOptions={options}
                 drawerContent={({ navigation }) => (
                     <CustomDrawerContent navigation={navigation} />
                 )}
-            >
-                <Drawer.Screen name="Tab" component={AppTab} />
-                <Stack.Screen name="Home" component={HomeScreen} />
-                <Stack.Screen name="Contact" component={ContactScreen} />
-                <Stack.Screen name="Faq" component={Faq} />
-                <Stack.Screen name="Privacy" component={Privacy} />
-            </Drawer.Navigator>
+            ></Stack.Navigator>
         </React.Fragment>
     );
 }

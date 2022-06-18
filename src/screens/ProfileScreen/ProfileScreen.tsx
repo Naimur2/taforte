@@ -1,10 +1,8 @@
 import React from "react";
-import { View, Text } from "react-native";
+import Screen from "../../components/Screen";
 
-export default function ProfileSCreen() {
-    return (
-        <View>
-            <Text>Profile</Text>
-        </View>
-    );
-}
+const ProfileScreen: React.FC = () => {
+    return <Screen title={"Profile"} leftIcon={false}></Screen>;
+};
+
+export default ProfileScreen;

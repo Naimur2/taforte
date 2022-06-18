@@ -17,6 +17,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./src/routes/Home";
+import Login from "./src/screens/Login/Login";
 
 export default function App() {
     const [loaded] = useFonts({
@@ -40,7 +41,7 @@ export default function App() {
     return (
         <NavigationContainer>
             <StatusBar style="auto" hidden />
-            <Home />
+            <Login />
         </NavigationContainer>
     );
 }

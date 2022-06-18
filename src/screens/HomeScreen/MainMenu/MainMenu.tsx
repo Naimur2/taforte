@@ -6,11 +6,12 @@ import MenuCard from "../MenuCard/MenuCard";
 import { Spacing } from "./../../../styled/spacing";
 import { SpacingProps } from "../../../interfaces/index";
 import { ScrollView } from "react-native";
+import { Container } from "../../../styled/structures";
 
 export default function MainMenu({ cards }: { cards: CardItems[] }) {
     return (
         <React.Fragment>
-            <MainCardMenu>
+            <Container flex={0.8} pt={16}>
                 <ScrollView
                     showsHorizontalScrollIndicator={false}
                     showsVerticalScrollIndicator={false}
@@ -30,7 +31,7 @@ export default function MainMenu({ cards }: { cards: CardItems[] }) {
                         ))}
                     </Stack>
                 </ScrollView>
-            </MainCardMenu>
+            </Container>
         </React.Fragment>
     );
 }
@@ -41,7 +42,7 @@ const MainCardMenu = styled.View<SpacingProps>`
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     flex: 0.8;
-    padding: 20px 0;
+    padding-top: 16px;
 `;
 
 const Stack = styled.View`

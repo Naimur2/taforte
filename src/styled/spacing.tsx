@@ -23,8 +23,7 @@ const verticalMargin = css`
 `;
 
 export const Spacing = css`
-    ${(props: SpacingProps) => (props.p ? `${props.p}px` : "")}
-    ${(props: SpacingProps) => (props.px ? `${props.px}px` : "")}
+    ${(props: SpacingProps) => (props.p ? `padding: ${props.p}px` : "")}
     ${horizontalPadding}
     ${verticalPadding}
     ${horizontalMargin}

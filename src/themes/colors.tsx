@@ -12,6 +12,7 @@ const colors = {
     lightBlue200: "#D0EDFB",
     blue100: "#625DEB",
     blue200: "#2DC0FF",
+    dark100: "#292D32",
 };
 
 export default colors;

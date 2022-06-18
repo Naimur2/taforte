@@ -5,6 +5,7 @@ import ContactScreen from "../screens/ContactScreen/ContactScreen";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import AppTab from "./AppTab";
+import CustomDrawerContent from "./CustomDrawerContent";
 
 export default function Home(props: TabProps) {
     type HomeStackParamList = {
@@ -24,7 +25,11 @@ export default function Home(props: TabProps) {
 
     return (
         <React.Fragment>
-            <Drawer.Navigator initialRouteName="Tab" screenOptions={options}>
+            <Drawer.Navigator
+                initialRouteName="Tab"
+                screenOptions={options}
+                drawerContent={CustomDrawerContent}
+            >
                 <Drawer.Screen name="Tab" component={AppTab} />
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Contact" component={ContactScreen} />

@@ -44,7 +44,7 @@ const Input = styled.TextInput`
     font-weight: 400;
     padding-left: 8px;
     padding-right: 8px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 14px;
+    padding-bottom: 14px;
     width: 92%;
 `;

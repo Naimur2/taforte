@@ -3,6 +3,8 @@ import Screen from "../../components/Screen";
 import { Text } from "../../styled/typography";
 import styled from "styled-components/native";
 import colors from "../../themes/colors";
+import Input from "../../components/Input";
+import CScrollView from "../../components/CScrollView";
 
 export default function Login() {
     return (
@@ -17,6 +19,22 @@ export default function Login() {
                     Log in and get the update!
                 </Text>
             </AuthHeader>
+            <VStack>
+                <CScrollView>
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                    <Input label="Email" placeholder="Enter your email" />
+                </CScrollView>
+            </VStack>
         </Screen>
     );
 }
@@ -31,4 +49,10 @@ const AuthHeader = styled.View`
     border-right-color: ${colors.light200};
     border-bottom-right-radius: 35px;
     border-bottom-left-radius: 35px;
+    height: 130px;
+`;
+
+const VStack = styled.View`
+    padding: 0 16px;
+    height: 100%;
 `;

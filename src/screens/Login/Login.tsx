@@ -7,6 +7,9 @@ import Input from "../../components/Input";
 import CScrollView from "../../components/CScrollView";
 
 export default function Login() {
+    const [isPassword, setIsPassword] = React.useState<boolean>(true);
+    const [password, setPassword] = React.useState<string>("");
+
     return (
         <Screen leftIcon={false} padding={0}>
             <AuthHeader px={0}>
@@ -22,17 +25,18 @@ export default function Login() {
             <VStack>
                 <CScrollView>
                     <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
-                    <Input label="Email" placeholder="Enter your email" />
+                    <Input
+                        rightIcon={
+                            password.length > 0 &&
+                            (isPassword ? "eye-close" : "eye")
+                        }
+                        type={isPassword ? "password" : "text"}
+                        onRightIconPress={() => setIsPassword(!isPassword)}
+                        label="Password"
+                        placeholder="Enter password"
+                        value={password}
+                        onChangeText={(text) => setPassword(text)}
+                    />
                 </CScrollView>
             </VStack>
         </Screen>
@@ -49,10 +53,10 @@ const AuthHeader = styled.View`
     border-right-color: ${colors.light200};
     border-bottom-right-radius: 35px;
     border-bottom-left-radius: 35px;
-    height: 130px;
+    height: 18%;
 `;
 
 const VStack = styled.View`
     padding: 0 16px;
-    height: 100%;
+    height: 80%;
 `;

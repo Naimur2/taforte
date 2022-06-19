@@ -16,6 +16,11 @@ export interface SpacingProps {
     mb?: number;
 }
 
+export interface SizeProps {
+    width?: number | string;
+    height?: number | string;
+}
+
 export interface TabProps {
     navigate: any;
 }
@@ -25,4 +30,10 @@ export interface TabIcon {
         active: string;
         inactive: string;
     };
+}
+export interface IconProps {
+    name: string;
+    size?: number;
+    color?: string;
+    onPress?: () => void;
 }

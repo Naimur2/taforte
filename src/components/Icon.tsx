@@ -2,19 +2,13 @@ import { createIconSetFromIcoMoon } from "@expo/vector-icons";
 import styled from "styled-components/native";
 import { SpacingProps } from "../interfaces";
 import { Spacing } from "../styled/spacing";
+import { IconProps } from "../interfaces/index";
 
 export const CustomIcon = createIconSetFromIcoMoon(
     require("../../assets/fonts/selection.json"),
     "Icon",
     "icon.ttf"
 );
-
-interface IconProps {
-    name: string;
-    size?: number;
-    color?: string;
-    onPress?: () => void;
-}
 
 interface Props extends IconProps, SpacingProps {}
 

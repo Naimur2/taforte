@@ -42,7 +42,7 @@ export default function Login() {
                         value={password}
                         onChangeText={(text) => setPassword(text)}
                     />
-                    <Button mt={"10%"} text="Hello" />
+                    <Button mt={"10%"} text="Login" variant="primary" />
                 </CScrollView>
             </VStack>
         </Screen>

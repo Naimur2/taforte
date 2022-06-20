@@ -14,6 +14,7 @@ const colors = {
     lightBlue200: "#D0EDFB",
     blue100: "#625DEB",
     blue200: "#2DC0FF",
+    blue300: "#1877F2",
     dark100: "#292D32",
     warning100: "#E54335",
     black100: "#111111",

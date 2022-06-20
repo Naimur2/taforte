@@ -1,12 +1,13 @@
 import React from "react";
-import Button from "../../../components/Button";
-import { Text } from "../../../styled/typography";
 import styled from "styled-components/native";
-import { SizeProps } from "../../../interfaces";
+import Button from "../../../components/Button";
+import Or from "../../../components/Or";
+import SocialLogin from "../../../components/SocialLogin";
+import TwoText from "../../../components/TwoText";
 import { Size } from "../../../styled";
 import { Spacing } from "../../../styled/spacing";
+import { Text } from "../../../styled/typography";
 import colors from "../../../themes/colors";
-import Or from "../../../components/Or";
 
 export default function LoginBottom({ onSubmit }: { onSubmit: () => void }) {
     return (
@@ -28,6 +29,8 @@ export default function LoginBottom({ onSubmit }: { onSubmit: () => void }) {
                 variant="primary"
             />
             <Or />
+            <SocialLogin />
+            <TwoText text="Dont have an account?" coloredText="Login" />
         </React.Fragment>
     );
 }

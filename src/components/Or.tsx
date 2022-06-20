@@ -31,6 +31,6 @@ const Orcontainer = styled.View`
 const Hr = styled.View`
     display: flex;
     height: 2px;
-    width: 120px;
+    width: 45%;
     background-color: ${colors.gray400};
 `;

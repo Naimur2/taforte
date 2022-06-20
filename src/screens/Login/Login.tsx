@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 import colors from "../../themes/colors";
 import Input from "../../components/Input";
 import CScrollView from "../../components/CScrollView";
+import Button from "../../components/Button";
 
 export default function Login() {
     const [isPassword, setIsPassword] = React.useState<boolean>(true);
@@ -24,7 +25,11 @@ export default function Login() {
             </AuthHeader>
             <VStack>
                 <CScrollView>
-                    <Input label="Email" placeholder="Enter your email" />
+                    <Input
+                        mt={"10%"}
+                        label="Email"
+                        placeholder="Enter your email"
+                    />
                     <Input
                         rightIcon={
                             password.length > 0 &&
@@ -37,6 +42,7 @@ export default function Login() {
                         value={password}
                         onChangeText={(text) => setPassword(text)}
                     />
+                    <Button mt={"10%"} text="Hello" />
                 </CScrollView>
             </VStack>
         </Screen>

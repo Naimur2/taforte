@@ -1,58 +1,14 @@
 import React from "react";
-import styled from "styled-components/native";
-import { IconProps } from "../interfaces/index";
-import { Size } from "../styled";
-import { Spacing } from "../styled/spacing";
+import { InputProps } from "../interfaces/input";
+import {
+    FormGroup,
+    FormIcon,
+    FormInput,
+    InputGroup,
+} from "../styled/input-styles";
 import { Text } from "../styled/typography";
 import colors from "../themes/colors";
 import Icon from "./Icon";
-
-interface LeftIconProps {
-    leftIcon?: string;
-    _leftIconStyle?: IconProps;
-    leftIconComponent?: React.ReactNode;
-}
-interface RightIconProps {
-    rightIcon?: string;
-    _rightIconStyle?: IconProps;
-    rightIconComponent?: React.ReactNode;
-}
-
-interface Props extends LeftIconProps, RightIconProps {
-    label?: string;
-    error?: string;
-    placeholder?: string;
-    value?: string;
-    defaultValue?: string;
-    placeholderTextColor?: string;
-    autoCorrect?: boolean;
-    autofocus?: boolean;
-    disabled?: boolean;
-    readonly?: boolean;
-    autoCapitalize?: "none" | "sentences" | "words" | "characters";
-    autoComplete?: "on" | "off";
-    type?: "text" | "password";
-    keyboardType?:
-        | "default"
-        | "email-address"
-        | "numeric"
-        | "phone-pad"
-        | "ascii-capable"
-        | "numbers-and-punctuation"
-        | "url"
-        | "number-pad"
-        | "name-phone-pad"
-        | "decimal-pad"
-        | "twitter"
-        | "web-search";
-    returnKeyType?: "done" | "go" | "next" | "search" | "send";
-    onLeftIconPress?: () => void;
-    onRightIconPress?: () => void;
-    onSubmitEditing?: () => void;
-    onBlur?: () => void;
-    onFocus?: () => void;
-    onChangeText?: (text: string) => void;
-}
 
 export default function Input({
     label,
@@ -81,7 +37,8 @@ export default function Input({
     onFocus,
     onLeftIconPress,
     onRightIconPress,
-}: Props) {
+    ...rest
+}: InputProps) {
     const inputRef = React.useRef<any>(null);
     const [focused, setFocused] = React.useState<boolean>(false);
 
@@ -127,7 +84,7 @@ export default function Input({
     };
 
     return (
-        <FormGroup>
+        <FormGroup {...rest}>
             {label && (
                 <Text
                     onPress={() => inputRef.current.focus()}
@@ -206,70 +163,3 @@ export default function Input({
         </FormGroup>
     );
 }
-
-interface FormGroupStyles extends Size, Spacing {
-    borderColor?: string;
-    borderWidth?: number;
-    borderRadius?: number;
-    bg?: string;
-}
-
-interface FormInputStyles extends Size, Spacing {
-    color?: string;
-    fontSize?: number;
-    fontWeight?: number;
-    fontFamily?: string;
-}
-
-const FormInput = styled.TextInput<FormInputStyles>`
-    border: none;
-    border-radius: 10px;
-    flex-direction: row;
-    align-items: center;
-    font-size: 14px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    padding-left: 6px;
-    ${({ color }) => color && `color: ${color}`}
-    ${({ fontSize }) => fontSize && `font-size: ${fontSize}px`}
-    ${({ fontWeight }) => fontWeight && `font-weight: ${fontWeight}`}
-    ${({ fontFamily }) => fontFamily && `font-family: ${fontFamily}`}
-    ${Size}
-    ${Spacing}
-`;
-
-const InputGroup = styled.View<FormGroupStyles>`
-    display: flex;
-    ${(props) =>
-        `border: ${props.borderWidth || 1}px solid ${
-            props.borderColor || colors.light200
-        };`}
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: ${(props) =>
-        props.borderRadius ? props.borderRadius : 6}px;
-    position: relative;
-    width: 100%;
-    padding: 0 8px;
-    background: ${(props) => (props.bg ? props.bg : "transparent")};
-    ${Size}
-    ${Spacing}
-`;
-
-const FormGroup = styled.View`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 16px;
-    ${Size}
-    ${Spacing}
-`;
-
-const FormIcon = styled.View`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    ${Size}
-`;

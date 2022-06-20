@@ -1,11 +1,13 @@
 import React from "react";
-import Screen from "../../components/Screen";
-import { Text } from "../../styled/typography";
 import styled from "styled-components/native";
-import colors from "../../themes/colors";
-import Input from "../../components/Input";
 import CScrollView from "../../components/CScrollView";
-import Button from "../../components/Button";
+import Input from "../../components/Input";
+import Screen from "../../components/Screen";
+import { Size } from "../../styled";
+import { Spacing } from "../../styled/spacing";
+import { Text } from "../../styled/typography";
+import colors from "../../themes/colors";
+import LoginBottom from "./components/LoginBottom";
 
 export default function Login() {
     const [isPassword, setIsPassword] = React.useState<boolean>(true);
@@ -42,7 +44,7 @@ export default function Login() {
                         value={password}
                         onChangeText={(text) => setPassword(text)}
                     />
-                    <Button mt={"10%"} text="Login" variant="primary" />
+                    <LoginBottom onSubmit={() => {}} />
                 </CScrollView>
             </VStack>
         </Screen>
@@ -65,4 +67,6 @@ const AuthHeader = styled.View`
 const VStack = styled.View`
     padding: 0 16px;
     height: 80%;
+    ${Spacing}
+    ${Size}
 `;

@@ -4,6 +4,7 @@ const colors = {
     gray100: "#868686",
     gray200: "#7E7E7E",
     gray300: "#757C85",
+    gray400: "#D4D8DE",
     light100: "#F8F8FB",
     light200: "#D7DDED",
     light300: "#D8F3F1",
@@ -15,6 +16,7 @@ const colors = {
     blue200: "#2DC0FF",
     dark100: "#292D32",
     warning100: "#E54335",
+    black100: "#111111",
 };
 
 export default colors;

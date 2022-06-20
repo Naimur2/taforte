@@ -9,7 +9,7 @@ const getFontFamily = (
     fontWeight: number | string | undefined
 ) => {
     if (fontFamily && fontWeight) {
-        return fonts[fontFamily][fontWeight];
+        return fonts[fontFamily][parseInt(fontWeight as string)];
     }
     if (fontFamily && !fontWeight) {
         return fonts.Inter[400];
@@ -20,7 +20,7 @@ const getFontFamily = (
 export const Text = styled.Text<TProps>`
     ${Spacing}
     font-style: ${(props) => props.fontStyle || "normal"};
-    font-size: ${(props) => `${props.fontSize}` || "14"}px;
+    font-size: ${(props) => `${props.fontSize}` || 14}px;
     color: ${(props) => props.color || colors.secondary};
     text-align: ${(props) => props.textAlign || "left"};
     text-decoration: ${(props) => props.textDecoration || "none"};

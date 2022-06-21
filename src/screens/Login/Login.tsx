@@ -9,10 +9,23 @@ import { Spacing } from "../../styled/spacing";
 import { Text } from "../../styled/typography";
 import colors from "../../themes/colors";
 import LoginBottom from "./components/LoginBottom";
+import { Formik } from "formik";
+import { LoginSchema } from "../../schemas";
+
+interface LginData {
+    email: string;
+    password: string;
+    remember: boolean;
+}
 
 export default function Login() {
     const [isPassword, setIsPassword] = React.useState<boolean>(true);
-    const [password, setPassword] = React.useState<string>("");
+
+    const initialValues: LoginData = {
+        email: "",
+        password: "",
+        remember: false,
+    };
 
     return (
         <KeyboardView>
@@ -28,26 +41,52 @@ export default function Login() {
                     </Text>
                 </AuthHeader>
                 <VStack>
-                    <CScrollView>
-                        <Input
-                            mt={"10%"}
-                            label="Email"
-                            placeholder="Enter your email"
-                        />
-                        <Input
-                            rightIcon={
-                                password.length > 0 &&
-                                (isPassword ? "eye-close" : "eye")
-                            }
-                            type={isPassword ? "password" : "text"}
-                            onRightIconPress={() => setIsPassword(!isPassword)}
-                            label="Password"
-                            placeholder="Enter password"
-                            value={password}
-                            onChangeText={(text) => setPassword(text)}
-                        />
-                        <LoginBottom onSubmit={() => {}} />
-                    </CScrollView>
+                    <Formik
+                        initialValues={initialValues}
+                        onSubmit={(data) => console.log(data)}
+                        validationSchema={LoginSchema}
+                    >
+                        {({
+                            handleChange,
+                            handleSubmit,
+                            values,
+                            setFieldValue,
+                            errors,
+                        }) => (
+                            <CScrollView>
+                                <Input
+                                    mt={"10%"}
+                                    label="Email"
+                                    placeholder="Enter your email"
+                                    value={values.email}
+                                    onChangeText={handleChange("email")}
+                                    error={errors.email}
+                                />
+                                <Input
+                                    rightIcon={
+                                        values.password.length > 0 &&
+                                        (isPassword ? "eye-close" : "eye")
+                                    }
+                                    type={isPassword ? "password" : "text"}
+                                    onRightIconPress={() =>
+                                        setIsPassword(!isPassword)
+                                    }
+                                    label="Password"
+                                    placeholder="Enter password"
+                                    value={values.password}
+                                    onChangeText={handleChange("password")}
+                                    error={errors.password}
+                                />
+                                <LoginBottom
+                                    onChecked={(val) =>
+                                        setFieldValue("remember", val)
+                                    }
+                                    onSubmit={handleSubmit}
+                                    checked={values.remember}
+                                />
+                            </CScrollView>
+                        )}
+                    </Formik>
                 </VStack>
             </Screen>
         </KeyboardView>

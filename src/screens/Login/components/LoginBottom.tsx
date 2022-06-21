@@ -9,17 +9,21 @@ import { Spacing } from "../../../styled/spacing";
 import { Text } from "../../../styled/typography";
 import colors from "../../../themes/colors";
 
-export default function LoginBottom({ onSubmit }: { onSubmit: () => void }) {
-    const [isChecked, setIsChecked] = React.useState<boolean>(false);
+type Props = {
+    onSubmit: () => void;
+    onChecked: (checked: boolean) => void;
+    checked: boolean;
+};
 
+export default function LoginBottom({ onSubmit, onChecked, checked }: Props) {
     return (
         <React.Fragment>
             <HStack my={14} width="100%">
                 <HStack>
                     <CheckBox
                         color={colors.primary}
-                        value={isChecked}
-                        onValueChange={(value) => setIsChecked(value)}
+                        value={checked}
+                        onValueChange={onChecked}
                     />
                     <Text color={colors.gray200} fontSize={14} fontWeight={400}>
                         Remind me

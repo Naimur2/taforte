@@ -1,4 +1,5 @@
 import React from "react";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styled from "styled-components/native";
 import CScrollView from "../../components/CScrollView";
 import Input from "../../components/Input";
@@ -14,40 +15,42 @@ export default function Login() {
     const [password, setPassword] = React.useState<string>("");
 
     return (
-        <Screen leftIcon={false} padding={0}>
-            <AuthHeader px={0}>
-                <Text
-                    maxWidth={250}
-                    fontSize={24}
-                    fontWeight={600}
-                    fontFamily="Montserrat"
-                >
-                    Log in and get the update!
-                </Text>
-            </AuthHeader>
-            <VStack>
-                <CScrollView>
-                    <Input
-                        mt={"10%"}
-                        label="Email"
-                        placeholder="Enter your email"
-                    />
-                    <Input
-                        rightIcon={
-                            password.length > 0 &&
-                            (isPassword ? "eye-close" : "eye")
-                        }
-                        type={isPassword ? "password" : "text"}
-                        onRightIconPress={() => setIsPassword(!isPassword)}
-                        label="Password"
-                        placeholder="Enter password"
-                        value={password}
-                        onChangeText={(text) => setPassword(text)}
-                    />
-                    <LoginBottom onSubmit={() => {}} />
-                </CScrollView>
-            </VStack>
-        </Screen>
+        <KeyboardView>
+            <Screen leftIcon={false} padding={0}>
+                <AuthHeader px={0}>
+                    <Text
+                        maxWidth={250}
+                        fontSize={24}
+                        fontWeight={600}
+                        fontFamily="Montserrat"
+                    >
+                        Log in and get the update!
+                    </Text>
+                </AuthHeader>
+                <VStack>
+                    <CScrollView>
+                        <Input
+                            mt={"10%"}
+                            label="Email"
+                            placeholder="Enter your email"
+                        />
+                        <Input
+                            rightIcon={
+                                password.length > 0 &&
+                                (isPassword ? "eye-close" : "eye")
+                            }
+                            type={isPassword ? "password" : "text"}
+                            onRightIconPress={() => setIsPassword(!isPassword)}
+                            label="Password"
+                            placeholder="Enter password"
+                            value={password}
+                            onChangeText={(text) => setPassword(text)}
+                        />
+                        <LoginBottom onSubmit={() => {}} />
+                    </CScrollView>
+                </VStack>
+            </Screen>
+        </KeyboardView>
     );
 }
 
@@ -62,11 +65,19 @@ const AuthHeader = styled.View`
     border-bottom-right-radius: 35px;
     border-bottom-left-radius: 35px;
     height: 18%;
+    min-height: 130px;
 `;
 
 const VStack = styled.View`
     padding: 0 16px;
     height: 80%;
+    ${Spacing}
+    ${Size}
+`;
+
+const KeyboardView = styled(KeyboardAwareScrollView)`
+    flex: 1;
+    width: 100%;
     ${Spacing}
     ${Size}
 `;

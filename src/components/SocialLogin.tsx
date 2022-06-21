@@ -45,7 +45,7 @@ const IconContainer = styled.Pressable`
     width: 31%;
     border: 1px solid ${colors.light200};
     padding: 10px;
-    border-radius: 50%;
+    border-radius: 50px;
 `;
 const IconImage = styled.Image`
     width: 24px;

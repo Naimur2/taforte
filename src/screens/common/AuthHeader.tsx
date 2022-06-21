@@ -28,6 +28,5 @@ const Header = styled.View`
     border-right-color: ${colors.light200};
     border-bottom-right-radius: 35px;
     border-bottom-left-radius: 35px;
-    height: 18%;
     min-height: 130px;
 `;

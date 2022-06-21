@@ -1,13 +1,13 @@
 import { SpacingProps, SizeProps } from "./index";
 
 export interface LeftIconProps {
-    leftIcon?: string;
+    leftIcon?: string | boolean;
     _leftIconStyle?: IconProps;
     leftIconComponent?: React.ReactNode;
 }
 
 export interface RightIconProps {
-    rightIcon?: string;
+    rightIcon?: string | boolean;
     _rightIconStyle?: IconProps;
     rightIconComponent?: React.ReactNode;
 }

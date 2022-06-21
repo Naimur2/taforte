@@ -33,7 +33,7 @@ export default function TwoText({ onPress, text, coloredText }: IProps) {
 const TwoTextContainer = styled.View`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     ${Size}
     ${Spacing}

@@ -10,17 +10,18 @@ import { Text } from "../../styled/typography";
 import colors from "../../themes/colors";
 
 interface AuthBottomProps {
-    checked: boolean;
+    checked?: boolean;
     bottomText?: string;
     bottomColoredText?: string;
-    onSubmit: () => void;
-    onChecked: (checked: boolean) => void;
-    onSocialLogin: (type: string) => void;
-    onColoredPress: () => void;
+    onSubmit?: () => void;
+    onChecked?: (checked: boolean) => void;
+    onSocialLogin?: (type: string) => void;
+    onColoredPress?: () => void;
     hideForgotPassword?: boolean;
+    submitText?: string;
 }
 
-export default function AuthBottom({
+const AuthBottom = ({
     onSubmit,
     onChecked,
     checked,
@@ -29,7 +30,8 @@ export default function AuthBottom({
     bottomText,
     bottomColoredText,
     hideForgotPassword,
-}: AuthBottomProps) {
+    submitText,
+}: AuthBottomProps) => {
     return (
         <React.Fragment>
             {!hideForgotPassword && (
@@ -56,7 +58,7 @@ export default function AuthBottom({
             <Button
                 onPress={onSubmit}
                 mt={"10%"}
-                text="Login"
+                text={submitText || "Login"}
                 variant="primary"
             />
             <Or />
@@ -68,7 +70,7 @@ export default function AuthBottom({
             />
         </React.Fragment>
     );
-}
+};
 
 const HStack = styled.View`
     display: flex;
@@ -78,3 +80,4 @@ const HStack = styled.View`
     ${Size}
     ${Spacing}
 `;
+export default React.memo(AuthBottom);

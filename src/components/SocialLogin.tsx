@@ -18,13 +18,13 @@ export default function SocialLogin({
 
     return (
         <Stack my={16}>
-            <IconContainer onPress={handleClick("facebook")}>
+            <IconContainer onPress={() => handleClick("facebook")}>
                 <Icon name="facebook" size={24} color={colors.blue300} />
             </IconContainer>
-            <IconContainer onPress={handleClick("apple")}>
+            <IconContainer onPress={() => handleClick("apple")}>
                 <Icon name="apple" size={24} color={"#000"} />
             </IconContainer>
-            <IconContainer onPress={handleClick("google")}>
+            <IconContainer onPress={() => handleClick("google")}>
                 <IconImage source={google} />
             </IconContainer>
         </Stack>

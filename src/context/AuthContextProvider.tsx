@@ -17,7 +17,10 @@ const intialState: DefaultStateProps = {
     isLoggedIN: false,
 };
 
-const reducer = (state: DefaultStateProps, action: { payload: any }) => {
+const reducer = (
+    state: DefaultStateProps,
+    action: { type: string; payload: any }
+) => {
     switch (action.type) {
         case "LOGIN":
             return {

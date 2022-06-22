@@ -17,6 +17,8 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import Login from "./src/screens/Login/Login";
 import Register from "./src/screens/RegisterScreen/Register";
+import AppTab from "./src/routes/AppTab";
+import Home from "./src/routes/Home";
 
 export default function App() {
     const [loaded] = useFonts({
@@ -40,7 +42,7 @@ export default function App() {
     return (
         <NavigationContainer>
             <StatusBar style="auto" hidden />
-            <Register />
+            <Home />
         </NavigationContainer>
     );
 }

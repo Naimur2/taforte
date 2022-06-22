@@ -2,7 +2,6 @@ import { useFormik } from "formik";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
-import CScrollView from "../../components/CScrollView";
 import Input from "../../components/Input";
 import Screen from "../../components/Screen";
 import { RegisterSchema } from "../../schemas";
@@ -96,7 +95,7 @@ export default function Register() {
                             bottomColoredText="Register"
                             onSocialLogin={(s) => console.log(s)}
                             onColoredPress={() => console.log("colored")}
-                            submitText="Login"
+                            submitText="Register"
                         />
                     </VStack>
                 </Screen>

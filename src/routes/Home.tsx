@@ -8,6 +8,8 @@ import Faq from "../screens/Faq/Faq";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import Privacy from "../screens/Privacy/Privacy";
 import AppTab from "./AppTab";
+import Settings from "../screens/Settings/Settings";
+import Help from "../screens/Help/Help";
 
 export default function Home() {
     type HomeStackParamList = {
@@ -40,6 +42,8 @@ export default function Home() {
                 <Stack.Screen name="Faq" component={Faq} />
                 <Stack.Screen name="Privacy" component={Privacy} />
                 <Stack.Screen name="AddCard" component={AddCard} />
+                <Stack.Screen name="Settings" component={Settings} />
+                <Stack.Screen name="Help" component={Help} />
             </Drawer.Navigator>
         </React.Fragment>
     );

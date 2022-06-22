@@ -10,6 +10,7 @@ import colors from "../../themes/colors";
 import { useNavigation } from "@react-navigation/native";
 import AuthContext from "../../context/AuthContext";
 import { AuthContextProps } from "../../interfaces/context";
+import { Spacing } from "../../styled/spacing";
 const logo = require("../../../assets/images/logo.png");
 
 const Onboarding: React.FC = () => {
@@ -53,7 +54,8 @@ const Onboarding: React.FC = () => {
 };
 
 const Vstack = styled.View`
-    padding: 20px;
+    padding: 16px;
+    ${Spacing}
 `;
 
 export default Onboarding;

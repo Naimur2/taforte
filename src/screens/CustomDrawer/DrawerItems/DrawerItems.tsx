@@ -5,6 +5,8 @@ import Icon from "../../../components/Icon";
 import { Text } from "../../../styled/typography";
 import colors from "../../../themes/colors";
 import { useNavigation } from "@react-navigation/native";
+import AuthContext from "../../../context/AuthContext";
+import { AuthContextProps } from "../../../interfaces/context";
 
 interface DrawerItemProps {
     icon: string;
@@ -22,6 +24,8 @@ const Item = ({ icon, title, onPress }: DrawerItemProps) => (
 );
 
 const DrawerItems = () => {
+    const authCtx = React.useContext<AuthContextProps>(AuthContext);
+
     const navigation = useNavigation();
 
     const drawerItems: DrawerItemProps[] = [
@@ -29,7 +33,7 @@ const DrawerItems = () => {
             icon: "gear",
             title: "Settings",
             onPress: () => {
-                console.log("Settings");
+                navigation.navigate("Settings");
             },
         },
         {
@@ -43,7 +47,7 @@ const DrawerItems = () => {
             icon: "headphone",
             title: "Help & Feedback",
             onPress: () => {
-                console.log("Help & Feedback");
+                navigation.navigate("Help");
             },
         },
         {
@@ -57,7 +61,7 @@ const DrawerItems = () => {
             icon: "lock",
             title: "Privacy Policy",
             onPress: () => {
-                console.log("Privacy Policy");
+                navigation.navigate("Privacy");
             },
         },
         {
@@ -79,7 +83,7 @@ const DrawerItems = () => {
             <Item
                 title="Log Out"
                 icon="exit"
-                onPress={() => console.log("logout")}
+                onPress={() => authCtx.logout()}
             />
         </DrawerItemsContainer>
     );

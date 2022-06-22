@@ -1,6 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import AddCard from "../screens/AddCard/AddCard";
 import ContactScreen from "../screens/ContactScreen/ContactScreen";
 import CustomDrawerContent from "../screens/CustomDrawer/CustomDrawerContent";
 import Faq from "../screens/Faq/Faq";
@@ -38,6 +39,7 @@ export default function Home() {
                 <Stack.Screen name="Contact" component={ContactScreen} />
                 <Stack.Screen name="Faq" component={Faq} />
                 <Stack.Screen name="Privacy" component={Privacy} />
+                <Stack.Screen name="AddCard" component={AddCard} />
             </Drawer.Navigator>
         </React.Fragment>
     );

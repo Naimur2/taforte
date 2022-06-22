@@ -1,10 +1,14 @@
 import React from "react";
-import { View } from "react-native";
 
-// import { Container } from './styles';
+import Screen from "../../components/Screen";
+import IconCard from "../../components/IconCard";
 
 const AddCard: React.FC = () => {
-    return <View />;
+    return (
+        <Screen title={"Add Card"} leftIcon={true}>
+            <IconCard iconName="card-edit" tittle="Import from Gallery" />
+        </Screen>
+    );
 };
 
 export default AddCard;

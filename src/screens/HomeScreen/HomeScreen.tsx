@@ -19,7 +19,7 @@ export default function HomeScreen() {
             title: "Add Card",
             innerBackgroundColor: colors.orange200,
             onPress: () => {
-                console.log("Home");
+                navigation.navigate("AddCard");
             },
         },
         {

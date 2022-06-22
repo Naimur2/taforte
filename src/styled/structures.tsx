@@ -19,4 +19,5 @@ export const Container = styled.View<ContainerProps>`
     border-top-right-radius: 40px;
     flex: ${(props) => props.flex || 0.92};
     ${Spacing}
+    overflow: hidden;
 `;

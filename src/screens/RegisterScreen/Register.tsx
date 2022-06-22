@@ -9,6 +9,7 @@ import { KeyboardView, Size } from "../../styled";
 import { Spacing } from "../../styled/spacing";
 import AuthBottom from "../common/AuthBottom";
 import AuthHeader from "../common/AuthHeader";
+import { useNavigation } from "@react-navigation/native";
 
 interface RegisterData {
     fullName: string;
@@ -18,6 +19,8 @@ interface RegisterData {
 }
 
 export default function Register() {
+    const navigation = useNavigation();
+
     const [isPassword, setIsPassword] = React.useState<boolean>(true);
     const [isConfirmPassword, setIsConfirmPassword] =
         React.useState<boolean>(true);
@@ -78,7 +81,7 @@ export default function Register() {
                             }
                             type={isConfirmPassword ? "password" : "text"}
                             onRightIconPress={() =>
-                                setIsPassword(!isConfirmPassword)
+                                setIsConfirmPassword(!isConfirmPassword)
                             }
                             label="Confirm Password"
                             placeholder="Confirm password"
@@ -92,9 +95,9 @@ export default function Register() {
                             onSubmit={formik.handleSubmit}
                             hideForgotPassword={true}
                             bottomText="Already have an account?"
-                            bottomColoredText="Register"
+                            bottomColoredText="Login"
                             onSocialLogin={(s) => console.log(s)}
-                            onColoredPress={() => console.log("colored")}
+                            onColoredPress={() => navigation.navigate("Login")}
                             submitText="Register"
                         />
                     </VStack>

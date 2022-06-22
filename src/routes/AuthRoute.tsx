@@ -1,21 +1,15 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { TabProps } from "../interfaces/index";
-import ContactScreen from "../screens/ContactScreen/ContactScreen";
-import HomeScreen from "../screens/HomeScreen/HomeScreen";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import AppTab from "./AppTab";
-import CustomDrawerContent from "../screens/CustomDrawer/CustomDrawerContent";
-import Faq from "../screens/Faq/Faq";
-import Privacy from "../screens/Privacy/Privacy";
+import Login from "../screens/Login/Login";
+import Register from "../screens/RegisterScreen/Register";
 
-export default function AuthRoute(props: TabProps) {
+export default function AuthRoute() {
     type AuthStackParamList = {
-        Home: undefined;
-        Contact: undefined;
+        Login: undefined;
+        Register: undefined;
     };
 
-    const Stack = createNativeStackNavigator<HomeStackParamList>();
+    const Stack = createNativeStackNavigator<AuthStackParamList>();
 
     const options = {
         headerShown: false,
@@ -23,13 +17,10 @@ export default function AuthRoute(props: TabProps) {
 
     return (
         <React.Fragment>
-            <Stack.Navigator
-                initialRouteName="Tab"
-                screenOptions={options}
-                drawerContent={({ navigation }) => (
-                    <CustomDrawerContent navigation={navigation} />
-                )}
-            ></Stack.Navigator>
+            <Stack.Navigator initialRouteName="Login" screenOptions={options}>
+                <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="Register" component={Register} />
+            </Stack.Navigator>
         </React.Fragment>
     );
 }

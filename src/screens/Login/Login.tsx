@@ -1,7 +1,8 @@
+import { useNavigation } from "@react-navigation/native";
 import { useFormik } from "formik";
 import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
-import CScrollView from "../../components/CScrollView";
 import Input from "../../components/Input";
 import Screen from "../../components/Screen";
 import { LoginSchema } from "../../schemas";
@@ -9,14 +10,13 @@ import { KeyboardView, Size } from "../../styled";
 import { Spacing } from "../../styled/spacing";
 import AuthBottom from "../common/AuthBottom";
 import AuthHeader from "../common/AuthHeader";
-import { SafeAreaView } from "react-native-safe-area-context";
-
-interface LoginData {
-    email: string;
-    password: string;
-}
+import { LoginData, AuthContextProps } from "../../interfaces/context";
+import AuthContext from "../../context/AuthContext";
 
 export default function Login() {
+    const navigation = useNavigation();
+    const authCtx = React.useContext<AuthContextProps>(AuthContext);
+
     const [isPassword, setIsPassword] = React.useState<boolean>(true);
     const [remember, setRemember] = React.useState<boolean>(false);
 
@@ -27,7 +27,7 @@ export default function Login() {
 
     const formik = useFormik({
         initialValues,
-        onSubmit: (data) => console.log(data),
+        onSubmit: (data) => authCtx.login(data),
         validationSchema: LoginSchema,
     });
 
@@ -36,10 +36,11 @@ export default function Login() {
             <KeyboardView
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{ flexGrow: 1 }}
             >
-                <Screen leftIcon={false} padding={0}>
+                <Screen flex={1} leftIcon={false} padding={0}>
                     <AuthHeader title="Log in and get the update!" />
-                    <VStack>
+                    <VStack pb={30}>
                         <Input
                             mt={"10%"}
                             label="Email"
@@ -68,7 +69,9 @@ export default function Login() {
                             bottomText="Don't have an account?"
                             bottomColoredText="Register"
                             onSocialLogin={(s) => console.log(s)}
-                            onColoredPress={() => console.log("colored")}
+                            onColoredPress={() =>
+                                navigation.navigate("Register")
+                            }
                         />
                     </VStack>
                 </Screen>

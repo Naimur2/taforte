@@ -11,6 +11,7 @@ const AuthContext = React.createContext<AuthContextProps>({
     isLoggedIN: false,
     logIn: () => {},
     logOut: () => {},
+    sendCode: () => {},
 });
 
 export default AuthContext;

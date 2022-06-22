@@ -38,7 +38,10 @@ export default function Register() {
     });
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView
+            edges={["bottom"]}
+            style={{ flex: 1, backgroundColor: "#fff" }}
+        >
             <KeyboardView
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}

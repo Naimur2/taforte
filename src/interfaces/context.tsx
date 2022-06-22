@@ -15,9 +15,14 @@ export interface AuthContextProps {
     isLoggedIN?: boolean;
     login?: (user: LoginData) => Promise<void>;
     logout?: () => Promise<void>;
+    sendCode?: (email: string) => Promise<void>;
 }
 
 export interface DefaultStateProps {
     user: User;
     isLoggedIN: boolean;
+}
+
+export interface ForgetPasswordProps {
+    email: string;
 }

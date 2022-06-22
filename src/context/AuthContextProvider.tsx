@@ -17,7 +17,7 @@ const intialState: DefaultStateProps = {
     isLoggedIN: false,
 };
 
-const reducer = (state, action) => {
+const reducer = (state: DefaultStateProps, action: { payload: any }) => {
     switch (action.type) {
         case "LOGIN":
             return {
@@ -58,8 +58,13 @@ export default function AuthContextProvider({
             };
             dispatch({ type: "LOGIN", payload: userData });
         };
+
         const logOuthandler = async () => {
             dispatch({ type: "LOGOUT" });
+        };
+
+        const sendCodeHandler = async (email: string) => {
+            console.log(email);
         };
 
         const val: AuthContextProps = {
@@ -67,10 +72,11 @@ export default function AuthContextProvider({
             isLoggedIN: state.isLoggedIN,
             login: logInhandler,
             logout: logOuthandler,
+            sendCode: sendCodeHandler,
         };
 
         return val;
-    }, []);
+    }, [state]);
 
     return (
         <AuthContext.Provider value={values}>{children}</AuthContext.Provider>

@@ -32,7 +32,10 @@ export default function Login() {
     });
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView
+            edges={["bottom"]}
+            style={{ flex: 1, backgroundColor: "#fff" }}
+        >
             <KeyboardView
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
@@ -71,6 +74,9 @@ export default function Login() {
                             onSocialLogin={(s) => console.log(s)}
                             onColoredPress={() =>
                                 navigation.navigate("Register")
+                            }
+                            onForgetPassword={() =>
+                                navigation.navigate("ForgetPassword")
                             }
                         />
                     </VStack>

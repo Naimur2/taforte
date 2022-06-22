@@ -19,6 +19,7 @@ interface AuthBottomProps {
     onColoredPress?: () => void;
     hideForgotPassword?: boolean;
     submitText?: string;
+    onForgetPassword?: () => void;
 }
 
 const AuthBottom = ({
@@ -31,6 +32,7 @@ const AuthBottom = ({
     bottomColoredText,
     hideForgotPassword,
     submitText,
+    onForgetPassword,
 }: AuthBottomProps) => {
     return (
         <React.Fragment>
@@ -50,7 +52,12 @@ const AuthBottom = ({
                             Remind me
                         </Text>
                     </HStack>
-                    <Text color={colors.primary} fontSize={14} fontWeight={400}>
+                    <Text
+                        onPress={onForgetPassword}
+                        color={colors.primary}
+                        fontSize={14}
+                        fontWeight={400}
+                    >
                         Forgot Password?
                     </Text>
                 </HStack>

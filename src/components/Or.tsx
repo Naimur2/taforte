@@ -4,10 +4,11 @@ import { Size } from "../styled";
 import { Spacing } from "../styled/spacing";
 import { Text } from "../styled/typography";
 import colors from "../themes/colors";
+import { SpacingProps } from "../interfaces/index";
 
-export default function Or() {
+export default function Or({ ...spacing }: SpacingProps) {
     return (
-        <Orcontainer>
+        <Orcontainer {...spacing}>
             <Hr />
             <Text fontSize={12} color={colors.black100} px={16}>
                 OR

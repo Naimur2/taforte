@@ -46,7 +46,7 @@ export default function Register() {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
             >
-                <Screen leftIcon={false} padding={0}>
+                <Screen leftIcon={true} padding={0}>
                     <AuthHeader title="Sign up and create your card!" />
                     <VStack pb={30}>
                         <Input

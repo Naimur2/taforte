@@ -3,6 +3,7 @@ import React from "react";
 import Login from "../screens/Login/Login";
 import Register from "../screens/RegisterScreen/Register";
 import ForgetPassword from "../screens/ForgetPassword/ForgetPassword";
+import Onboarding from "../screens/Onboarding/Onboarding";
 
 export default function AuthRoute() {
     type AuthStackParamList = {
@@ -19,13 +20,17 @@ export default function AuthRoute() {
 
     return (
         <React.Fragment>
-            <Stack.Navigator initialRouteName="Login" screenOptions={options}>
+            <Stack.Navigator
+                initialRouteName="Onboarding"
+                screenOptions={options}
+            >
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Register" component={Register} />
                 <Stack.Screen
                     name="ForgetPassword"
                     component={ForgetPassword}
                 />
+                <Stack.Screen name="Onboarding" component={Onboarding} />
             </Stack.Navigator>
         </React.Fragment>
     );

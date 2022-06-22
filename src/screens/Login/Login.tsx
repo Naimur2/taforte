@@ -27,7 +27,7 @@ export default function Login() {
 
     const formik = useFormik({
         initialValues,
-        onSubmit: (data) => authCtx.login(data),
+        onSubmit: (data) => authCtx.login({ ...data, accountType: "auth" }),
         validationSchema: LoginSchema,
     });
 
@@ -41,7 +41,7 @@ export default function Login() {
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={{ flexGrow: 1 }}
             >
-                <Screen flex={1} leftIcon={false} padding={0}>
+                <Screen leftIcon={true} padding={0}>
                     <AuthHeader title="Log in and get the update!" />
                     <VStack pb={30}>
                         <Input

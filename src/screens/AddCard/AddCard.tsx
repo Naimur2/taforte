@@ -10,7 +10,7 @@ const AddCard: React.FC = () => {
     const navigation = useNavigation();
 
     return (
-        <Screen title={"Add Card"} leftIcon={true}>
+        <Screen noHeader title={"Add Card"} leftIcon={true}>
             <Vstack pt={50} px={16}>
                 <IconCard
                     mb={16}

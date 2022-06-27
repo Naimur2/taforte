@@ -19,6 +19,10 @@ const StackNavigator: React.FC = () => {
                 headerTransparent: true,
                 headerTintColor: "white",
                 headerTitleAlign: "center",
+                headerTitleStyle: {
+                    fontSize: 20,
+                    fontWeight: "700",
+                },
             }}
             initialRouteName="AppTab"
         >

@@ -6,6 +6,7 @@ import { Text } from "../styled/typography";
 import Icon from "./Icon";
 import { Spacing } from "../styled/spacing";
 import { SpacingProps } from "./../interfaces/index";
+import HeaderBack from "./HeaderBack";
 
 interface NavProps {
     title: string;
@@ -21,11 +22,7 @@ export default function Header({ leftIcon, title, onNavigate }: NavProps) {
 
     return (
         <Nav>
-            {leftIcon && (
-                <Box onPress={onNavigate || goBack}>
-                    <Icon name={"chevron-left"} size={14} color={"#fff"} />
-                </Box>
-            )}
+            {leftIcon && <HeaderBack />}
             <Title fontSize={20} fontWeight="700" color="#fff">
                 {title}
             </Title>

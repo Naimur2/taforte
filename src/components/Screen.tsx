@@ -21,7 +21,11 @@ const Screen = ({
     return (
         <Background>
             {!noHeader && <Header leftIcon={leftIcon} title={title} />}
-            <Container flex={!noHeader ? 0.94 : 1} {...rest}>
+            <Container
+                mt={noHeader ? 70 : 0}
+                flex={!noHeader ? 0.94 : 1}
+                {...rest}
+            >
                 {children}
             </Container>
         </Background>

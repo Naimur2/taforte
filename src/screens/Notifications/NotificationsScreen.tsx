@@ -11,11 +11,11 @@ import colors from "../../themes/colors";
 import { Text } from "../../styled/typography";
 import { Size } from "../../styled";
 
-const AddCard: React.FC = () => {
+const NotificationsScreen: React.FC = () => {
     const [isEnabled, setIsEnabled] = React.useState<boolean>(false);
 
     return (
-        <Screen title={"Notificatons"} leftIcon={true}>
+        <Screen title={"Notificatons"}>
             <Vstack pt={50} px={16}>
                 <IconCard
                     mb={16}
@@ -33,82 +33,6 @@ const AddCard: React.FC = () => {
                         />
                     }
                 />
-                <Card onPress={() => console.log("hgf")}>
-                    <Avatar mr={20}>
-                        <Text color="#fff" fontSize={16} fontWeight={700}>
-                            WA
-                        </Text>
-                    </Avatar>
-                    <Text fontSize={16} fontWeight={400}>
-                        {"Receive notifications"}
-                    </Text>
-                    <Right>
-                        <Text
-                            color={colors.gray500}
-                            fontSize={12}
-                            fontWeight={400}
-                        >
-                            Business
-                        </Text>
-                    </Right>
-                </Card>
-                <Card onPress={() => console.log("hgf")}>
-                    <Avatar mr={20}>
-                        <Text color="#fff" fontSize={16} fontWeight={700}>
-                            WA
-                        </Text>
-                    </Avatar>
-                    <Text fontSize={16} fontWeight={400}>
-                        {"Receive notifications"}
-                    </Text>
-                    <Right>
-                        <Text
-                            color={colors.gray500}
-                            fontSize={12}
-                            fontWeight={400}
-                        >
-                            Business
-                        </Text>
-                    </Right>
-                </Card>
-                <Card onPress={() => console.log("hgf")}>
-                    <Avatar mr={20}>
-                        <Text color="#fff" fontSize={16} fontWeight={700}>
-                            WA
-                        </Text>
-                    </Avatar>
-                    <Text fontSize={16} fontWeight={400}>
-                        {"Receive notifications"}
-                    </Text>
-                    <Right>
-                        <Text
-                            color={colors.gray500}
-                            fontSize={12}
-                            fontWeight={400}
-                        >
-                            Business
-                        </Text>
-                    </Right>
-                </Card>
-                <Card onPress={() => console.log("hgf")}>
-                    <Avatar mr={20}>
-                        <Text color="#fff" fontSize={16} fontWeight={700}>
-                            WA
-                        </Text>
-                    </Avatar>
-                    <Text fontSize={16} fontWeight={400}>
-                        {"Receive notifications"}
-                    </Text>
-                    <Right>
-                        <Text
-                            color={colors.gray500}
-                            fontSize={12}
-                            fontWeight={400}
-                        >
-                            Business
-                        </Text>
-                    </Right>
-                </Card>
                 <Card onPress={() => console.log("hgf")}>
                     <Avatar mr={20}>
                         <Text color="#fff" fontSize={16} fontWeight={700}>
@@ -164,4 +88,4 @@ const Avatar = styled.ImageBackground`
     ${Spacing}
 `;
 
-export default AddCard;
+export default NotificationsScreen;

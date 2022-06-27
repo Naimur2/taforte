@@ -32,57 +32,50 @@ export default function Login() {
     });
 
     return (
-        <SafeAreaView
-            edges={["bottom"]}
-            style={{ flex: 1, backgroundColor: "#fff" }}
-        >
+        <Screen padding={0}>
+            <AuthHeader title="Log in and get the update!" />
             <KeyboardView
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={{ flexGrow: 1 }}
             >
-                <Screen leftIcon={true} padding={0}>
-                    <AuthHeader title="Log in and get the update!" />
-                    <VStack pb={30}>
-                        <Input
-                            mt={"10%"}
-                            label="Email"
-                            placeholder="Enter your email"
-                            value={formik.values.email}
-                            onChangeText={formik.handleChange("email")}
-                            error={formik.errors.email}
-                        />
-                        <Input
-                            rightIcon={
-                                formik.values.password.length > 0 &&
-                                (isPassword ? "eye-close" : "eye")
-                            }
-                            type={isPassword ? "password" : "text"}
-                            onRightIconPress={() => setIsPassword(!isPassword)}
-                            label="Password"
-                            placeholder="Enter password"
-                            value={formik.values.password}
-                            onChangeText={formik.handleChange("password")}
-                            error={formik.errors.password}
-                        />
-                        <AuthBottom
-                            onSubmit={formik.handleSubmit}
-                            checked={remember}
-                            onChecked={(val) => setRemember(val)}
-                            bottomText="Don't have an account?"
-                            bottomColoredText="Register"
-                            onSocialLogin={(s) => console.log(s)}
-                            onColoredPress={() =>
-                                navigation.navigate("Register")
-                            }
-                            onForgetPassword={() =>
-                                navigation.navigate("ForgetPassword")
-                            }
-                        />
-                    </VStack>
-                </Screen>
+                <VStack pb={30}>
+                    <Input
+                        mt={"10%"}
+                        label="Email"
+                        placeholder="Enter your email"
+                        value={formik.values.email}
+                        onChangeText={formik.handleChange("email")}
+                        error={formik.errors.email}
+                    />
+                    <Input
+                        rightIcon={
+                            formik.values.password.length > 0 &&
+                            (isPassword ? "eye-close" : "eye")
+                        }
+                        type={isPassword ? "password" : "text"}
+                        onRightIconPress={() => setIsPassword(!isPassword)}
+                        label="Password"
+                        placeholder="Enter password"
+                        value={formik.values.password}
+                        onChangeText={formik.handleChange("password")}
+                        error={formik.errors.password}
+                    />
+                    <AuthBottom
+                        onSubmit={formik.handleSubmit}
+                        checked={remember}
+                        onChecked={(val) => setRemember(val)}
+                        bottomText="Don't have an account?"
+                        bottomColoredText="Register"
+                        onSocialLogin={(s) => console.log(s)}
+                        onColoredPress={() => navigation.navigate("Register")}
+                        onForgetPassword={() =>
+                            navigation.navigate("ForgetPassword")
+                        }
+                    />
+                </VStack>
             </KeyboardView>
-        </SafeAreaView>
+        </Screen>
     );
 }
 

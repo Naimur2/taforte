@@ -1,21 +1,23 @@
 import React from "react";
 import styled from "styled-components/native";
 
-import { CardItems } from "../../../interfaces/home-interface";
-import MenuCard from "../MenuCard/MenuCard";
-import { Spacing } from "./../../../styled/spacing";
-import { SpacingProps } from "../../../interfaces/index";
 import { ScrollView } from "react-native";
+import { CardItems } from "../../../interfaces/home-interface";
 import { Container } from "../../../styled/structures";
+import MenuCard from "../MenuCard/MenuCard";
 
 export default function MainMenu({ cards }: { cards: CardItems[] }) {
     return (
         <React.Fragment>
-            <Container flex={0.8} pt={16}>
-                <ScrollView
-                    showsHorizontalScrollIndicator={false}
-                    showsVerticalScrollIndicator={false}
-                >
+            <ScrollView
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{
+                    flex: 1,
+                    paddingTop: 20,
+                }}
+            >
+                <Container flex={1}>
                     <Stack>
                         {cards.map((card, index) => (
                             <MenuCard
@@ -30,20 +32,11 @@ export default function MainMenu({ cards }: { cards: CardItems[] }) {
                             />
                         ))}
                     </Stack>
-                </ScrollView>
-            </Container>
+                </Container>
+            </ScrollView>
         </React.Fragment>
     );
 }
-
-const MainCardMenu = styled.View<SpacingProps>`
-    ${Spacing}
-    background-color: #fff;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    flex: 0.8;
-    padding-top: 16px;
-`;
 
 const Stack = styled.View`
     padding: 20px 20px;

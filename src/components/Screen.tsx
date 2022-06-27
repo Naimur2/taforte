@@ -7,14 +7,23 @@ import Header from "./Header";
 interface ScreenProps extends SpacingProps {
     title?: string;
     leftIcon?: boolean;
+    noHeader?: boolean;
     children?: React.ReactNode;
 }
 
-const Screen = ({ title, leftIcon, children, ...rest }: ScreenProps) => {
+const Screen = ({
+    title,
+    leftIcon,
+    children,
+    noHeader,
+    ...rest
+}: ScreenProps) => {
     return (
         <Background>
-            <Header leftIcon={leftIcon} title={title} />
-            <Container {...rest}>{children}</Container>
+            {!noHeader && <Header leftIcon={leftIcon} title={title} />}
+            <Container flex={!noHeader ? 0.94 : 1} {...rest}>
+                {children}
+            </Container>
         </Background>
     );
 };

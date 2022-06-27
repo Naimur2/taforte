@@ -10,6 +10,8 @@ import Privacy from "../screens/Privacy/Privacy";
 import AppTab from "./AppTab";
 import Settings from "../screens/Settings/Settings";
 import Help from "../screens/Help/Help";
+import ACGallery from "../screens/ACGallery/ACGallery";
+import StackNavigator from "./StackNavigator";
 
 export default function Home() {
     type HomeStackParamList = {
@@ -36,14 +38,10 @@ export default function Home() {
                     <CustomDrawerContent navigation={navigation} />
                 )}
             >
-                <Drawer.Screen name="Tab" component={AppTab} />
-                <Stack.Screen name="Home" component={HomeScreen} />
-                <Stack.Screen name="Contact" component={ContactScreen} />
-                <Stack.Screen name="Faq" component={Faq} />
-                <Stack.Screen name="Privacy" component={Privacy} />
-                <Stack.Screen name="AddCard" component={AddCard} />
-                <Stack.Screen name="Settings" component={Settings} />
-                <Stack.Screen name="Help" component={Help} />
+                <Drawer.Screen
+                    name="StackNavigator"
+                    component={StackNavigator}
+                />
             </Drawer.Navigator>
         </React.Fragment>
     );

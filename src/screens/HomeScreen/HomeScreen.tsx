@@ -9,6 +9,7 @@ import colors from "./../../themes/colors";
 import MainMenu from "./MainMenu/MainMenu";
 import Background from "../../components/Background";
 import { Box } from "../../styled/structures";
+import { ScrollView } from "react-native";
 
 export default function HomeScreen() {
     const navigation = useNavigation();
@@ -76,6 +77,7 @@ export default function HomeScreen() {
                         Cameron Willamson
                     </Text>
                 </Description>
+
                 <MainMenu cards={cards} />
             </Background>
         </React.Fragment>

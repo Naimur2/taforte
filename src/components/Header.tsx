@@ -34,7 +34,7 @@ export default function Header({ leftIcon, title, onNavigate }: NavProps) {
 }
 
 const Nav = styled.View`
-    flex: 0.08;
+    flex: 0.06;
     padding: 16px;
     justify-content: space-between;
     align-items: center;

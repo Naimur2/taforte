@@ -14,15 +14,19 @@ export default function AuthRoute() {
     const Stack = createNativeStackNavigator<AuthStackParamList>();
 
     const options = {
-        headerShown: false,
-        // headerTransparent: true,
+        // headerShown: false,
+        headerTransparent: true,
     };
 
     return (
         <React.Fragment>
             <Stack.Navigator
                 initialRouteName="Onboarding"
-                screenOptions={options}
+                screenOptions={{
+                    headerTransparent: true,
+                    headerTintColor: "white",
+                    headerTitleAlign: "center",
+                }}
             >
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Register" component={Register} />

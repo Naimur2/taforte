@@ -38,75 +38,68 @@ export default function Register() {
     });
 
     return (
-        <SafeAreaView
-            edges={["bottom"]}
-            style={{ flex: 1, backgroundColor: "#fff" }}
-        >
+        <Screen padding={0}>
+            <AuthHeader title="Sign up and create your card!" />
             <KeyboardView
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
             >
-                <Screen leftIcon={true} padding={0}>
-                    <AuthHeader title="Sign up and create your card!" />
-                    <VStack pb={30}>
-                        <Input
-                            mt={"10%"}
-                            label="Enter full name"
-                            placeholder="Enter your full name"
-                            value={formik.values.fullName}
-                            onChangeText={formik.handleChange("fullName")}
-                            error={formik.errors.fullName}
-                        />
-                        <Input
-                            label="Email"
-                            placeholder="Enter your email"
-                            value={formik.values.email}
-                            onChangeText={formik.handleChange("email")}
-                            error={formik.errors.email}
-                        />
-                        <Input
-                            rightIcon={
-                                formik.values.password.length > 0 &&
-                                (isPassword ? "eye-close" : "eye")
-                            }
-                            type={isPassword ? "password" : "text"}
-                            onRightIconPress={() => setIsPassword(!isPassword)}
-                            label="Password"
-                            placeholder="Enter password"
-                            value={formik.values.password}
-                            onChangeText={formik.handleChange("password")}
-                            error={formik.errors.password}
-                        />
-                        <Input
-                            rightIcon={
-                                formik.values.confirmPassword.length > 0 &&
-                                (isPassword ? "eye-close" : "eye")
-                            }
-                            type={isConfirmPassword ? "password" : "text"}
-                            onRightIconPress={() =>
-                                setIsConfirmPassword(!isConfirmPassword)
-                            }
-                            label="Confirm Password"
-                            placeholder="Confirm password"
-                            value={formik.values.confirmPassword}
-                            onChangeText={formik.handleChange(
-                                "confirmPassword"
-                            )}
-                            error={formik.errors.confirmPassword}
-                        />
-                        <AuthBottom
-                            onSubmit={formik.handleSubmit}
-                            hideForgotPassword={true}
-                            bottomText="Already have an account?"
-                            bottomColoredText="Login"
-                            onSocialLogin={(s) => console.log(s)}
-                            onColoredPress={() => navigation.navigate("Login")}
-                            submitText="Register"
-                        />
-                    </VStack>
-                </Screen>
+                <VStack pb={30}>
+                    <Input
+                        mt={"10%"}
+                        label="Enter full name"
+                        placeholder="Enter your full name"
+                        value={formik.values.fullName}
+                        onChangeText={formik.handleChange("fullName")}
+                        error={formik.errors.fullName}
+                    />
+                    <Input
+                        label="Email"
+                        placeholder="Enter your email"
+                        value={formik.values.email}
+                        onChangeText={formik.handleChange("email")}
+                        error={formik.errors.email}
+                    />
+                    <Input
+                        rightIcon={
+                            formik.values.password.length > 0 &&
+                            (isPassword ? "eye-close" : "eye")
+                        }
+                        type={isPassword ? "password" : "text"}
+                        onRightIconPress={() => setIsPassword(!isPassword)}
+                        label="Password"
+                        placeholder="Enter password"
+                        value={formik.values.password}
+                        onChangeText={formik.handleChange("password")}
+                        error={formik.errors.password}
+                    />
+                    <Input
+                        rightIcon={
+                            formik.values.confirmPassword.length > 0 &&
+                            (isPassword ? "eye-close" : "eye")
+                        }
+                        type={isConfirmPassword ? "password" : "text"}
+                        onRightIconPress={() =>
+                            setIsConfirmPassword(!isConfirmPassword)
+                        }
+                        label="Confirm Password"
+                        placeholder="Confirm password"
+                        value={formik.values.confirmPassword}
+                        onChangeText={formik.handleChange("confirmPassword")}
+                        error={formik.errors.confirmPassword}
+                    />
+                    <AuthBottom
+                        onSubmit={formik.handleSubmit}
+                        hideForgotPassword={true}
+                        bottomText="Already have an account?"
+                        bottomColoredText="Login"
+                        onSocialLogin={(s) => console.log(s)}
+                        onColoredPress={() => navigation.navigate("Login")}
+                        submitText="Register"
+                    />
+                </VStack>
             </KeyboardView>
-        </SafeAreaView>
+        </Screen>
     );
 }
 

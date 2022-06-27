@@ -4,8 +4,11 @@ import Screen from "../../components/Screen";
 import IconCard from "../../components/IconCard";
 import styled from "styled-components/native";
 import { Spacing } from "../../styled/spacing";
+import { useNavigation } from "@react-navigation/native";
 
 const AddCard: React.FC = () => {
+    const navigation = useNavigation();
+
     return (
         <Screen title={"Add Card"} leftIcon={true}>
             <Vstack pt={50} px={16}>
@@ -14,7 +17,11 @@ const AddCard: React.FC = () => {
                     iconName="image"
                     tittle="Import from Gallery"
                 />
-                <IconCard iconName="card-edit" tittle="Creat Card Manually" />
+                <IconCard
+                    onPress={() => navigation.navigate("ACGallery")}
+                    iconName="card-edit"
+                    tittle="Create Card Manually"
+                />
             </Vstack>
         </Screen>
     );

@@ -31,36 +31,31 @@ export default function ForgetPassword() {
     });
 
     return (
-        <SafeAreaView
-            edges={["bottom"]}
-            style={{ flex: 1, backgroundColor: "#fff" }}
-        >
+        <Screen padding={0}>
+            <AuthHeader title="Forget Password!" />
             <KeyboardView
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={{ flexGrow: 1 }}
             >
-                <Screen leftIcon={true} padding={0}>
-                    <AuthHeader title="Forget Password!" />
-                    <VStack pb={30}>
-                        <Input
-                            mt={"10%"}
-                            label="Email address"
-                            placeholder="Enter your email"
-                            value={formik.values.email}
-                            onChangeText={formik.handleChange("email")}
-                            error={formik.errors.email}
-                        />
+                <VStack pb={30}>
+                    <Input
+                        mt={"10%"}
+                        label="Email address"
+                        placeholder="Enter your email"
+                        value={formik.values.email}
+                        onChangeText={formik.handleChange("email")}
+                        error={formik.errors.email}
+                    />
 
-                        <Button
-                            onPress={formik.handleSubmit}
-                            mt={"30%"}
-                            text="Send Code"
-                        />
-                    </VStack>
-                </Screen>
+                    <Button
+                        onPress={formik.handleSubmit}
+                        mt={"30%"}
+                        text="Send Code"
+                    />
+                </VStack>
             </KeyboardView>
-        </SafeAreaView>
+        </Screen>
     );
 }
 

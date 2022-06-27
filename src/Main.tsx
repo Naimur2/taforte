@@ -9,7 +9,10 @@ import {
     Inter_800ExtraBold,
     Inter_900Black,
 } from "@expo-google-fonts/inter";
-import { Montserrat_600SemiBold } from "@expo-google-fonts/montserrat";
+import {
+    Montserrat_600SemiBold,
+    Montserrat_300Light,
+} from "@expo-google-fonts/montserrat";
 import { useFonts } from "expo-font";
 
 import { StatusBar } from "expo-status-bar";
@@ -26,6 +29,7 @@ export default function Main() {
 
     const [loaded] = useFonts({
         Montserrat_600SemiBold,
+        Montserrat_300Light,
         Inter_100Thin,
         Inter_200ExtraLight,
         Inter_300Light,

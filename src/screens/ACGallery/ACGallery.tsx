@@ -4,9 +4,10 @@ import Screen from "../../components/Screen";
 import { KeyboardView } from "../../styled";
 import { Spacing } from "../../styled/spacing";
 
-import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
+import styled from "styled-components/native";
 import HeaderBack from "../../components/HeaderBack";
+import ImageUploadCard from "../common/ImageUploadCard";
 
 const ACGallery: React.FC = () => {
     const navigation = useNavigation();
@@ -22,24 +23,7 @@ const ACGallery: React.FC = () => {
             <KeyboardView>
                 <InnerStack px={16}>
                     <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
-                    <Input label="Card Title" placeholder="Enter Card Title" />
+                    <ImageUploadCard />
                 </InnerStack>
             </KeyboardView>
         </Screen>

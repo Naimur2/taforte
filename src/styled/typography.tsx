@@ -18,9 +18,14 @@ const getFontFamily = (
 };
 
 export const Text = styled.Text<TProps>`
-    ${Spacing}
+    font-size:14px;
     font-style: ${(props) => props.fontStyle || "normal"};
-    font-size: ${(props) => `${props.fontSize}` || 14}px;
+    ${(props) =>
+        props.fontSize &&
+        css`
+            font-size: ${props.fontSize}px;
+        `}
+
     color: ${(props) => props.color || colors.secondary};
     text-align: ${(props) => props.textAlign || "left"};
     text-decoration: ${(props) => props.textDecoration || "none"};
@@ -35,4 +40,5 @@ export const Text = styled.Text<TProps>`
     font-family: ${(props) =>
         getFontFamily(props.fontFamily || "Inter", props.fontWeight || 400)};
     ${(props) => props.maxWidth && `max-width: ${props.maxWidth}px`}
+    ${Spacing}
 `;

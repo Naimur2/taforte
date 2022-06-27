@@ -3,6 +3,7 @@ import { SpacingProps } from "../interfaces";
 import { Container } from "../styled/structures";
 import Background from "./Background";
 import Header from "./Header";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 interface ScreenProps extends SpacingProps {
     title?: string;
@@ -19,16 +20,21 @@ const Screen = ({
     ...rest
 }: ScreenProps) => {
     return (
-        <Background>
-            {!noHeader && <Header leftIcon={leftIcon} title={title} />}
-            <Container
-                mt={noHeader ? 70 : 0}
-                flex={!noHeader ? 0.94 : 1}
-                {...rest}
-            >
-                {children}
-            </Container>
-        </Background>
+        <SafeAreaView
+            style={{ flex: 1, backgroundColor: "#fff" }}
+            edges={["bottom"]}
+        >
+            <Background>
+                {!noHeader && <Header leftIcon={leftIcon} title={title} />}
+                <Container
+                    mt={noHeader ? "26%" : 0}
+                    flex={!noHeader ? 0.94 : 1}
+                    {...rest}
+                >
+                    {children}
+                </Container>
+            </Background>
+        </SafeAreaView>
     );
 };
 

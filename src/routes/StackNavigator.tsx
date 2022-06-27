@@ -10,6 +10,7 @@ import Privacy from "../screens/Privacy/Privacy";
 import Settings from "../screens/Settings/Settings";
 import AppTab from "./AppTab";
 import AddCard from "../screens/AddCard/AddCard";
+import HeaderBack from "../components/HeaderBack";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();
@@ -23,6 +24,7 @@ const StackNavigator: React.FC = () => {
                     fontSize: 20,
                     fontWeight: "700",
                 },
+                headerLeft: () => <HeaderBack />,
             }}
             initialRouteName="AppTab"
         >

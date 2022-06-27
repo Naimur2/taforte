@@ -6,6 +6,7 @@ interface Fonts {
 
 const fonts: Fonts = {
     Montserrat: {
+        300: "Montserrat_300Light",
         600: "Montserrat_600SemiBold",
     },
     Inter: {

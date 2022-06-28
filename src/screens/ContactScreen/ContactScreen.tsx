@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import Screen from "../../components/Screen";
 import { SpacingProps } from "../../interfaces";
 import { Spacing } from "../../styled/spacing";
-import ContactCard from "./components/ContactCXard";
+import ContactCard from "./components/ContactCard";
 import Search from "./components/Search";
 
 export default function ContactScreen() {
@@ -12,6 +12,8 @@ export default function ContactScreen() {
         <Screen title={"Contats"} leftIcon={false}>
             <Box pt={16} px={16}>
                 <Search my={8} />
+                <ContactCard />
+                <ContactCard />
                 <ContactCard />
             </Box>
         </Screen>

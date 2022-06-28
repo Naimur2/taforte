@@ -7,6 +7,7 @@ const colors = {
     gray400: "#D4D8DE",
     gray500: "#6A6B6B",
     green100: "#848484",
+    green200: "#FF6F6F",
     light100: "#F8F8FB",
     light200: "#D7DDED",
     light300: "#D8F3F1",

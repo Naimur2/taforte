@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components/native";
 import HeaderBack from "../../components/HeaderBack";
 import ImageUploadCard from "../common/ImageUploadCard";
+import Button from "../../components/Button";
 
 const ACGallery: React.FC = () => {
     const navigation = useNavigation();
@@ -21,9 +22,11 @@ const ACGallery: React.FC = () => {
     return (
         <Screen noHeader pt={30} leftIcon title="Add Card From Gallery">
             <KeyboardView>
-                <InnerStack px={16}>
+                <InnerStack p={16}>
                     <Input label="Card Title" placeholder="Enter Card Title" />
                     <ImageUploadCard />
+                    <ImageUploadCard />
+                    <Button mb={10} mt={"10%"} text="Save" />
                 </InnerStack>
             </KeyboardView>
         </Screen>

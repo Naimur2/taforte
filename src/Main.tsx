@@ -10,12 +10,11 @@ import {
     Inter_900Black,
 } from "@expo-google-fonts/inter";
 import {
-    Montserrat_600SemiBold,
     Montserrat_300Light,
+    Montserrat_400Regular,
+    Montserrat_600SemiBold,
 } from "@expo-google-fonts/montserrat";
 import { useFonts } from "expo-font";
-
-import { StatusBar } from "expo-status-bar";
 
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
@@ -30,6 +29,7 @@ export default function Main() {
     const [loaded] = useFonts({
         Montserrat_600SemiBold,
         Montserrat_300Light,
+        Montserrat_400Regular,
         Inter_100Thin,
         Inter_200ExtraLight,
         Inter_300Light,

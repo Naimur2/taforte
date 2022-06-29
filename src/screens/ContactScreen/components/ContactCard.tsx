@@ -83,12 +83,7 @@ const ContactCard: React.FC = () => {
                 }
                 if (shouldBeDismissed) {
                     handleDelete();
-                    // translateX.value = withTiming(-width);
-                    // cardHeight.value = withTiming(0);
-                    // cardOpacity.value = withTiming(0);
                 }
-
-                // translateX.value = withTiming(0);
             },
         }
     );

@@ -18,7 +18,7 @@ import {
 } from "react-native-gesture-handler";
 
 interface CProps {
-    avarar?: string;
+    avatar?: string;
     name?: string;
     phone?: string;
 }
@@ -28,21 +28,15 @@ const width = Dimensions.get("window").width;
 const CARD_HEIGHT = 60;
 const DELETE_THRESHOLD = -width * 0.4;
 
-const userData: CProps = {
-    avarar: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    name: "John Doe",
-    phone: "123456789",
-};
-
-const ContactCard: React.FC = () => {
+const ContactCard: React.FC = ({ avatar, name, phone }: CProps) => {
     const handleCall = () => {
-        Linking.openURL(`tel:${userData.phone}`);
+        Linking.openURL(`tel:${phone}`);
     };
 
     const handleShare = async () => {
         try {
             const result = await Share.share({
-                message: `${userData.name} - ${userData.phone}`,
+                message: `${name} - ${phone}`,
             });
             if (result.action === Share.sharedAction) {
                 if (result.activityType) {
@@ -72,7 +66,6 @@ const ContactCard: React.FC = () => {
         {
             onActive: (event) => {
                 translateX.value = event.translationX;
-                // console.log(translateX.value);
             },
             onEnd: (event) => {
                 const shouldBeDismissed = translateX.value < DELETE_THRESHOLD;
@@ -112,9 +105,9 @@ const ContactCard: React.FC = () => {
                 <Animated.View style={rStyle}>
                     <HStack py={14}>
                         <Content>
-                            <Avatar source={{ uri: userData.avarar }} />
+                            <Avatar source={{ uri: avatar }} />
                             <Text ml={16} fontSize={14}>
-                                {userData.name}
+                                {name}
                             </Text>
                         </Content>
                         <Content>

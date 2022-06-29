@@ -5,7 +5,7 @@ import { Spacing } from "../../../styled/spacing";
 import { Text } from "../../../styled/typography";
 import colors from "../../../themes/colors";
 import * as Linking from "expo-linking";
-import { Share, View, StyleSheet } from "react-native";
+import { Share, View, StyleSheet, Dimensions } from "react-native";
 import Animated, {
     useAnimatedGestureHandler,
     useAnimatedStyle,
@@ -23,7 +23,10 @@ interface CProps {
     phone?: string;
 }
 
+const width = Dimensions.get("window").width;
+
 const CARD_HEIGHT = 60;
+const DELETE_THRESHOLD = -width * 0.4;
 
 const userData: CProps = {
     avarar: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -55,15 +58,37 @@ const ContactCard: React.FC = () => {
         }
     };
     const translateX = useSharedValue(0);
+    const cardHeight = useSharedValue(CARD_HEIGHT);
+    const cardOpacity = useSharedValue(1);
+
+    const handleDelete = () => {
+        "worklet";
+        translateX.value = withTiming(-width);
+        cardHeight.value = withTiming(0);
+        cardOpacity.value = withTiming(0);
+    };
 
     const panGesture = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>(
         {
             onActive: (event) => {
                 translateX.value = event.translationX;
-                console.log(translateX.value);
+                // console.log(translateX.value);
             },
             onEnd: (event) => {
-                translateX.value = withTiming(0);
+                const shouldBeDismissed = translateX.value < DELETE_THRESHOLD;
+                if (translateX.value <= -70) {
+                    translateX.value = withTiming(-60);
+                } else if (translateX.value >= -60) {
+                    translateX.value = withTiming(0);
+                }
+                if (shouldBeDismissed) {
+                    handleDelete();
+                    // translateX.value = withTiming(-width);
+                    // cardHeight.value = withTiming(0);
+                    // cardOpacity.value = withTiming(0);
+                }
+
+                // translateX.value = withTiming(0);
             },
         }
     );
@@ -72,8 +97,22 @@ const ContactCard: React.FC = () => {
         transform: [{ translateX: translateX.value }],
     }));
 
+    const containerStyle = useAnimatedStyle(() => {
+        return {
+            height: cardHeight.value,
+            opacity: cardOpacity.value,
+        };
+    });
+
+    const iconStyle = useAnimatedStyle(() => {
+        const opacity = withTiming(translateX.value <= -60 ? 1 : 0);
+        return {
+            opacity,
+        };
+    });
+
     return (
-        <View style={styles.listItem}>
+        <Animated.View style={[styles.listItem, containerStyle]}>
             <PanGestureHandler onGestureEvent={panGesture}>
                 <Animated.View style={rStyle}>
                     <HStack py={14}>
@@ -102,10 +141,15 @@ const ContactCard: React.FC = () => {
                     </HStack>
                 </Animated.View>
             </PanGestureHandler>
-            <View style={styles.iconContainer}>
-                <Icon name="bin" size={24} color={"white"} />
-            </View>
-        </View>
+            <Animated.View style={[styles.iconContainer, iconStyle]}>
+                <Icon
+                    onPress={handleDelete}
+                    name="bin"
+                    size={24}
+                    color={"white"}
+                />
+            </Animated.View>
+        </Animated.View>
     );
 };
 
@@ -124,7 +168,6 @@ const Content = styled.View`
 const HStack = styled(Content)`
     background: white;
     justify-content: space-between;
-    height: ${CARD_HEIGHT}px;
     ${Spacing}
 `;
 
@@ -149,6 +192,7 @@ const styles = StyleSheet.create({
     },
     listItem: {
         position: "relative",
+        overflow: "hidden",
     },
 });
 

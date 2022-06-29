@@ -15,6 +15,18 @@ export default function ContactScreen() {
                 <ContactCard />
                 <ContactCard />
                 <ContactCard />
+                <ContactCard />
+                <ContactCard />
+                <ContactCard />
+                <ContactCard />
+                <ContactCard />
+                <ContactCard />
+                <ContactCard />
+                <ContactCard />
+                <ContactCard />
+                <ContactCard />
+                <ContactCard />
+                <ContactCard />
             </Box>
         </Screen>
     );

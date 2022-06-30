@@ -2,11 +2,14 @@ import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 
 import styled from "styled-components/native";
+import Icon from "../../components/Icon";
 import Screen from "../../components/Screen";
 import { SpacingProps } from "../../interfaces";
 import { Spacing } from "../../styled/spacing";
+import colors from "../../themes/colors";
 import ContactCard from "./components/ContactCard";
 import Search from "./components/Search";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ContactScreen() {
     const contacts = [
@@ -96,6 +99,7 @@ export default function ContactScreen() {
         },
     ];
     const scrollRef = React.useRef(null);
+    const navigation = useNavigation();
 
     const handleDissmiss = React.useCallback((_id: string) => {
         console.log("dissmiss", _id);
@@ -105,7 +109,11 @@ export default function ContactScreen() {
         <Screen title={"Contats"} leftIcon={false}>
             <Box>
                 <Search mx={16} mt={40} />
-                <ScrollView ref={scrollRef}>
+                <ScrollView
+                    ref={scrollRef}
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                >
                     <Inner>
                         {contacts.map((contact, index) => (
                             <ContactCard
@@ -120,6 +128,15 @@ export default function ContactScreen() {
                     </Inner>
                 </ScrollView>
             </Box>
+            <Fab onPress={() => navigation.navigate("AddContacts")}>
+                <Icon
+                    mx="auto"
+                    my={"auto"}
+                    name="add-user"
+                    size={24}
+                    color="#fff"
+                />
+            </Fab>
         </Screen>
     );
 }
@@ -134,5 +151,15 @@ const Inner = styled.View`
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 16px;
-    padding-bottom: 80px;
+    padding-bottom: 160px;
+`;
+
+const Fab = styled.TouchableOpacity`
+    position: absolute;
+    bottom: 100px;
+    right: 16px;
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
+    background-color: ${colors.primary};
 `;

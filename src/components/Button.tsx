@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import { SpacingProps, SizeProps } from "../interfaces/index";
 import colors from "../themes/colors";
 import { Spacing } from "../styled/spacing";
+import { Size } from "../styled";
 
 interface Variants {
     [key: string]: VariantObj;
@@ -69,6 +70,6 @@ const CustomBtn = styled.TouchableOpacity`
     ${(props: CustomBtnProps) =>
         variants[props.variant].borderColor &&
         `border: 1px solid ${variants[props.variant].borderColor}`};
-
+    ${Size}
     ${Spacing}
 `;

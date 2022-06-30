@@ -19,3 +19,7 @@ export const RegisterSchema = Yup.object().shape({
 export const ForgetPasswordSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
 });
+
+export const AddNewFieldSchema = Yup.object().shape({
+    label: Yup.string().required("Title is required"),
+});

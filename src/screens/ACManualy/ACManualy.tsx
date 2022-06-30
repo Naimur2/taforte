@@ -1,15 +1,16 @@
 import React from "react";
-import Screen from "../../components/Screen";
-import { KeyboardView } from "../../styled";
+import { Dimensions } from "react-native";
+import Modal from "react-native-modal";
 import styled from "styled-components/native";
+import Button from "../../components/Button";
 import Icon from "../../components/Icon";
 import Input from "../../components/Input";
+import Screen from "../../components/Screen";
+import { KeyboardView } from "../../styled";
 import { Spacing } from "../../styled/spacing";
 import { Text } from "../../styled/typography";
 import colors from "../../themes/colors";
-import Button from "../../components/Button";
-import Modal from "react-native-modal";
-import { Dimensions } from "react-native";
+import AddFeieldModal from "./components/AddFieldModal";
 
 interface InputFieldProps {
     _id: string;
@@ -18,11 +19,10 @@ interface InputFieldProps {
 }
 
 const width = Dimensions.get("window").width;
+const deviceHeight = Dimensions.get("window").height;
 
 const ACManualy = () => {
-    const [inputFioelds, setInputFields] = React.useState<InputFieldProps[]>(
-        []
-    );
+    const [inputFields, setInputFields] = React.useState<InputFieldProps[]>([]);
 
     const [modalVisible, setModalVisible] = React.useState<boolean>(false);
 
@@ -53,11 +53,23 @@ const ACManualy = () => {
         setInputFields(inputs);
     }, []);
 
+    const handleAddField = (label: string, placeholder: string) => {
+        setInputFields([
+            ...inputFields,
+            {
+                _id: Date.now().toString(),
+                label,
+                placeholder,
+            },
+        ]);
+        setModalVisible(false);
+    };
+
     return (
         <Screen>
             <KeyboardView>
                 <InnerView px={16} mt={16}>
-                    {inputs.map((input) => (
+                    {inputFields.map((input) => (
                         <Input
                             key={input._id}
                             label={input.label}
@@ -73,30 +85,12 @@ const ACManualy = () => {
                             Add Field
                         </Text>
                     </AddIcon>
-                    <Modal
-                        onBackdropPress={() => setModalVisible((prev) => !prev)}
+                    <AddFeieldModal
                         isVisible={modalVisible}
-                        deviceWidth={width}
-                    >
-                        <InnerModal p={16}>
-                            <HStack>
-                                <Button
-                                    onPress={() =>
-                                        setModalVisible((prev) => !prev)
-                                    }
-                                    variant="gray"
-                                    text="Cancel"
-                                />
-                                <Button
-                                    onPress={() =>
-                                        setModalVisible((prev) => !prev)
-                                    }
-                                    variant="primary"
-                                    text="Cancel"
-                                />
-                            </HStack>
-                        </InnerModal>
-                    </Modal>
+                        onAdd={handleAddField}
+                        onClose={() => setModalVisible((prev) => !prev)}
+                    />
+                    <Button mt={"30%"} mb={20} text="Save" />
                 </InnerView>
             </KeyboardView>
         </Screen>
@@ -116,6 +110,7 @@ const AddIcon = styled.Pressable`
 
 const InnerModal = styled.View`
     background: #fff;
+    border-radius: 10px;
     ${Spacing};
 `;
 
@@ -123,6 +118,7 @@ const HStack = styled.View`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     ${Spacing}
 `;
 

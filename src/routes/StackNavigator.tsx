@@ -11,6 +11,7 @@ import Settings from "../screens/Settings/Settings";
 import AppTab from "./AppTab";
 import AddCard from "../screens/AddCard/AddCard";
 import HeaderBack from "../components/HeaderBack";
+import ACManualy from "../screens/ACManualy/ACManualy";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();
@@ -45,6 +46,7 @@ const StackNavigator: React.FC = () => {
             <Stack.Screen name="Settings" component={Settings} />
             <Stack.Screen name="Help" component={Help} />
             <Stack.Screen name="ACGallery" component={ACGallery} />
+            <Stack.Screen name="ACManualy" component={ACManualy} />
         </Stack.Navigator>
     );
 };

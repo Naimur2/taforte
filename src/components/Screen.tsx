@@ -27,7 +27,7 @@ const Screen = ({
             <Background>
                 {!noHeader && <Header leftIcon={leftIcon} title={title} />}
                 <Container
-                    mt={noHeader ? "26%" : 0}
+                    mt={noHeader ? "20%" : 0}
                     flex={!noHeader ? 0.94 : 1}
                     {...rest}
                 >

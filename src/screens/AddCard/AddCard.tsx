@@ -16,11 +16,12 @@ const AddCard: React.FC = () => {
                     mb={16}
                     iconName="image"
                     tittle="Import from Gallery"
+                    onPress={() => navigation.navigate("ACGallery")}
                 />
                 <IconCard
-                    onPress={() => navigation.navigate("ACGallery")}
                     iconName="card-edit"
                     tittle="Create Card Manually"
+                    onPress={() => navigation.navigate("ACManualy")}
                 />
             </Vstack>
         </Screen>

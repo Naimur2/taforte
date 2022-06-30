@@ -11,7 +11,7 @@ interface Variants {
 interface CustomBtnProps extends SpacingProps, SizeProps {
     onPress: () => void;
     text: string;
-    variant?: "primary" | "light" | "dark";
+    variant?: "primary" | "light" | "dark" | "gray";
 }
 
 const variants: Variants = {
@@ -24,6 +24,11 @@ const variants: Variants = {
         backgroundColor: "#fff",
         textColor: colors.secondary,
         borderColor: colors.primary,
+    },
+    gray: {
+        backgroundColor: "#fff",
+        textColor: colors.gray600,
+        borderColor: colors.gray600,
     },
 };
 

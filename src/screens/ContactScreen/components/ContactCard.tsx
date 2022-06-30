@@ -7,6 +7,7 @@ import colors from "../../../themes/colors";
 import * as Linking from "expo-linking";
 import { Share, View, StyleSheet, Dimensions } from "react-native";
 import Animated, {
+    runOnJS,
     useAnimatedGestureHandler,
     useAnimatedStyle,
     useSharedValue,
@@ -15,12 +16,15 @@ import Animated, {
 import {
     PanGestureHandler,
     PanGestureHandlerGestureEvent,
+    PanGestureHandlerProps,
 } from "react-native-gesture-handler";
 
-interface CProps {
+interface CProps extends Pick<PanGestureHandlerProps, "simultaneousHandler"> {
     avatar?: string;
     name?: string;
     phone?: string;
+    simultaneousHandler: any;
+    onDismiss?: () => void;
 }
 
 const width = Dimensions.get("window").width;
@@ -28,7 +32,13 @@ const width = Dimensions.get("window").width;
 const CARD_HEIGHT = 60;
 const DELETE_THRESHOLD = -width * 0.4;
 
-const ContactCard: React.FC = ({ avatar, name, phone }: CProps) => {
+const ContactCard = ({
+    avatar,
+    name,
+    phone,
+    simultaneousHandler,
+    onDismiss,
+}: CProps) => {
     const handleCall = () => {
         Linking.openURL(`tel:${phone}`);
     };
@@ -59,7 +69,11 @@ const ContactCard: React.FC = ({ avatar, name, phone }: CProps) => {
         "worklet";
         translateX.value = withTiming(-width);
         cardHeight.value = withTiming(0);
-        cardOpacity.value = withTiming(0);
+        cardOpacity.value = withTiming(0, undefined, (isFinished) => {
+            if (isFinished && onDismiss) {
+                runOnJS(onDismiss)();
+            }
+        });
     };
 
     const panGesture = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>(
@@ -101,7 +115,10 @@ const ContactCard: React.FC = ({ avatar, name, phone }: CProps) => {
 
     return (
         <Animated.View style={[styles.listItem, containerStyle]}>
-            <PanGestureHandler onGestureEvent={panGesture}>
+            <PanGestureHandler
+                simultaneousHandlers={simultaneousHandler}
+                onGestureEvent={panGesture}
+            >
                 <Animated.View style={rStyle}>
                     <HStack py={14}>
                         <Content>

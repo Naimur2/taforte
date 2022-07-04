@@ -23,3 +23,8 @@ export const ForgetPasswordSchema = Yup.object().shape({
 export const AddNewFieldSchema = Yup.object().shape({
     label: Yup.string().required("Title is required"),
 });
+
+export const AddNewContactsSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    phone: Yup.string().required("Phone is required"),
+});

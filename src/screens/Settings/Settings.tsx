@@ -26,7 +26,7 @@ const Settings: React.FC = () => {
     ];
 
     return (
-        <Screen title={"Settings"} leftIcon={true}>
+        <Screen>
             <Vstack pt={50} px={16}>
                 {items.map((item, index) => (
                     <IconCard

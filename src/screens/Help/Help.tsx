@@ -8,7 +8,7 @@ import Button from "../../components/Button";
 
 const Help: React.FC = () => {
     return (
-        <Screen title={"Help"} leftIcon={true}>
+        <Screen>
             <Vstack pt={50} px={16}>
                 <IconCard mb={16} tittle="How to redeem premium code?" />
                 <IconCard mb={16} tittle="How to redeem premium code?" />

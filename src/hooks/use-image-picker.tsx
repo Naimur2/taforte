@@ -40,8 +40,8 @@ export default function useImagePicker({ options }: { options?: any }) {
     };
 
     React.useEffect(() => {
-        const getFileInfo = async (fileURI:any) => {
-            const fileInfo = await FileSystem.getInfoAsync(fileURI:any);
+        const getFileInfo = async (fileURI: any) => {
+            const fileInfo = await FileSystem.getInfoAsync(fileURI);
             const { size } = fileInfo;
             setFileName(fileInfo?.uri?.split("/").pop());
 

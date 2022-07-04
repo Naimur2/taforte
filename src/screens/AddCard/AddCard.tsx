@@ -6,11 +6,11 @@ import styled from "styled-components/native";
 import { Spacing } from "../../styled/spacing";
 import { useNavigation } from "@react-navigation/native";
 
-const AddCard: React.FC = () => {
+const AddCard = () => {
     const navigation = useNavigation();
 
     return (
-        <Screen noHeader title={"Add Card"} leftIcon={true}>
+        <Screen>
             <Vstack pt={50} px={16}>
                 <IconCard
                     mb={16}

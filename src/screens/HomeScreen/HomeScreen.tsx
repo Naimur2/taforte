@@ -31,7 +31,7 @@ export default function HomeScreen() {
             borderColor: colors.primary,
             iconColor: colors.primary,
             onPress: () => {
-                console.log("Home");
+                navigation.navigate("MyCard");
             },
         },
         {

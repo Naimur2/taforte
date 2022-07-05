@@ -76,7 +76,7 @@ export default function Register() {
                     <Input
                         rightIcon={
                             formik.values.confirmPassword.length > 0 &&
-                            (isPassword ? "eye-close" : "eye")
+                            (isConfirmPassword ? "eye-close" : "eye")
                         }
                         type={isConfirmPassword ? "password" : "text"}
                         onRightIconPress={() =>

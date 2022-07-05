@@ -34,7 +34,13 @@ export default function AuthRoute() {
                     name="ForgetPassword"
                     component={ForgetPassword}
                 />
-                <Stack.Screen name="Onboarding" component={Onboarding} />
+                <Stack.Screen
+                    options={{
+                        headerShown: false,
+                    }}
+                    name="Onboarding"
+                    component={Onboarding}
+                />
             </Stack.Navigator>
         </React.Fragment>
     );

@@ -7,12 +7,11 @@ import Animated, {
     withTiming,
 } from "react-native-reanimated";
 import styled from "styled-components/native";
-import { Spacing } from "../../../styled/spacing";
 import colors from "../../../themes/colors";
 import SwitchButton from "./coponents/SwitchButton";
 
 interface ThreeSwitchProps {
-    onPress?: (current: string) => void;
+    onPress?: (current: string | number) => void;
 }
 
 const ThreeSwitch = ({ onPress }: ThreeSwitchProps) => {
@@ -26,7 +25,7 @@ const ThreeSwitch = ({ onPress }: ThreeSwitchProps) => {
             case 1:
                 return withTiming(0, undefined, (isFinished) => {
                     if (isFinished && onPress) {
-                        runOnJS(onPress)("1");
+                        runOnJS(onPress)(1);
                     }
                 });
             case 2:
@@ -35,7 +34,7 @@ const ThreeSwitch = ({ onPress }: ThreeSwitchProps) => {
                     undefined,
                     (isFinished) => {
                         if (isFinished && onPress) {
-                            runOnJS(onPress)("2");
+                            runOnJS(onPress)(2);
                         }
                     }
                 );
@@ -45,7 +44,7 @@ const ThreeSwitch = ({ onPress }: ThreeSwitchProps) => {
                     undefined,
                     (isFinished) => {
                         if (isFinished && onPress) {
-                            runOnJS(onPress)("3");
+                            runOnJS(onPress)(3);
                         }
                     }
                 );
@@ -102,9 +101,9 @@ const ThreeSwitch = ({ onPress }: ThreeSwitchProps) => {
 
 const SwitchOuterContainer = styled.View`
     border-width: 1px;
-    border-color: ${colors.gray200} ${Spacing};
-    padding: 6px;
-    border-radius: 10px;
+    border-color: ${colors.gray200}50;
+    padding: 4px;
+    border-radius: 8px;
 `;
 
 const SwitchInnerContainer = styled.View`
@@ -118,13 +117,6 @@ const SwitchInnerContainer = styled.View`
 `;
 
 const styles = StyleSheet.create({
-    switchItem: {
-        display: "flex",
-        alignItems: "center",
-        padding: 12,
-        width: "32%",
-        borderRadius: 10,
-    },
     active: {
         backgroundColor: colors.primary,
         width: "32%",

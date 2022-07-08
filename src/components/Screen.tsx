@@ -4,6 +4,7 @@ import { Container } from "../styled/structures";
 import Background from "./Background";
 import Header from "./Header";
 import { SafeAreaView } from "react-native-safe-area-context";
+import usePlatform from "../hooks/use-platform";
 
 interface ScreenProps extends SpacingProps {
     title?: string;
@@ -19,6 +20,10 @@ const Screen = ({
     noHeader,
     ...rest
 }: ScreenProps) => {
+    const os = usePlatform();
+
+    const mt = os === "android" ? 0 : 30;
+
     return (
         <SafeAreaView
             style={{ flex: 1, backgroundColor: "#fff" }}
@@ -27,7 +32,7 @@ const Screen = ({
             <Background>
                 {!noHeader && <Header leftIcon={leftIcon} title={title} />}
                 <Container
-                    mt={noHeader ? "20%" : 0}
+                    mt={noHeader ? "20%" : mt}
                     flex={!noHeader ? 0.94 : 1}
                     {...rest}
                 >

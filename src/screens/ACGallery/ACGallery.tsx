@@ -23,7 +23,7 @@ const ACGallery: React.FC = () => {
     }, [navigation]);
 
     return (
-        <Screen noHeader pt={30} leftIcon title="Add Card From Gallery">
+        <Screen pt={30}>
             <KeyboardView>
                 <InnerStack p={16}>
                     <Input label="Card Title" placeholder="Enter Card Title" />

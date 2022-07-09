@@ -41,7 +41,7 @@ export default function HomeScreen() {
             description: "250",
             innerBackgroundColor: colors.lightBlue100,
             onPress: () => {
-                console.log("Scanned");
+                navigation.navigate("Scanned");
             },
         },
         {
@@ -51,7 +51,7 @@ export default function HomeScreen() {
             description: "1609",
             innerBackgroundColor: colors.lightBlue200,
             onPress: () => {
-                console.log("Templates");
+                navigation.navigate("Templates");
             },
         },
     ];

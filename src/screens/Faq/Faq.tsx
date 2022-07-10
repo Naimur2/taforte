@@ -29,6 +29,7 @@ const Faq = () => {
 };
 
 const Container = styled.View`
+    display: flex;
     ${Spacing}
 `;
 

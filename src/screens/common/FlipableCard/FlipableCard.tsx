@@ -33,7 +33,7 @@ const FlipableCard = ({ frontImage, backImage }: IFlipableCard) => {
         return {
             transform: [
                 {
-                    rotateY: rotation.value + "deg",
+                    rotateX: rotation.value + "deg",
                 },
             ],
         };
@@ -43,7 +43,7 @@ const FlipableCard = ({ frontImage, backImage }: IFlipableCard) => {
         return {
             transform: [
                 {
-                    rotateY: rotation.value - 90 + "deg",
+                    rotateX: rotation.value - 90 + "deg",
                 },
             ],
         };

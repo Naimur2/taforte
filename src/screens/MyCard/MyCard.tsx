@@ -23,16 +23,7 @@ interface CardProps {
 }
 
 const MyCard = () => {
-    const [active, setActive] = React.useState<string | number>(1);
     const [cards, setCards] = React.useState<CardProps[]>([]);
-
-    const mapActiveToType: {
-        [key: number]: string;
-    } = {
-        1: "all",
-        2: "work",
-        3: "personal",
-    };
 
     const cardsData: CardProps[] = [
         {
@@ -89,27 +80,10 @@ const MyCard = () => {
         setCards(cardsData);
     }, []);
 
-    const getFilteredCards = () => {
-        const type = mapActiveToType[active];
-        switch (type) {
-            case "all":
-                return cards;
-            case "work":
-                return cards.filter((card) => card.type === "work");
-            case "personal":
-                return cards.filter((card) => card.type === "personal");
-            default:
-                return cards;
-        }
-    };
-
-    const filteredCards = getFilteredCards() || [];
+    const filteredCards = cards;
 
     return (
         <Screen>
-            <VStack mt={30} px={16}>
-                <ThreeSwitch onPress={(curr) => setActive(curr)} />
-            </VStack>
             <Row>
                 <FlatList
                     data={filteredCards}
@@ -130,13 +104,8 @@ const MyCard = () => {
     );
 };
 
-const VStack = styled.View`
-    flex: 0.1;
-    ${Spacing}
-`;
-
 const Row = styled.View`
-    flex: 0.9;
+    flex: 1;
 `;
 
 export default MyCard;

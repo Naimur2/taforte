@@ -1,20 +1,24 @@
-import { useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 import React from "react";
+import { ScrollView } from "react-native";
+import { filterdTemplates } from "../../../DB/templates";
 import Screen from "../../components/Screen";
 import { ICard } from "../../interfaces";
-import { filterdTemplates } from "../../../DB/templates";
-import styled from "styled-components/native";
 import Tcard from "./components/Tcard";
-import { ScrollView } from "react-native";
 
 export default function TemplateGroup() {
+    const navigation = useNavigation();
     const [templates, setTemplates] = React.useState<ICard[]>([]);
 
-    const params = useRoute().params as { group: string };
+    const params = useRoute().params as { group: string; title: string };
+
     React.useLayoutEffect(() => {
         setTemplates(filterdTemplates(params.group));
+        navigation.setOptions({
+            title: params.title,
+        });
     }, [params]);
-    console.log(templates);
+
     return (
         <Screen>
             <ScrollView

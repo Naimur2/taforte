@@ -31,6 +31,7 @@ export default function Templates() {
                         onNext={() =>
                             navigation.navigate("TempGroup", {
                                 group: item.group,
+                                title: item.name,
                             })
                         }
                         onCardPress={(t) => console.log(t)}

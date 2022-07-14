@@ -1,20 +1,22 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import HeaderBack from "../components/HeaderBack";
-import ACGallery from "../screens/ACGallery/ACGallery";
-import ACManualy from "../screens/ACManualy/ACManualy";
-import AddCard from "../screens/AddCard/AddCard";
-import AddContacts from "../screens/AddContacts/AddContacts";
-import ContactScreen from "../screens/ContactScreen/ContactScreen";
-import Faq from "../screens/Faq/Faq";
-import Help from "../screens/Help/Help";
-import HomeScreen from "../screens/HomeScreen/HomeScreen";
-import MyCard from "../screens/MyCard/MyCard";
-import Privacy from "../screens/Privacy/Privacy";
-import Scaned from "../screens/Scanned/Scaned";
-import Settings from "../screens/Settings/Settings";
-import TemplateGroup from "../screens/TemplateGroup/TemplateGroup";
-import Templates from "../screens/TemplatesA/Templates";
+
+import AddContacts from "../screens/contact-screens/AddContacts/AddContacts";
+import ContactScreen from "../screens/contact-screens/Contacts/ContactScreen";
+import HomeScreen from "../screens/home-screens/HomeScreen/HomeScreen";
+import MyCard from "../screens/home-screens/MyCard/MyCard";
+import Scaned from "../screens/home-screens/Scanned/Scaned";
+import TemplateGroup from "../screens/home-screens/TemplateScreens/TemplateGroup/TemplateGroup";
+import Templates from "../screens/home-screens/TemplateScreens/TemplatesA/Templates";
+import Faq from "../screens/side-nav-screens/Faq/Faq";
+import Help from "../screens/side-nav-screens/Help/Help";
+import Privacy from "../screens/side-nav-screens/Privacy/Privacy";
+import Settings from "../screens/side-nav-screens/Settings/Settings";
+
+import ACGallery from "../screens/home-screens/AddCardScreens/ACGallery/ACGallery";
+import ACManualy from "../screens/home-screens/AddCardScreens/ACManualy/ACManualy";
+import AddCard from "../screens/home-screens/AddCardScreens/AddCard/AddCard";
 import AppTab from "./AppTab";
 
 const StackNavigator: React.FC = () => {

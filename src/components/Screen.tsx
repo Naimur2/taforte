@@ -1,10 +1,10 @@
 import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import usePlatform from "../hooks/use-platform";
 import { SpacingProps } from "../interfaces";
 import { Container } from "../styled/structures";
 import Background from "./Background";
 import Header from "./Header";
-import { SafeAreaView } from "react-native-safe-area-context";
-import usePlatform from "../hooks/use-platform";
 
 interface ScreenProps extends SpacingProps {
     title?: string;

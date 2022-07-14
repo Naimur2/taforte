@@ -1,9 +1,9 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import Login from "../screens/Login/Login";
-import Register from "../screens/RegisterScreen/Register";
-import ForgetPassword from "../screens/ForgetPassword/ForgetPassword";
-import Onboarding from "../screens/Onboarding/Onboarding";
+import ForgetPassword from "../screens/auth-based-screens/ForgetPassword/ForgetPassword";
+import Login from "../screens/auth-based-screens/Login/Login";
+import Onboarding from "../screens/auth-based-screens/Onboarding/Onboarding";
+import Register from "../screens/auth-based-screens/RegisterScreen/Register";
 
 export default function AuthRoute() {
     type AuthStackParamList = {
@@ -12,11 +12,6 @@ export default function AuthRoute() {
     };
 
     const Stack = createNativeStackNavigator<AuthStackParamList>();
-
-    const options = {
-        // headerShown: false,
-        headerTransparent: true,
-    };
 
     return (
         <React.Fragment>

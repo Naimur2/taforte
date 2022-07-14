@@ -10,12 +10,12 @@ import { CurvedBottomBar } from "react-native-curved-bottom-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import Icon from "../components/Icon";
-import ContactScreen from "../screens/ContactScreen/ContactScreen";
-import HomeScreen from "../screens/HomeScreen/HomeScreen";
-import NotificationsScreen from "../screens/Notifications/NotificationsScreen";
-import ProfileSCreen from "../screens/ProfileScreen/ProfileScreen";
-import colors from "../themes/colors";
 import { TabIcon } from "../interfaces/index";
+import ContactScreen from "../screens/contact-screens/Contacts/ContactScreen";
+import HomeScreen from "../screens/home-screens/HomeScreen/HomeScreen";
+import NotificationsScreen from "../screens/notifications/NotificationsScreen";
+import ProfileSCreen from "../screens/profile-screens/ProfileScreen/ProfileScreen";
+import colors from "../themes/colors";
 
 const AppTab = () => {
     const _renderIcon = (routeName: string, selectedTab: string) => {

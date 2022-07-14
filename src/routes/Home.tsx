@@ -1,16 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import AddCard from "../screens/AddCard/AddCard";
-import ContactScreen from "../screens/ContactScreen/ContactScreen";
-import CustomDrawerContent from "../screens/CustomDrawer/CustomDrawerContent";
-import Faq from "../screens/Faq/Faq";
-import HomeScreen from "../screens/HomeScreen/HomeScreen";
-import Privacy from "../screens/Privacy/Privacy";
-import AppTab from "./AppTab";
-import Settings from "../screens/Settings/Settings";
-import Help from "../screens/Help/Help";
-import ACGallery from "../screens/ACGallery/ACGallery";
+import CustomDrawerContent from "../screens/side-nav-screens/CustomDrawer/CustomDrawerContent";
 import StackNavigator from "./StackNavigator";
 
 export default function Home() {

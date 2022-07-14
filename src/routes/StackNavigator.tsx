@@ -1,21 +1,21 @@
-import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
+import HeaderBack from "../components/HeaderBack";
 import ACGallery from "../screens/ACGallery/ACGallery";
+import ACManualy from "../screens/ACManualy/ACManualy";
+import AddCard from "../screens/AddCard/AddCard";
+import AddContacts from "../screens/AddContacts/AddContacts";
 import ContactScreen from "../screens/ContactScreen/ContactScreen";
 import Faq from "../screens/Faq/Faq";
 import Help from "../screens/Help/Help";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
-import Privacy from "../screens/Privacy/Privacy";
-import Settings from "../screens/Settings/Settings";
-import AppTab from "./AppTab";
-import AddCard from "../screens/AddCard/AddCard";
-import HeaderBack from "../components/HeaderBack";
-import ACManualy from "../screens/ACManualy/ACManualy";
-import AddContacts from "../screens/AddContacts/AddContacts";
 import MyCard from "../screens/MyCard/MyCard";
+import Privacy from "../screens/Privacy/Privacy";
 import Scaned from "../screens/Scanned/Scaned";
-import Templates from "../screens/Templates/Templates";
+import Settings from "../screens/Settings/Settings";
 import TemplateGroup from "../screens/TemplateGroup/TemplateGroup";
+import Templates from "../screens/TemplatesA/Templates";
+import AppTab from "./AppTab";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();

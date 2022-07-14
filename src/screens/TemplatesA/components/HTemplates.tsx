@@ -31,7 +31,7 @@ export default function HTemplates({
                 <HStack>
                     {templates.map((template, idx) => (
                         <SCard
-                            image={template?.image}
+                            image={template?.frontImage}
                             title={template?.title}
                             onPress={() => onCardPress(template)}
                             key={template?._id || idx}

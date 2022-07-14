@@ -45,7 +45,8 @@ export interface ICollapsibleProps {
 export interface ICard {
     _id?: string;
     title?: string;
-    image?: string;
+    frontImage?: string;
+    backImage?: string;
     onPress?: () => void;
     group?: string;
 }

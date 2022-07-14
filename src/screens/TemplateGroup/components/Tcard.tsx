@@ -5,14 +5,13 @@ import { Spacing } from "../../../styled/spacing";
 import styled from "styled-components/native";
 
 export default function Tcard(props: ICard) {
-    console.log(props);
     return (
         <TCardBody py={16}>
             <Text mb={10} fontWeight={600} fontSize={16}>
                 {props.title}
             </Text>
             <InnerCard onPress={props.onPress}>
-                <Image source={{ uri: props.image }} />
+                <Image source={{ uri: props.frontImage }} />
             </InnerCard>
         </TCardBody>
     );

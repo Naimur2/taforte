@@ -1,3 +1,4 @@
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView } from "react-native";
 import styled from "styled-components/native";
@@ -7,6 +8,7 @@ import { ITemplateProps } from "../../interfaces/index";
 import HTemplates from "./components/HTemplates";
 
 export default function Templates() {
+    const navigation = useNavigation();
     const [templates, setTemplates] = React.useState<ITemplateProps[]>([]);
 
     React.useEffect(() => {
@@ -21,11 +23,16 @@ export default function Templates() {
                 }}
                 showsVerticalScrollIndicator={false}
             >
-                {templates?.map((item) => (
+                {templates?.map((item, index) => (
                     <HTemplates
+                        key={index}
                         templates={item.templates}
                         title={item.name}
-                        onNext={() => {}}
+                        onNext={() =>
+                            navigation.navigate("TempGroup", {
+                                group: item.group,
+                            })
+                        }
                         onCardPress={(t) => console.log(t)}
                     />
                 ))}

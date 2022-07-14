@@ -15,6 +15,7 @@ import AddContacts from "../screens/AddContacts/AddContacts";
 import MyCard from "../screens/MyCard/MyCard";
 import Scaned from "../screens/Scanned/Scaned";
 import Templates from "../screens/Templates/Templates";
+import TemplateGroup from "../screens/TemplateGroup/TemplateGroup";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();
@@ -60,6 +61,7 @@ const StackNavigator: React.FC = () => {
             <Stack.Screen name="MyCard" component={MyCard} />
             <Stack.Screen name="Scanned" component={Scaned} />
             <Stack.Screen name="Templates" component={Templates} />
+            <Stack.Screen name="TempGroup" component={TemplateGroup} />
         </Stack.Navigator>
     );
 };

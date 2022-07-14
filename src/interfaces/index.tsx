@@ -47,6 +47,7 @@ export interface ICard {
     title?: string;
     image?: string;
     onPress?: () => void;
+    group?: string;
 }
 
 export interface ITemplateProps {

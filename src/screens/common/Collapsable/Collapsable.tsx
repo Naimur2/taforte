@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, LayoutChangeEvent } from "react-native";
 import Animated, {
     concat,
     interpolate,
@@ -17,17 +17,14 @@ import { Spacing } from "../../../styled/spacing";
 import { Text } from "../../../styled/typography";
 import colors from "../../../themes/colors";
 import Icon from "../../../components/Icon";
+import { ICollapsibleProps } from "../../../interfaces/index";
 
-export const Collapseable = () => {
+export const Collapseable = (props: ICollapsibleProps) => {
     const AnimatedIcon = Animated.createAnimatedComponent(Icon);
-    const aniRef = useAnimatedRef<View>();
-
-    const open = useSharedValue(false);
-
-    const collapsHeight = useSharedValue(0);
+    const [isExpanded, setIsExpanded] = React.useState(false);
 
     const progress = useDerivedValue(() =>
-        open.value ? withSpring(1) : withTiming(0)
+        isExpanded ? withSpring(1) : withTiming(0)
     );
 
     const arrowStyle = useAnimatedStyle(() => {
@@ -41,33 +38,24 @@ export const Collapseable = () => {
         };
     }, []);
 
-    const collapsStyle = useAnimatedStyle(() => {
-        return {
-            height: collapsHeight.value * progress.value + 1,
-        };
-    }, []);
-
-    const getMeasure = () => {
-        "worklet";
-        const m = measure(aniRef);
-        collapsHeight.value = m.height;
-    };
-
     const handlePress = () => {
-        if (collapsHeight.value === 0) {
-            runOnUI(getMeasure)();
-        }
-
-        open.value = !open.value;
+        setIsExpanded((prev) => !prev);
     };
+
+    // logic is here
+
+    // if height is freater than 200, height is 0
+    // if height is less than 200, height is 200
 
     return (
         <CollContainer mb={16}>
             <CollHeader onPress={handlePress}>
                 <TitleBox>
-                    <Text fontWeight={600} fontSize={14}>
-                        How to save jpg camera roll?
-                    </Text>
+                    {props.title && (
+                        <Text fontWeight={600} fontSize={14}>
+                            {props.title}
+                        </Text>
+                    )}
                 </TitleBox>
                 <IconBox>
                     <AnimatedIcon
@@ -78,19 +66,18 @@ export const Collapseable = () => {
                     />
                 </IconBox>
             </CollHeader>
-            <Animated.View style={[styles.collapse, collapsStyle]}>
-                <View ref={aniRef} style={[styles.colapseBody]}>
-                    <Text lineHeight={20} color={colors.gray300}>
-                        Lorem Ipsum is simply dummy text of the print and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown Lorem Ipsum is simply dummy text of the
-                        print and typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown
-                    </Text>
-                </View>
-            </Animated.View>
+
+            {isExpanded && (
+                <Animated.View style={[styles.collapse]}>
+                    <View style={[styles.colapseBody]}>
+                        {props.text && (
+                            <Text lineHeight={20} color={colors.gray300}>
+                                {props.text}
+                            </Text>
+                        )}
+                    </View>
+                </Animated.View>
+            )}
         </CollContainer>
     );
 };

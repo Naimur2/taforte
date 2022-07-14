@@ -37,3 +37,21 @@ export interface IconProps {
     color?: string;
     onPress?: () => void;
 }
+
+export interface ICollapsibleProps {
+    title?: string;
+    text?: string;
+}
+export interface ICard {
+    _id?: string;
+    title?: string;
+    image?: string;
+    onPress?: () => void;
+}
+
+export interface ITemplateProps {
+    _id: string;
+    name: string;
+    templates: ICard[];
+    group: string;
+}

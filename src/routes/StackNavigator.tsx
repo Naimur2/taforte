@@ -14,6 +14,7 @@ import ACManualy from "../screens/ACManualy/ACManualy";
 import AddContacts from "../screens/AddContacts/AddContacts";
 import MyCard from "../screens/MyCard/MyCard";
 import Scaned from "../screens/Scanned/Scaned";
+import Templates from "../screens/Templates/Templates";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();
@@ -58,6 +59,7 @@ const StackNavigator: React.FC = () => {
             <Stack.Screen name="AddContacts" component={AddContacts} />
             <Stack.Screen name="MyCard" component={MyCard} />
             <Stack.Screen name="Scanned" component={Scaned} />
+            <Stack.Screen name="Templates" component={Templates} />
         </Stack.Navigator>
     );
 };

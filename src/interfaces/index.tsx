@@ -64,10 +64,11 @@ export interface IZoomViewProps {
     onClose: () => void;
 }
 
-export interface  IAddCardFieldProps {
+export interface IAddCardFieldProps {
     _id: string;
     label: string;
     placeholder: string;
     templateId?: string;
     order?: number;
-} {
+    type: "front" | "back";
+}

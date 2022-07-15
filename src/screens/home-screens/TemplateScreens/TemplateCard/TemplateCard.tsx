@@ -55,7 +55,15 @@ const TemplateCard = () => {
                     title={"Back side"}
                     onPress={() => setZoomImage(template.backImage)}
                 />
-                <Button mt={50} text="Save this template" />
+                <Button
+                    onPress={() =>
+                        navigation.navigate("ACManualy", {
+                            data: template,
+                        })
+                    }
+                    mt={50}
+                    text="Save this template"
+                />
             </ScrollView>
         </Screen>
     );

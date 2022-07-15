@@ -1,79 +1,92 @@
+import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
 import styled from "styled-components/native";
+import { filterTemplatesById } from "../../../../../DB/templateInputs";
 import Button from "../../../../components/Button";
-import Icon from "../../../../components/Icon";
 import Input from "../../../../components/Input";
 import Screen from "../../../../components/Screen";
+import { IAddCardFieldProps, ICard } from "../../../../interfaces/index";
 import { KeyboardView } from "../../../../styled";
 import { Spacing } from "../../../../styled/spacing";
 import { Text } from "../../../../styled/typography";
-import colors from "../../../../themes/colors";
-import AddFeieldModal from "./components/AddFieldModal";
-import { IAddCardFieldProps } from "../../../../interfaces/index";
-import { useRoute } from "@react-navigation/native";
+import { useFormik } from "formik";
 
 const ACManualy = () => {
     const params = useRoute().params as { data: ICard };
+    const navigation = useNavigation();
 
     const [inputFields, setInputFields] = React.useState<IAddCardFieldProps[]>(
         []
     );
-    console.log(params);
 
-    const [modalVisible, setModalVisible] = React.useState<boolean>(false);
+    React.useLayoutEffect(() => {
+        try {
+            setInputFields(filterTemplatesById(params?.data?._id));
+            navigation.setOptions({
+                title: params?.data?.title,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }, [params]);
 
-    const inputs: IAddCardFieldProps[] = [
-        {
-            _id: "1",
-            label: "Name",
-            placeholder: "Enter Name",
-        },
-        {
-            _id: "2",
-            label: "Phone Number",
-            placeholder: "Enter Phone Number",
-        },
-        {
-            _id: "3",
-            label: "Email Address",
-            placeholder: "Enter Email Address",
-        },
-        {
-            _id: "4",
-            label: "Email Company",
-            placeholder: "Enter Company",
-        },
-    ];
+    const backInputs = inputFields?.filter((input) => input.type === "back");
+    const frontInputs = inputFields?.filter((input) => input.type === "front");
 
-    React.useEffect(() => {
-        setInputFields(inputs);
-    }, []);
+    const initialValues = {};
 
-    const handleAddField = (label: string, placeholder: string) => {
-        setInputFields([
-            ...inputFields,
-            {
-                _id: Date.now().toString(),
-                label,
-                placeholder,
-            },
-        ]);
-        setModalVisible(false);
+    const formik = useFormik({
+        initialValues,
+        onSubmit: (data) => console.log(data),
+    });
+    const getInputName = (label: sting): string => {
+        const splitedLabel = label.trim().split(" ");
+        const firstWord = splitedLabel[0].toLowerCase();
+        const secondWord = splitedLabel.slice(1).join(" ");
+        return `${firstWord}${secondWord}`;
     };
 
     return (
         <Screen>
-            <KeyboardView>
+            <KeyboardView showsVerticalScrollIndicator={false}>
                 <InnerView px={16} mt={16}>
-                    {inputFields.map((input) => (
+                    <Text mt={20} mb={16} fontWeight={700} fontSize={20}>
+                        Card front side info
+                    </Text>
+                    {frontInputs?.map((input) => (
                         <Input
                             key={input._id}
                             label={input.label}
                             placeholder={input.placeholder}
+                            value={formik.values[getInputName(input?.label)]}
+                            onChangeText={formik.handleChange(
+                                getInputName(input?.label)
+                            )}
+                            error={formik.errors[getInputName(input?.label)]}
+                        />
+                    ))}
+                    <Text mt={30} mb={16} fontWeight={700} fontSize={20}>
+                        Card back side info
+                    </Text>
+                    {backInputs?.map((input) => (
+                        <Input
+                            key={input._id}
+                            label={input.label}
+                            placeholder={input.placeholder}
+                            value={formik.values[getInputName(input?.label)]}
+                            onChangeText={formik.handleChange(
+                                getInputName(input?.label)
+                            )}
+                            error={formik.errors[getInputName(input?.label)]}
                         />
                     ))}
 
-                    <Button mt={"30%"} mb={20} text="Save" />
+                    <Button
+                        onPress={formik.handleSubmit}
+                        mt={30}
+                        mb={20}
+                        text="Save"
+                    />
                 </InnerView>
             </KeyboardView>
         </Screen>

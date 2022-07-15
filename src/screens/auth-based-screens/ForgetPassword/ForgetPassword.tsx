@@ -16,7 +16,6 @@ import { Spacing } from "../../../styled/spacing";
 import AuthHeader from "../../common/AuthHeader/AuthHeader";
 
 export default function ForgetPassword() {
-    const navigation = useNavigation();
     const authCtx = React.useContext<AuthContextProps>(AuthContext);
 
     const initialValues: ForgetPasswordProps = {

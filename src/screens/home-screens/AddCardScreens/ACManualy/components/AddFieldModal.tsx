@@ -1,9 +1,11 @@
+import { useFormik } from "formik";
 import React from "react";
 import { Dimensions } from "react-native";
 import Modal from "react-native-modal";
 import styled from "styled-components/native";
 import Button from "../../../../../components/Button";
 import Input from "../../../../../components/Input";
+import { AddNewFieldSchema } from "../../../../../schemas";
 import { Spacing } from "../../../../../styled/spacing";
 import { Text } from "../../../../../styled/typography";
 

@@ -7,6 +7,7 @@ import Screen from "../../../../components/Screen";
 import { KeyboardView } from "../../../../styled";
 import { Spacing } from "../../../../styled/spacing";
 import { Text } from "../../../../styled/typography";
+import colors from "../../../../themes/colors";
 import AddFeieldModal from "./components/AddFieldModal";
 
 interface InputFieldProps {

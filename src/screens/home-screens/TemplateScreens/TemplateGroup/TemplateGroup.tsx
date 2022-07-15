@@ -29,7 +29,15 @@ export default function TemplateGroup() {
                 }}
             >
                 {templates?.map((item, index) => (
-                    <Tcard key={index} {...item} />
+                    <Tcard
+                        onPress={() =>
+                            navigation.navigate("TempCard", {
+                                data: item,
+                            })
+                        }
+                        key={index}
+                        {...item}
+                    />
                 ))}
             </ScrollView>
         </Screen>

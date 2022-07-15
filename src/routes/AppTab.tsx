@@ -13,7 +13,7 @@ import Icon from "../components/Icon";
 import { TabIcon } from "../interfaces/index";
 import ContactScreen from "../screens/contact-screens/Contacts/ContactScreen";
 import HomeScreen from "../screens/home-screens/HomeScreen/HomeScreen";
-import NotificationsScreen from "../screens/notifications/NotificationsScreen";
+import NotificationsScreen from "../screens/notifications/NotificationsScreen/NotificationsScreen";
 import ProfileSCreen from "../screens/profile-screens/ProfileScreen/ProfileScreen";
 import colors from "../themes/colors";
 

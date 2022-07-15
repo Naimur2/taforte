@@ -1,15 +1,14 @@
 import React from "react";
 
-import Screen from "../../components/Screen";
-import IconCard from "../../components/IconCard";
 import styled from "styled-components/native";
-import { Spacing } from "../../styled/spacing";
+import IconCard from "../../../components/IconCard";
+import Screen from "../../../components/Screen";
+import { Spacing } from "../../../styled/spacing";
 
-import Icon from "../../components/Icon";
 import ToggleSwitch from "toggle-switch-react-native";
-import colors from "../../themes/colors";
-import { Text } from "../../styled/typography";
-import { Size } from "../../styled";
+import { Size } from "../../../styled";
+import { Text } from "../../../styled/typography";
+import colors from "../../../themes/colors";
 
 const NotificationsScreen: React.FC = () => {
     const [isEnabled, setIsEnabled] = React.useState<boolean>(false);

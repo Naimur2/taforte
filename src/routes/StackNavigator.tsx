@@ -18,6 +18,7 @@ import ACGallery from "../screens/home-screens/AddCardScreens/ACGallery/ACGaller
 import ACManualy from "../screens/home-screens/AddCardScreens/ACManualy/ACManualy";
 import AddCard from "../screens/home-screens/AddCardScreens/AddCard/AddCard";
 import AppTab from "./AppTab";
+import TemplateCard from "../screens/home-screens/TemplateScreens/TemplateCard/TemplateCard";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();
@@ -64,6 +65,7 @@ const StackNavigator: React.FC = () => {
             <Stack.Screen name="Scanned" component={Scaned} />
             <Stack.Screen name="Templates" component={Templates} />
             <Stack.Screen name="TempGroup" component={TemplateGroup} />
+            <Stack.Screen name="TempCard" component={TemplateCard} />
         </Stack.Navigator>
     );
 };

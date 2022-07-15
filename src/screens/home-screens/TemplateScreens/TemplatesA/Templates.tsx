@@ -34,7 +34,9 @@ export default function Templates() {
                                 title: item.name,
                             })
                         }
-                        onCardPress={(t) => console.log(t)}
+                        onCardPress={(t) =>
+                            navigation.navigate("TempCard", { data: t })
+                        }
                     />
                 ))}
             </ScrollView>

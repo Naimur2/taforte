@@ -30,6 +30,15 @@ export default function Login() {
         validationSchema: LoginSchema,
     });
 
+    const {
+        errors,
+        values,
+        touched,
+        handleChange,
+        handleSubmit,
+        setFieldTouched,
+    } = formik;
+
     return (
         <Screen padding={0}>
             <AuthHeader title="Log in and get the update!" />
@@ -43,25 +52,27 @@ export default function Login() {
                         mt={"10%"}
                         label="Email"
                         placeholder="Enter your email"
-                        value={formik.values.email}
-                        onChangeText={formik.handleChange("email")}
-                        error={formik.errors.email}
+                        value={values.email}
+                        onChangeText={handleChange("email")}
+                        error={touched.email && errors.email}
+                        onBlur={() => setFieldTouched("email")}
                     />
                     <Input
                         rightIcon={
-                            formik.values.password.length > 0 &&
+                            formik?.values?.password?.length > 0 &&
                             (isPassword ? "eye-close" : "eye")
                         }
                         type={isPassword ? "password" : "text"}
                         onRightIconPress={() => setIsPassword(!isPassword)}
                         label="Password"
                         placeholder="Enter password"
-                        value={formik.values.password}
-                        onChangeText={formik.handleChange("password")}
-                        error={formik.errors.password}
+                        value={values.password}
+                        onChangeText={handleChange("password")}
+                        error={touched.password && errors.password}
+                        onBlur={() => setFieldTouched("password")}
                     />
                     <AuthBottom
-                        onSubmit={formik.handleSubmit}
+                        onSubmit={handleSubmit}
                         checked={remember}
                         onChecked={(val) => setRemember(val)}
                         bottomText="Don't have an account?"

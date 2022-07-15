@@ -28,6 +28,15 @@ export default function ForgetPassword() {
         validationSchema: ForgetPasswordSchema,
     });
 
+    const {
+        errors,
+        values,
+        touched,
+        handleChange,
+        handleSubmit,
+        setFieldTouched,
+    } = formik;
+
     return (
         <Screen padding={0}>
             <AuthHeader title="Forget Password!" />
@@ -41,13 +50,14 @@ export default function ForgetPassword() {
                         mt={"10%"}
                         label="Email address"
                         placeholder="Enter your email"
-                        value={formik.values.email}
-                        onChangeText={formik.handleChange("email")}
-                        error={formik.errors.email}
+                        value={values.email}
+                        onChangeText={handleChange("email")}
+                        error={touched.email && errors.email}
+                        onBlur={() => setFieldTouched("email")}
                     />
 
                     <Button
-                        onPress={formik.handleSubmit}
+                        onPress={handleSubmit}
                         mt={"30%"}
                         text="Send Code"
                     />

@@ -35,6 +35,15 @@ export default function AddContacts() {
         validationSchema: AddNewContactsSchema,
     });
 
+    const {
+        errors,
+        values,
+        touched,
+        handleChange,
+        handleSubmit,
+        setFieldTouched,
+    } = formik;
+
     return (
         <Screen padding={0}>
             <KeyboardView
@@ -57,22 +66,20 @@ export default function AddContacts() {
                         mt={"10%"}
                         label="User's name"
                         placeholder="Enter user's name"
-                        value={formik.values.name}
-                        onChangeText={formik.handleChange("name")}
-                        error={formik.errors.name}
+                        value={values.name}
+                        onChangeText={handleChange("name")}
+                        error={touched.name && errors.name}
+                        onBlur={() => setFieldTouched("name")}
                     />
                     <Input
                         label="User's phone"
                         placeholder="Enter user's phone"
-                        value={formik.values.phone}
-                        onChangeText={formik.handleChange("phone")}
-                        error={formik.errors.phone}
+                        value={values.phone}
+                        onChangeText={handleChange("phone")}
+                        error={touched.phone && errors.phone}
+                        onBlur={() => setFieldTouched("phone")}
                     />
-                    <Button
-                        mt={"40%"}
-                        text="Save"
-                        onPress={formik.handleSubmit}
-                    />
+                    <Button mt={"40%"} text="Save" onPress={handleSubmit} />
                 </VStack>
             </KeyboardView>
         </Screen>

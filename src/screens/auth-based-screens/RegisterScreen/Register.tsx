@@ -36,6 +36,15 @@ export default function Register() {
         validationSchema: RegisterSchema,
     });
 
+    const {
+        errors,
+        values,
+        touched,
+        handleChange,
+        handleSubmit,
+        setFieldTouched,
+    } = formik;
+
     return (
         <Screen padding={0}>
             <AuthHeader title="Sign up and create your card!" />
@@ -48,33 +57,36 @@ export default function Register() {
                         mt={"10%"}
                         label="Enter full name"
                         placeholder="Enter your full name"
-                        value={formik.values.fullName}
-                        onChangeText={formik.handleChange("fullName")}
-                        error={formik.errors.fullName}
+                        value={values.fullName}
+                        onChangeText={handleChange("fullName")}
+                        error={touched.fullName && errors.fullName}
+                        onBlur={() => setFieldTouched("fullName")}
                     />
                     <Input
                         label="Email"
                         placeholder="Enter your email"
-                        value={formik.values.email}
-                        onChangeText={formik.handleChange("email")}
-                        error={formik.errors.email}
+                        value={values.email}
+                        onChangeText={handleChange("email")}
+                        error={touched.email && errors.email}
+                        onBlur={() => setFieldTouched("email")}
                     />
                     <Input
                         rightIcon={
-                            formik.values.password.length > 0 &&
+                            values.password.length > 0 &&
                             (isPassword ? "eye-close" : "eye")
                         }
                         type={isPassword ? "password" : "text"}
                         onRightIconPress={() => setIsPassword(!isPassword)}
                         label="Password"
                         placeholder="Enter password"
-                        value={formik.values.password}
-                        onChangeText={formik.handleChange("password")}
-                        error={formik.errors.password}
+                        value={values.password}
+                        onChangeText={handleChange("password")}
+                        error={touched.password && errors.password}
+                        onBlur={() => setFieldTouched("password")}
                     />
                     <Input
                         rightIcon={
-                            formik.values.confirmPassword.length > 0 &&
+                            values.confirmPassword.length > 0 &&
                             (isConfirmPassword ? "eye-close" : "eye")
                         }
                         type={isConfirmPassword ? "password" : "text"}
@@ -83,12 +95,15 @@ export default function Register() {
                         }
                         label="Confirm Password"
                         placeholder="Confirm password"
-                        value={formik.values.confirmPassword}
-                        onChangeText={formik.handleChange("confirmPassword")}
-                        error={formik.errors.confirmPassword}
+                        value={values.confirmPassword}
+                        onChangeText={handleChange("confirmPassword")}
+                        error={
+                            touched.confirmPassword && errors.confirmPassword
+                        }
+                        onBlur={() => setFieldTouched("confirmPassword")}
                     />
                     <AuthBottom
-                        onSubmit={formik.handleSubmit}
+                        onSubmit={handleSubmit}
                         hideForgotPassword={true}
                         bottomText="Already have an account?"
                         bottomColoredText="Login"

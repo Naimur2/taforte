@@ -1,10 +1,16 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { BarCodeScanner } from "expo-barcode-scanner";
-import { Text } from "../../../styled/typography";
+import React from "react";
+import { useWindowDimensions, StyleSheet, Dimensions } from "react-native";
 import styled from "styled-components/native";
+import Background from "../../../components/Background";
+import Screen from "../../../components/Screen";
+import { Text } from "../../../styled/typography";
+import colors from "../../../themes/colors";
 
-const Scan: React.FC = () => {
+const Scan = () => {
+    const navigation = useNavigation();
+
     const [hasPermission, setHasPermission] = React.useState(null);
     const [scanned, setScanned] = React.useState(false);
 
@@ -13,33 +19,57 @@ const Scan: React.FC = () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
             setHasPermission(status === "granted");
         })();
+        navigation.setOptions({
+            title: "Scanning Card",
+        });
     }, []);
 
     const handleBarCodeScanned = ({ type, data }) => {
-        setScanned(true);
-        alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+        if (type === "QR_CODE" && data.appId === "com.taforte.app") {
+            setScanned(true);
+            alert(
+                `Bar code with type ${type} and data ${data} has been scanned!`
+            );
+        }
     };
 
     if (hasPermission === null) {
-        return <Text>Requesting for camera permission</Text>;
+        return (
+            <Screen>
+                <Text mx={"auto"} color={colors.gray200}>
+                    Requesting for camera permission
+                </Text>
+            </Screen>
+        );
     }
 
     if (hasPermission === false) {
-        return <Text>No access to camera</Text>;
+        return (
+            <Screen>
+                <Text mx={"auto"} color={colors.gray200}>
+                    No access to camera
+                </Text>
+            </Screen>
+        );
     }
 
     return (
-        <View>
-            <BarCodeScanner
-                onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-                style={StyleSheet.absoluteFillObject}
-            />
-        </View>
+        <Screen py={26}>
+            <Text mx={"auto"} color={colors.gray200}>
+                Place Qrcode inside the frame.
+            </Text>
+            <ScanWrapper>
+                <BarCodeScanner
+                    onBarCodeScanned={
+                        scanned ? undefined : handleBarCodeScanned
+                    }
+                    style={[StyleSheet.absoluteFillObject]}
+                />
+            </ScanWrapper>
+        </Screen>
     );
 };
-const Container = styled.View`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
+const ScanWrapper = styled.View`
+    flex-grow: 1;
 `;
 export default Scan;

@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import HeaderBack from "../components/HeaderBack";
 import ForgetPassword from "../screens/auth-based-screens/ForgetPassword/ForgetPassword";
 import Login from "../screens/auth-based-screens/Login/Login";
 import Onboarding from "../screens/auth-based-screens/Onboarding/Onboarding";
@@ -21,6 +22,7 @@ export default function AuthRoute() {
                     headerTransparent: true,
                     headerTintColor: "white",
                     headerTitleAlign: "center",
+                    headerLeft: () => <HeaderBack />,
                 }}
             >
                 <Stack.Screen name="Login" component={Login} />

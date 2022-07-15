@@ -16,8 +16,11 @@ import HomeScreen from "../screens/home-screens/HomeScreen/HomeScreen";
 import NotificationsScreen from "../screens/notifications/NotificationsScreen/NotificationsScreen";
 import ProfileSCreen from "../screens/profile-screens/ProfileScreen/ProfileScreen";
 import colors from "../themes/colors";
+import { useNavigation } from "@react-navigation/native";
 
 const AppTab = () => {
+    const navigation = useNavigation();
+
     const _renderIcon = (routeName: string, selectedTab: string) => {
         const iconNames: TabIcon = {
             home: {
@@ -98,7 +101,7 @@ const AppTab = () => {
                                         flex: 1,
                                         justifyContent: "center",
                                     }}
-                                    onPress={() => Alert.alert("Click Action")}
+                                    onPress={() => navigation.navigate("Scan")}
                                 >
                                     <Icon
                                         name={"scan"}

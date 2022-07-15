@@ -111,4 +111,9 @@ export const filterdTemplates = (group: string): ITemplateProps[] => {
     ];
 };
 
+export const getTemplate = (id: string): ITemplateProps => {
+    return allTemplates.filter((template) => template._id === id)[0][
+        "templates"
+    ][0];
+};
 export default allTemplates;

@@ -9,19 +9,20 @@ import { Spacing } from "../../../../styled/spacing";
 import { Text } from "../../../../styled/typography";
 import colors from "../../../../themes/colors";
 import AddFeieldModal from "./components/AddFieldModal";
-
-interface InputFieldProps {
-    _id: string;
-    label: string;
-    placeholder: string;
-}
+import { IAddCardFieldProps } from "../../../../interfaces/index";
+import { useRoute } from "@react-navigation/native";
 
 const ACManualy = () => {
-    const [inputFields, setInputFields] = React.useState<InputFieldProps[]>([]);
+    const params = useRoute().params as { data: ICard };
+
+    const [inputFields, setInputFields] = React.useState<IAddCardFieldProps[]>(
+        []
+    );
+    console.log(params);
 
     const [modalVisible, setModalVisible] = React.useState<boolean>(false);
 
-    const inputs: InputFieldProps[] = [
+    const inputs: IAddCardFieldProps[] = [
         {
             _id: "1",
             label: "Name",
@@ -71,20 +72,7 @@ const ACManualy = () => {
                             placeholder={input.placeholder}
                         />
                     ))}
-                    <AddIcon
-                        my={16}
-                        onPress={() => setModalVisible((prev) => !prev)}
-                    >
-                        <Icon color={colors.primary} name="add" size={20} />
-                        <Text mx={16} color={colors.primary}>
-                            Add Field
-                        </Text>
-                    </AddIcon>
-                    <AddFeieldModal
-                        isVisible={modalVisible}
-                        onAdd={handleAddField}
-                        onClose={() => setModalVisible((prev) => !prev)}
-                    />
+
                     <Button mt={"30%"} mb={20} text="Save" />
                 </InnerView>
             </KeyboardView>

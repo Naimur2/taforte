@@ -6,18 +6,24 @@ import { getTemplate } from "../../../../../DB/templates";
 import ITCard from "./components/ITCard";
 import { ScrollView } from "react-native";
 import Button from "../../../../components/Button";
+import ZoomView from "../../../common/ImageView/ZoomView";
 
 const TemplateCard = () => {
     const navigation = useNavigation();
+    const [zoomImage, setZoomImage] = React.useState<string | null>(null);
     const [template, setTemplate] = React.useState<ICard>({});
 
     const params = useRoute().params as { data: ICard };
 
     React.useLayoutEffect(() => {
-        setTemplate(getTemplate(params?.data?._id));
-        navigation.setOptions({
-            title: params?.data?.title,
-        });
+        try {
+            setTemplate(params?.data);
+            navigation.setOptions({
+                title: params?.data?.title,
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }, [params]);
 
     console.log(params);
@@ -30,11 +36,25 @@ const TemplateCard = () => {
                 }}
                 showsVerticalScrollIndicator={false}
             >
+                {zoomImage && (
+                    <ZoomView
+                        images={[zoomImage]}
+                        isVisible={zoomImage && zoomImage !== null}
+                        onClose={() => setZoomImage(null)}
+                    />
+                )}
                 <ITCard
                     frontImage={template?.frontImage}
                     title={"Front side"}
+                    onPress={() => {
+                        setZoomImage(template?.frontImage);
+                    }}
                 />
-                <ITCard frontImage={template?.backImage} title={"Back side"} />
+                <ITCard
+                    frontImage={template?.backImage}
+                    title={"Back side"}
+                    onPress={() => setZoomImage(template.backImage)}
+                />
                 <Button mt={50} text="Save this template" />
             </ScrollView>
         </Screen>

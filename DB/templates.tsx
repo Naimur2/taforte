@@ -106,13 +106,14 @@ const allTemplates: ITemplateProps[] = [
 ];
 
 export const filterdTemplates = (group: string): ITemplateProps[] => {
-    return allTemplates.filter((template) => template.group === group)[0][
+    return allTemplates?.filter((template) => template.group === group)[0][
         "templates"
     ];
 };
 
 export const getTemplate = (id: string): ITemplateProps => {
-    return allTemplates.filter((template) => template._id === id)[0][
+    console.log(allTemplates);
+    return allTemplates?.filter((template) => template._id === id)[0][
         "templates"
     ][0];
 };

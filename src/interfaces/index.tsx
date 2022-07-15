@@ -57,3 +57,17 @@ export interface ITemplateProps {
     templates: ICard[];
     group: string;
 }
+
+export interface IZoomViewProps {
+    images: string[];
+    isVisible: boolean;
+    onClose: () => void;
+}
+
+export interface  IAddCardFieldProps {
+    _id: string;
+    label: string;
+    placeholder: string;
+    templateId?: string;
+    order?: number;
+} {

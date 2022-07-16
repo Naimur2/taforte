@@ -21,6 +21,7 @@ import AppTab from "./AppTab";
 import TemplateCard from "../screens/home-screens/TemplateScreens/TemplateCard/TemplateCard";
 import Scan from "../screens/scan-screen/Scan/Scan";
 import ViewMyCard from "../screens/home-screens/ViewMyCard/ViewMyCard";
+import ShareQr from "../screens/home-screens/ShareQr/ShareQr";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();
@@ -70,6 +71,7 @@ const StackNavigator: React.FC = () => {
             <Stack.Screen name="TempCard" component={TemplateCard} />
             <Stack.Screen name="Scan" component={Scan} />
             <Stack.Screen name="ViewMyCard" component={ViewMyCard} />
+            <Stack.Screen name="ShareQr" component={ShareQr} />
         </Stack.Navigator>
     );
 };

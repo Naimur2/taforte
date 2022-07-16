@@ -25,7 +25,6 @@ const TemplateCard = () => {
         }
     }, [params]);
 
-    console.log(params);
     return (
         <Screen>
             <ScrollView

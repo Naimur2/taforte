@@ -21,9 +21,11 @@ export default function ITCard(props: IITCard) {
                 <Text mt={12} ml={10} fontWeight={500} fontSize={16}>
                     {props?.title}
                 </Text>
-                <ShareContainer onPress={props?.onShare}>
-                    <Icon name="share" size={20} color={"#848484"} />
-                </ShareContainer>
+                {props.hasShare && (
+                    <ShareContainer onPress={props?.onShare}>
+                        <Icon name="share" size={20} color={"#848484"} />
+                    </ShareContainer>
+                )}
             </HStack>
         </TCardBody>
     );

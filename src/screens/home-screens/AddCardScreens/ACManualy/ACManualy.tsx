@@ -43,8 +43,8 @@ const ACManualy = () => {
 
     const handleChange = (value: string, field: IAddCardFieldProps) => {
         const key = field.key;
-        const newValues = { ...field, value };
-        setValues((prev) => ({ ...prev, [key]: newValues, userId: "1" }));
+        const newValues = { ...field, value, userId: "1" };
+        setValues((prev) => ({ ...prev, [key]: newValues }));
     };
 
     const backInputs = inputFields?.filter((input) => input.type === "back");
@@ -56,6 +56,8 @@ const ACManualy = () => {
 
         const newData = {
             ...cardInfo,
+            userId: "1",
+            cardId: cardInfo._id,
             inputs: cardInputValues,
         };
         insertIntoMyCards(newData);

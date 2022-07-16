@@ -74,7 +74,14 @@ const ViewMyCard = () => {
                     onPress={() => setZoomImage(myCard.backImage)}
                 />
 
-                <IconCont title="Qr code" />
+                <IconCont
+                    onPress={() =>
+                        navigation.navigate("ShareQr", {
+                            data: myCard,
+                        })
+                    }
+                    title="Qr code"
+                />
 
                 <Button
                     onPress={() =>

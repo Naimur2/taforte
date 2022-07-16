@@ -11,7 +11,7 @@ interface IProps {
     icon?: string;
     iconColor?: string;
     backgroundColor?: string;
-    onPres?: () => void;
+    onPress?: () => void;
 }
 
 interface IBack {

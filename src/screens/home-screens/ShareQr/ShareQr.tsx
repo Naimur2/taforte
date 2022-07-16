@@ -38,6 +38,7 @@ const ShareQr = () => {
             });
         });
     };
+
     React.useEffect(() => {
         if (permissions && !permissions.status === "granted") {
             requestPermission();

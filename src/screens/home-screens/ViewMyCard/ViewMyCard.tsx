@@ -1,17 +1,11 @@
+import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
+import { ScrollView, Share } from "react-native";
+import Button from "../../../components/Button";
 import Screen from "../../../components/Screen";
-import { useRoute, useNavigation } from "@react-navigation/native";
 import { ICard } from "../../../interfaces";
-import { ScrollView } from "react-native";
 import ZoomView from "../../common/ImageView/ZoomView";
 import ITCard from "../../common/ITCard/ITCard";
-import Button from "../../../components/Button";
-import styled from "styled-components/native";
-import { Spacing } from "../../../styled/spacing";
-import Icon from "../../../components/Icon";
-import colors from "../../../themes/colors";
-import { SpacingProps } from "../../../interfaces/index";
-import { Text } from "../../../styled/typography";
 import IconCont from "./components/IconCont";
 
 const ViewMyCard = () => {
@@ -33,12 +27,26 @@ const ViewMyCard = () => {
         }
     }, [params]);
 
+    const openShareDialogAsync = async (uri: string) => {
+        try {
+            await Share.share({
+                message: `${myCard.title}`,
+                url: uri,
+                title: `${myCard.title}`,
+            });
+        } catch (error) {
+            alert(error.message);
+        }
+    };
+
     return (
         <Screen>
             <ScrollView
                 style={{
                     paddingHorizontal: 16,
-                    paddingVertical: 20,
+                    paddingTop: 20,
+                    paddingBottom: 40,
+                    flex: 1,
                 }}
                 showsVerticalScrollIndicator={false}
             >
@@ -50,20 +58,23 @@ const ViewMyCard = () => {
                     />
                 )}
                 <ITCard
+                    hasShare
                     frontImage={myCard?.frontImage}
                     title={"Front side"}
+                    onShare={() => openShareDialogAsync(myCard?.frontImage)}
                     onPress={() => {
                         setZoomImage(myCard?.frontImage);
                     }}
                 />
                 <ITCard
+                    hasShare
                     frontImage={myCard?.backImage}
                     title={"Back side"}
+                    onShare={() => openShareDialogAsync(myCard?.backImage)}
                     onPress={() => setZoomImage(myCard.backImage)}
                 />
 
                 <IconCont title="Qr code" />
-                <IconCont title="Share Card" icon="share" />
 
                 <Button
                     onPress={() =>
@@ -72,28 +83,12 @@ const ViewMyCard = () => {
                         })
                     }
                     mt={20}
+                    mb={20}
                     text="Edit Card"
                 />
             </ScrollView>
         </Screen>
     );
 };
-
-const IconContainer = styled.Pressable<SpacingProps>`
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    ${Spacing}
-`;
-
-const IconBox = styled.View`
-    background: ${colors.lightBlue100};
-    width: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    ${Spacing}
-`;
 
 export default ViewMyCard;

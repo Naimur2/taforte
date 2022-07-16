@@ -20,7 +20,7 @@ const AddCard = () => {
                 <IconCard
                     iconName="card-edit"
                     tittle="Create Card Manually"
-                    onPress={() => navigation.navigate("ACManualy")}
+                    onPress={() => navigation.navigate("Templates")}
                 />
             </Vstack>
         </Screen>

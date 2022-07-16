@@ -1,9 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import React from "react";
-import { useWindowDimensions, StyleSheet, Dimensions } from "react-native";
+import { StyleSheet } from "react-native";
 import styled from "styled-components/native";
-import Background from "../../../components/Background";
 import Screen from "../../../components/Screen";
 import { Text } from "../../../styled/typography";
 import colors from "../../../themes/colors";

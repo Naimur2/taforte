@@ -3,6 +3,8 @@ import { FlatList, Image as RNImage } from "react-native";
 import styled from "styled-components/native";
 import Screen from "../../../components/Screen";
 import BSCard from "./components/BSCard";
+import { useNavigation } from "@react-navigation/native";
+import { getMyCards } from "../../../../DB/my-cards";
 
 const workCard = RNImage.resolveAssetSource(
     require("../../../../assets/images/business-card.png")
@@ -12,79 +14,38 @@ const personalCard = RNImage.resolveAssetSource(
 ).uri;
 
 interface CardProps {
-    id: number;
-    name: string;
-    image: string;
-    type: string;
+    _id: number;
+    title: string;
+    frontImage: string;
+    group: string;
 }
 
 const MyCard = () => {
     const [cards, setCards] = React.useState<CardProps[]>([]);
+    const navigation = useNavigation();
 
-    const cardsData: CardProps[] = [
-        {
-            id: 1,
-            name: "Work",
-            image: workCard,
-            type: "work",
-        },
-        {
-            id: 2,
-            name: "Personal",
-            image: personalCard,
-            type: "personal",
-        },
-        {
-            id: 3,
-            name: "Work",
-            image: workCard,
-            type: "work",
-        },
-        {
-            id: 4,
-            name: "Personal",
-            image: personalCard,
-            type: "personal",
-        },
-        {
-            id: 5,
-            name: "Work",
-            image: workCard,
-            type: "work",
-        },
-        {
-            id: 6,
-            name: "Personal",
-            image: personalCard,
-            type: "personal",
-        },
-        {
-            id: 7,
-            name: "Work",
-            image: workCard,
-            type: "work",
-        },
-        {
-            id: 8,
-            name: "Personal",
-            image: personalCard,
-            type: "personal",
-        },
-    ];
-
-    React.useEffect(() => {
-        setCards(cardsData);
-    }, []);
-
-    const filteredCards = cards;
+    React.useLayoutEffect(() => {
+        const data = getMyCards();
+        setCards(data);
+    }, [navigation]);
 
     return (
         <Screen>
             <Row>
                 <FlatList
-                    data={filteredCards}
-                    renderItem={({ item }) => <BSCard {...item} />}
-                    keyExtractor={(item) => item.id.toString()}
+                    data={cards}
+                    renderItem={({ item }) => (
+                        <BSCard
+                            onPress={() =>
+                                navigation.navigate("ViewMyCard", {
+                                    data: item,
+                                })
+                            }
+                            name={item?.title}
+                            image={item?.frontImage}
+                        />
+                    )}
+                    keyExtractor={(item, idx) => item?._id + "" + idx}
                     numColumns={2}
                     columnWrapperStyle={{
                         justifyContent: "space-between",

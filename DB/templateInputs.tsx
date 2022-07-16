@@ -7,6 +7,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Name",
         templateId: "1",
         order: 1,
+        key: "name",
         type: "front",
     },
     {
@@ -15,6 +16,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Name",
         templateId: "2",
         order: 1,
+        key: "name",
         type: "front",
     },
     {
@@ -23,6 +25,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Name",
         templateId: "3",
         order: 1,
+        key: "name",
         type: "front",
     },
     {
@@ -31,6 +34,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Name",
         templateId: "4",
         order: 1,
+        key: "name",
         type: "front",
     },
     {
@@ -39,6 +43,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Name",
         templateId: "5",
         order: 1,
+        key: "name",
         type: "front",
     },
     {
@@ -47,6 +52,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Name",
         templateId: "6",
         order: 1,
+        key: "name",
         type: "front",
     },
     {
@@ -55,6 +61,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Name",
         templateId: "7",
         order: 1,
+        key: "name",
         type: "front",
     },
     {
@@ -63,6 +70,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Name",
         templateId: "8",
         order: 1,
+        key: "name",
         type: "front",
     },
     {
@@ -71,6 +79,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Name",
         templateId: "9",
         order: 1,
+        key: "name",
         type: "front",
     },
     {
@@ -79,6 +88,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Phone Number",
         templateId: "1",
         order: 2,
+        key: "phoneNumber",
         type: "front",
     },
     {
@@ -87,6 +97,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Phone Number",
         templateId: "2",
         order: 2,
+        key: "phoneNumber",
         type: "front",
     },
     {
@@ -95,6 +106,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Phone Number",
         templateId: "3",
         order: 2,
+        key: "phoneNumber",
         type: "front",
     },
     {
@@ -103,6 +115,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Phone Number",
         templateId: "4",
         order: 2,
+        key: "phoneNumber",
         type: "front",
     },
     {
@@ -111,6 +124,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Phone Number",
         templateId: "5",
         order: 2,
+        key: "phoneNumber",
         type: "front",
     },
     {
@@ -119,6 +133,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Phone Number",
         templateId: "6",
         order: 2,
+        key: "phoneNumber",
         type: "front",
     },
     {
@@ -127,6 +142,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Phone Number",
         templateId: "7",
         order: 2,
+        key: "phoneNumber",
         type: "front",
     },
     {
@@ -135,6 +151,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Phone Number",
         templateId: "8",
         order: 2,
+        key: "phoneNumber",
         type: "front",
     },
     {
@@ -143,6 +160,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Phone Number",
         templateId: "9",
         order: 2,
+        key: "phoneNumber",
         type: "front",
     },
     {
@@ -151,6 +169,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Email Address",
         templateId: "1",
         order: 3,
+        key: "emailAddress",
         type: "front",
     },
     {
@@ -159,6 +178,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Email Address",
         templateId: "2",
         order: 3,
+        key: "emailAddress",
         type: "front",
     },
     {
@@ -167,6 +187,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Email Address",
         templateId: "3",
         order: 3,
+        key: "emailAddress",
         type: "front",
     },
     {
@@ -175,6 +196,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Email Address",
         templateId: "4",
         order: 3,
+        key: "emailAddress",
         type: "front",
     },
     {
@@ -183,6 +205,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Email Address",
         templateId: "5",
         order: 3,
+        key: "emailAddress",
         type: "front",
     },
     {
@@ -191,6 +214,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Email Address",
         templateId: "6",
         order: 3,
+        key: "emailAddress",
         type: "front",
     },
     {
@@ -199,6 +223,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Email Address",
         templateId: "7",
         order: 3,
+        key: "emailAddress",
         type: "front",
     },
     {
@@ -207,6 +232,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Email Address",
         templateId: "8",
         order: 3,
+        key: "emailAddress",
         type: "front",
     },
     {
@@ -215,78 +241,88 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Email Address",
         templateId: "9",
         order: 3,
+        key: "emailAddress",
         type: "front",
     },
     {
         _id: "28",
-        label: "Email Company",
+        label: "Enter Company",
         placeholder: "Enter Company",
         templateId: "1",
         order: 4,
+        key: "company",
         type: "back",
     },
     {
         _id: "29",
-        label: "Email Company",
+        label: "Enter Company",
         placeholder: "Enter Company",
         templateId: "2",
         order: 4,
+        key: "company",
         type: "back",
     },
     {
         _id: "30",
-        label: "Email Company",
+        label: "Enter Company",
         placeholder: "Enter Company",
         templateId: "3",
         order: 4,
+        key: "company",
         type: "back",
     },
     {
         _id: "31",
-        label: "Email Company",
+        label: "Enter Company",
         placeholder: "Enter Company",
         templateId: "4",
         order: 4,
+        key: "company",
         type: "back",
     },
     {
         _id: "32",
-        label: "Email Company",
+        label: "Enter Company",
         placeholder: "Enter Company",
         templateId: "5",
         order: 4,
+        key: "company",
         type: "back",
     },
     {
         _id: "33",
-        label: "Email Company",
+        label: "Enter Company",
         placeholder: "Enter Company",
         templateId: "6",
         order: 4,
+        key: "company",
         type: "back",
     },
     {
         _id: "34",
-        label: "Email Company",
+        label: "Enter Company",
         placeholder: "Enter Company",
         templateId: "7",
         order: 4,
+        key: "company",
         type: "back",
     },
     {
         _id: "35",
-        label: "Email Company",
+        label: "Enter Company",
         placeholder: "Enter Company",
         templateId: "8",
         order: 4,
+        key: "company",
         type: "back",
     },
     {
         _id: "36",
-        label: "Email Company",
+        label: "Enter Company",
         placeholder: "Enter Company",
         templateId: "9",
         order: 4,
+        key: "company",
         type: "back",
     },
     {
@@ -295,6 +331,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Website",
         templateId: "1",
         order: 4,
+        key: "website",
         type: "back",
     },
     {
@@ -303,6 +340,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Website",
         templateId: "2",
         order: 4,
+        key: "website",
         type: "back",
     },
     {
@@ -311,6 +349,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Website",
         templateId: "3",
         order: 4,
+        key: "website",
         type: "back",
     },
     {
@@ -319,6 +358,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Website",
         templateId: "4",
         order: 4,
+        key: "website",
         type: "back",
     },
     {
@@ -327,6 +367,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Website",
         templateId: "5",
         order: 4,
+        key: "website",
         type: "back",
     },
     {
@@ -335,6 +376,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Website",
         templateId: "6",
         order: 4,
+        key: "website",
         type: "back",
     },
     {
@@ -343,6 +385,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Website",
         templateId: "7",
         order: 4,
+        key: "website",
         type: "back",
     },
     {
@@ -351,6 +394,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Website",
         templateId: "8",
         order: 4,
+        key: "website",
         type: "back",
     },
     {
@@ -359,6 +403,7 @@ const inputs: IAddCardFieldProps[] = [
         placeholder: "Enter Website",
         templateId: "9",
         order: 4,
+        key: "website",
         type: "back",
     },
     {
@@ -366,6 +411,7 @@ const inputs: IAddCardFieldProps[] = [
         label: "Facebook",
         placeholder: "Enter Facebbok",
         templateId: "1",
+        key: "facebook",
         order: 4,
         type: "back",
     },
@@ -374,6 +420,7 @@ const inputs: IAddCardFieldProps[] = [
         label: "Facebook",
         placeholder: "Enter Facebbok",
         templateId: "2",
+        key: "facebook",
         order: 4,
         type: "back",
     },
@@ -382,6 +429,7 @@ const inputs: IAddCardFieldProps[] = [
         label: "Facebook",
         placeholder: "Enter Facebbok",
         templateId: "3",
+        key: "facebook",
         order: 4,
         type: "back",
     },
@@ -390,6 +438,7 @@ const inputs: IAddCardFieldProps[] = [
         label: "Facebook",
         placeholder: "Enter Facebbok",
         templateId: "4",
+        key: "facebook",
         order: 4,
         type: "back",
     },
@@ -398,6 +447,7 @@ const inputs: IAddCardFieldProps[] = [
         label: "Facebook",
         placeholder: "Enter Facebbok",
         templateId: "5",
+        key: "facebook",
         order: 4,
         type: "back",
     },
@@ -406,6 +456,7 @@ const inputs: IAddCardFieldProps[] = [
         label: "Facebook",
         placeholder: "Enter Facebbok",
         templateId: "6",
+        key: "facebook",
         order: 4,
         type: "back",
     },
@@ -414,6 +465,7 @@ const inputs: IAddCardFieldProps[] = [
         label: "Facebook",
         placeholder: "Enter Facebbok",
         templateId: "7",
+        key: "facebook",
         order: 4,
         type: "back",
     },
@@ -422,6 +474,7 @@ const inputs: IAddCardFieldProps[] = [
         label: "Facebook",
         placeholder: "Enter Facebbok",
         templateId: "8",
+        key: "facebook",
         order: 4,
         type: "back",
     },
@@ -430,6 +483,7 @@ const inputs: IAddCardFieldProps[] = [
         label: "Facebook",
         placeholder: "Enter Facebbok",
         templateId: "9",
+        key: "facebook",
         order: 4,
         type: "back",
     },

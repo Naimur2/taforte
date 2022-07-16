@@ -70,5 +70,11 @@ export interface IAddCardFieldProps {
     placeholder: string;
     templateId?: string;
     order?: number;
+    key: string;
     type: "front" | "back";
+}
+
+export interface IMyCard extends ICard {
+    userId: string;
+    inputs: IAddCardFieldProps[];
 }

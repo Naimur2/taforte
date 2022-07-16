@@ -2,11 +2,10 @@ import { useRoute, useNavigation } from "@react-navigation/native";
 import React from "react";
 import Screen from "../../../../components/Screen";
 import { ICard } from "../../../../interfaces";
-import { getTemplate } from "../../../../../DB/templates";
-import ITCard from "./components/ITCard";
 import { ScrollView } from "react-native";
 import Button from "../../../../components/Button";
 import ZoomView from "../../../common/ImageView/ZoomView";
+import ITCard from "../../../common/ITCard/ITCard";
 
 const TemplateCard = () => {
     const navigation = useNavigation();

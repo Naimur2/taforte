@@ -10,10 +10,21 @@ import { KeyboardView } from "../../../../styled";
 import { Spacing } from "../../../../styled/spacing";
 import { Text } from "../../../../styled/typography";
 import { useFormik } from "formik";
+import { insertIntoMyCards } from "../../../../../DB/my-cards";
+
+interface IADDprops extends IAddCardFieldProps {
+    value: string;
+    userId: string;
+}
+interface IProps {
+    [key: string]: IADDprops;
+}
 
 const ACManualy = () => {
     const params = useRoute().params as { data: ICard };
     const navigation = useNavigation();
+
+    const [values, setValues] = React.useState<IProps>({});
 
     const [inputFields, setInputFields] = React.useState<IAddCardFieldProps[]>(
         []
@@ -30,20 +41,25 @@ const ACManualy = () => {
         }
     }, [params]);
 
+    const handleChange = (value: string, field: IAddCardFieldProps) => {
+        const key = field.key;
+        const newValues = { ...field, value };
+        setValues((prev) => ({ ...prev, [key]: newValues, userId: "1" }));
+    };
+
     const backInputs = inputFields?.filter((input) => input.type === "back");
     const frontInputs = inputFields?.filter((input) => input.type === "front");
 
-    const initialValues = {};
+    const handleSubmit = () => {
+        const cardInputValues = Object.values(values);
+        const cardInfo = params?.data;
 
-    const formik = useFormik({
-        initialValues,
-        onSubmit: (data) => console.log(data),
-    });
-    const getInputName = (label: sting): string => {
-        const splitedLabel = label.trim().split(" ");
-        const firstWord = splitedLabel[0].toLowerCase();
-        const secondWord = splitedLabel.slice(1).join(" ");
-        return `${firstWord}${secondWord}`;
+        const newData = {
+            ...cardInfo,
+            inputs: cardInputValues,
+        };
+        insertIntoMyCards(newData);
+        navigation.navigate("MyCard");
     };
 
     return (
@@ -58,11 +74,8 @@ const ACManualy = () => {
                             key={input._id}
                             label={input.label}
                             placeholder={input.placeholder}
-                            value={formik.values[getInputName(input?.label)]}
-                            onChangeText={formik.handleChange(
-                                getInputName(input?.label)
-                            )}
-                            error={formik.errors[getInputName(input?.label)]}
+                            value={values?.[input.key]?.value}
+                            onChangeText={(value) => handleChange(value, input)}
                         />
                     ))}
                     <Text mt={30} mb={16} fontWeight={700} fontSize={20}>
@@ -73,16 +86,13 @@ const ACManualy = () => {
                             key={input._id}
                             label={input.label}
                             placeholder={input.placeholder}
-                            value={formik.values[getInputName(input?.label)]}
-                            onChangeText={formik.handleChange(
-                                getInputName(input?.label)
-                            )}
-                            error={formik.errors[getInputName(input?.label)]}
+                            value={values?.[input.key]?.value}
+                            onChangeText={(value) => handleChange(value, input)}
                         />
                     ))}
 
                     <Button
-                        onPress={formik.handleSubmit}
+                        onPress={handleSubmit}
                         mt={30}
                         mb={20}
                         text="Save"
@@ -94,13 +104,6 @@ const ACManualy = () => {
 };
 
 const InnerView = styled.View`
-    ${Spacing}
-`;
-
-const AddIcon = styled.Pressable`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     ${Spacing}
 `;
 

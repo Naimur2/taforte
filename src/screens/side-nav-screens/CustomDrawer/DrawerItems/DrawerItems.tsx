@@ -30,13 +30,6 @@ const DrawerItems = () => {
 
     const drawerItems: DrawerItemProps[] = [
         {
-            icon: "gear",
-            title: "Settings",
-            onPress: () => {
-                navigation.navigate("Settings");
-            },
-        },
-        {
             icon: "checks",
             title: "FAQ",
             onPress: () => {

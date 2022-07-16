@@ -45,7 +45,7 @@ const ViewMyCard = () => {
                 style={{
                     paddingHorizontal: 16,
                     paddingTop: 20,
-                    paddingBottom: 40,
+
                     flex: 1,
                 }}
                 showsVerticalScrollIndicator={false}
@@ -90,7 +90,7 @@ const ViewMyCard = () => {
                         })
                     }
                     mt={20}
-                    mb={20}
+                    mb={50}
                     text="Edit Card"
                 />
             </ScrollView>

@@ -12,7 +12,6 @@ import Templates from "../screens/home-screens/TemplateScreens/TemplatesA/Templa
 import Faq from "../screens/side-nav-screens/Faq/Faq";
 import Help from "../screens/side-nav-screens/Help/Help";
 import Privacy from "../screens/side-nav-screens/Privacy/Privacy";
-import Settings from "../screens/side-nav-screens/Settings/Settings";
 
 import ACGallery from "../screens/home-screens/AddCardScreens/ACGallery/ACGallery";
 import ACManualy from "../screens/home-screens/AddCardScreens/ACManualy/ACManualy";
@@ -22,6 +21,11 @@ import TemplateCard from "../screens/home-screens/TemplateScreens/TemplateCard/T
 import Scan from "../screens/scan-screen/Scan/Scan";
 import ViewMyCard from "../screens/home-screens/ViewMyCard/ViewMyCard";
 import ShareQr from "../screens/home-screens/ShareQr/ShareQr";
+import EditName from "../screens/profile-screens/EditName/EditName";
+import EditEmail from "../screens/profile-screens/EditEmail/EditEmail";
+import EditContact from "../screens/profile-screens/EditContact/EditContact";
+import EditAddress from "../screens/profile-screens/EditAddress/EditAddress";
+import EditPassword from "../screens/profile-screens/EditPassword/EditPassword";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();
@@ -59,7 +63,6 @@ const StackNavigator: React.FC = () => {
                 component={Privacy}
             />
             <Stack.Screen name="AddCard" component={AddCard} />
-            <Stack.Screen name="Settings" component={Settings} />
             <Stack.Screen name="Help" component={Help} />
             <Stack.Screen name="ACGallery" component={ACGallery} />
             <Stack.Screen name="ACManualy" component={ACManualy} />
@@ -72,6 +75,11 @@ const StackNavigator: React.FC = () => {
             <Stack.Screen name="Scan" component={Scan} />
             <Stack.Screen name="ViewMyCard" component={ViewMyCard} />
             <Stack.Screen name="ShareQr" component={ShareQr} />
+            <Stack.Screen name="EditName" component={EditName} />
+            <Stack.Screen name="EditEmail" component={EditEmail} />
+            <Stack.Screen name="EditContact" component={EditContact} />
+            <Stack.Screen name="EditAddress" component={EditAddress} />
+            <Stack.Screen name="EditPassword" component={EditPassword} />
         </Stack.Navigator>
     );
 };

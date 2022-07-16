@@ -7,44 +7,33 @@ import { Spacing } from "../../../styled/spacing";
 import Button from "../../../components/Button";
 import { Text } from "../../../styled/typography";
 import { ScrollView } from "react-native";
+import { ICollapsibleProps } from "../../../interfaces";
+import { Collapseable } from "../../common/Collapsable/Collapsable";
 
 interface REsources {
     id: number;
     title: string;
 }
+const accordions: ICollapsibleProps = [
+    {
+        title: "What is the purpose of this app?",
+        text: "This app is designed to help you keep track of your business cards. It will help you to keep track of your business cards and personal cards. You can also add new cards to your list.",
+    },
+    {
+        title: "How do I add a new card?",
+        text: "You can add a new card by clicking on the + button in the top right corner of the screen. You can also add a new card by clicking on the + button in the top right corner of the screen.",
+    },
+    {
+        title: "How do I delete a card?",
+        text: "You can delete a card by clicking on the trash icon in the top right corner of the screen. You can also delete a card by clicking on the trash icon in the top right corner of the screen.",
+    },
+    {
+        title: "How do I edit a card?",
+        text: "You can edit a card by clicking on the edit icon in the top right corner of the screen. You can also edit a card by clicking on the edit icon in the top right corner of the screen.",
+    },
+];
 
 const Help = () => {
-    const resources: REsources[] = [
-        {
-            id: 1,
-            title: "How to redeem premium code?",
-        },
-        {
-            id: 2,
-            title: "How to reset my login password?",
-        },
-        {
-            id: 3,
-            title: "How to set the recognition languages?",
-        },
-        {
-            id: 4,
-            title: "How can I get the support if I have problems or questions?",
-        },
-        {
-            id: 5,
-            title: "How to sync cards on the phone to CamCard cloud?",
-        },
-        {
-            id: 6,
-            title: 'My phone has connected with WiFi. Why I got the message " Sync failed" ?',
-        },
-        {
-            id: 7,
-            title: "How to continue the paid version if I changed my phone?",
-        },
-    ];
-
     return (
         <Screen>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -52,8 +41,12 @@ const Help = () => {
                     <Text fontWeight={600} fontSize={18} mb={20}>
                         Popular help resources
                     </Text>
-                    {resources.map((item, index) => (
-                        <IconCard key={index} mb={16} tittle={item.title} />
+                    {accordions.map((accordion, index) => (
+                        <Collapseable
+                            key={index}
+                            title={accordion.title}
+                            text={accordion.text}
+                        />
                     ))}
 
                     <Button my={20} text="Send Feedback" />

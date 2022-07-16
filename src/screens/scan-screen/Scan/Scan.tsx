@@ -26,9 +26,10 @@ const Scan = () => {
     const handleBarCodeScanned = ({ type, data }) => {
         if (type === "QR_CODE" && data.appId === "com.taforte.app") {
             setScanned(true);
-            alert(
-                `Bar code with type ${type} and data ${data} has been scanned!`
-            );
+            // fetch data from server and navigate to next screen
+            navigation.navigate("Scanned", {
+                scanned: data,
+            });
         }
     };
 

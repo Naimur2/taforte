@@ -26,6 +26,7 @@ import EditEmail from "../screens/profile-screens/EditEmail/EditEmail";
 import EditContact from "../screens/profile-screens/EditContact/EditContact";
 import EditAddress from "../screens/profile-screens/EditAddress/EditAddress";
 import EditPassword from "../screens/profile-screens/EditPassword/EditPassword";
+import EditDOB from "../screens/profile-screens/EditDOB/EditDOB";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();
@@ -80,6 +81,7 @@ const StackNavigator: React.FC = () => {
             <Stack.Screen name="EditContact" component={EditContact} />
             <Stack.Screen name="EditAddress" component={EditAddress} />
             <Stack.Screen name="EditPassword" component={EditPassword} />
+            <Stack.Screen name="EditDOB" component={EditDOB} />
         </Stack.Navigator>
     );
 };

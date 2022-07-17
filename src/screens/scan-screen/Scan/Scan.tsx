@@ -36,7 +36,7 @@ const Scan = () => {
     if (hasPermission === null) {
         return (
             <Screen>
-                <Text mx={"auto"} color={colors.gray200}>
+                <Text mt={30} mx={"auto"} color={colors.gray200}>
                     Requesting for camera permission
                 </Text>
             </Screen>
@@ -46,7 +46,7 @@ const Scan = () => {
     if (hasPermission === false) {
         return (
             <Screen>
-                <Text mx={"auto"} color={colors.gray200}>
+                <Text mt={30} mx={"auto"} color={colors.gray200}>
                     No access to camera
                 </Text>
             </Screen>

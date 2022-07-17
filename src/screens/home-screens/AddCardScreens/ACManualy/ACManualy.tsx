@@ -32,10 +32,27 @@ const ACManualy = () => {
 
     React.useLayoutEffect(() => {
         try {
-            setInputFields(filterTemplatesById(params?.data?._id));
-            navigation.setOptions({
-                title: params?.data?.title,
-            });
+            const { type } = params;
+            if (type === "template") {
+                setInputFields(filterTemplatesById(params?.data?._id));
+                navigation.setOptions({
+                    title: params?.data?.title,
+                });
+            } else {
+                setInputFields(params?.data?.inputs);
+                const newValues = {};
+                params?.data?.inputs.forEach((input) => {
+                    newValues[input?.key] = {
+                        ...input,
+                    };
+                });
+
+                setValues(newValues);
+
+                navigation.setOptions({
+                    title: params?.data?.title,
+                });
+            }
         } catch (error) {
             console.log(error);
         }
@@ -60,7 +77,11 @@ const ACManualy = () => {
             cardId: cardInfo._id,
             inputs: cardInputValues,
         };
-        insertIntoMyCards(newData);
+        if (params.type === "template") {
+            insertIntoMyCards(newData);
+        } else {
+            // update my card
+        }
         navigation.navigate("MyCard");
     };
 

@@ -57,6 +57,7 @@ const TemplateCard = () => {
                     onPress={() =>
                         navigation.navigate("ACManualy", {
                             data: template,
+                            type: "template",
                         })
                     }
                     mt={50}

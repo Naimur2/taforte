@@ -87,6 +87,7 @@ const ViewMyCard = () => {
                     onPress={() =>
                         navigation.navigate("ACManualy", {
                             data: myCard,
+                            type: "edit",
                         })
                     }
                     mt={20}

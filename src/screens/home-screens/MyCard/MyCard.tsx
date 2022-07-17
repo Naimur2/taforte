@@ -5,13 +5,9 @@ import Screen from "../../../components/Screen";
 import BSCard from "./components/BSCard";
 import { useNavigation } from "@react-navigation/native";
 import { getMyCards } from "../../../../DB/my-cards";
-
-const workCard = RNImage.resolveAssetSource(
-    require("../../../../assets/images/business-card.png")
-).uri;
-const personalCard = RNImage.resolveAssetSource(
-    require("../../../../assets/images/personal-card.png")
-).uri;
+import Empty from "../../common/Empty/Empty";
+import { Text } from "../../../styled/typography";
+import Button from "../../../components/Button";
 
 interface CardProps {
     _id: number;
@@ -22,16 +18,31 @@ interface CardProps {
 
 const MyCard = () => {
     const [cards, setCards] = React.useState<CardProps[]>([]);
+    const [isLoading, setIsLoading] = React.useState(true);
     const navigation = useNavigation();
 
     React.useLayoutEffect(() => {
+        setIsLoading(true);
         const data = getMyCards();
         setCards(data);
+        setIsLoading(false);
     }, [navigation]);
 
     return (
         <Screen>
             <Row>
+                {!isLoading && cards?.length === 0 && (
+                    <Empty>
+                        <Text fontWeight={500}>
+                            You haven't save any cards.{" "}
+                        </Text>
+                        <Button
+                            text="Browse Cards"
+                            onPress={() => navigation.navigate("Templates")}
+                            mt={"20%"}
+                        />
+                    </Empty>
+                )}
                 <FlatList
                     data={cards}
                     renderItem={({ item }) => (

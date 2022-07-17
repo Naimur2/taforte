@@ -1,7 +1,9 @@
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 
+import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components/native";
+import { deleteContact, getContacts } from "../../../../DB/contacts";
 import Icon from "../../../components/Icon";
 import Screen from "../../../components/Screen";
 import { SpacingProps } from "../../../interfaces";
@@ -9,11 +11,10 @@ import { Spacing } from "../../../styled/spacing";
 import colors from "../../../themes/colors";
 import ContactCard from "./components/ContactCard";
 import Search from "./components/Search";
-import { useNavigation } from "@react-navigation/native";
-import { getContacts, deleteContact } from "../../../../DB/contacts";
 
 export default function ContactScreen() {
     const [contacts, setContacts] = React.useState<any[]>([]);
+    const [search, setSearch] = React.useState("");
 
     const scrollRef = React.useRef(null);
     const navigation = useNavigation();
@@ -26,17 +27,37 @@ export default function ContactScreen() {
         setContacts(getContacts());
     }, []);
 
+    const debounce = React.useCallback((fn: Function, delay: number) => {
+        let timer: any;
+        return (...args: any[]) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                fn(...args);
+            }, delay);
+        };
+    }, []);
+
+    const handleSetSearch = (text: string) => debounce(setSearch(text), 500);
+
+    const filteredContact = React.useMemo(() => {
+        return contacts.filter((contact) => {
+            return contact.name.toLowerCase().includes(search.toLowerCase());
+        });
+    }, [contacts, search]);
+
+    const fContacts = search ? filteredContact : contacts;
+
     return (
         <Screen title={"Contats"} leftIcon={false}>
             <Box>
-                <Search mx={16} mt={40} />
+                <Search mx={16} mt={40} onChangeText={handleSetSearch} />
                 <ScrollView
                     ref={scrollRef}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                 >
                     <Inner>
-                        {contacts?.map((contact, index) => (
+                        {fContacts?.map((contact, index) => (
                             <ContactCard
                                 key={index}
                                 avatar={contact.avatar}

@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, Image as RNImage } from "react-native";
 import styled from "styled-components/native";
 import Screen from "../../../components/Screen";
 import { Spacing } from "../../../styled/spacing";
@@ -7,52 +7,77 @@ import { Text } from "../../../styled/typography";
 import InputCard from "../InputCard/InputCard";
 import { useNavigation } from "@react-navigation/native";
 import colors from "../../../themes/colors";
+import useImagePicker from "../../../hooks/use-image-picker";
+import Icon from "../../../components/Icon";
+const profileCircle = require("../../../../assets/images/profile-circle.png");
+const defaultImage = RNImage.resolveAssetSource(profileCircle).uri;
 
-// data name,email,contact,address,password
-
-const userData = {
-    name: "John Doe",
-    email: "woman@femail.com",
-    contact: "+1325922132222",
-    address: "",
-    dob: "22 April, 1997",
-};
-
-const fields = [
-    {
-        label: "Name",
-        value: userData?.name,
-        navigate: "EditName",
-    },
-    {
-        label: "Email",
-        value: userData?.email,
-        navigate: "EditEmail",
-    },
-    {
-        label: "Contact",
-        value: userData?.contact,
-        navigate: "EditContact",
-    },
-    {
-        label: "Address",
-        value: userData?.address,
-        navigate: "EditAddress",
-    },
-    {
-        label: "Date of Birth",
-        value: userData?.dob,
-        navigate: "EditDOB",
-    },
-    {
-        label: "Password",
-        value: "**************",
-        navigate: "EditPassword",
-    },
-];
+interface IUserData {
+    name: string;
+    contact: string;
+    avatar: string;
+    email: string;
+    address: string;
+    dob: string;
+}
 
 const ProfileScreen = () => {
     const navigation = useNavigation();
+    const { pickImage, image } = useImagePicker({});
+    const [userData, setUserData] = React.useState<IUserData>({});
+
+    const fields = [
+        {
+            label: "Name",
+            value: userData?.name,
+            navigate: "EditName",
+        },
+        {
+            label: "Email",
+            value: userData?.email,
+            navigate: "EditEmail",
+        },
+        {
+            label: "Contact",
+            value: userData?.contact,
+            navigate: "EditContact",
+        },
+        {
+            label: "Address",
+            value: userData?.address,
+            navigate: "EditAddress",
+        },
+        {
+            label: "Date of Birth",
+            value: userData?.dob,
+            navigate: "EditDOB",
+        },
+        {
+            label: "Password",
+            value: "**************",
+            navigate: "EditPassword",
+        },
+    ];
+
+    React.useEffect(() => {
+        setUserData((prev) => ({
+            ...prev,
+            avatar: image || userData?.avatar || defaultImage,
+        }));
+    }, [image]);
+
+    React.useLayoutEffect(() => {
+        const data: IUserData = {
+            avatar: "",
+            name: "John Doe",
+            email: "woman@femail.com",
+            contact: "+1325922132222",
+            address: "",
+            dob: "22 April, 1997",
+        };
+
+        setUserData(data);
+    }, []);
 
     return (
         <Screen pt={30} title={"Profile"} leftIcon={false}>
@@ -63,11 +88,16 @@ const ProfileScreen = () => {
                 showsVerticalScrollIndicator={false}
             >
                 <Profile mx={20} mb={20}>
-                    <Avatar
-                        source={{
-                            uri: "https://graphonomics.net/wp-content/uploads/2019/07/Smiling-Man-4.jpg",
-                        }}
-                    />
+                    <AvatarContainer>
+                        <Avatar
+                            source={{
+                                uri: userData?.avatar || defaultImage,
+                            }}
+                        />
+                        <IconContainer>
+                            <Icon onPress={pickImage} name="camera" size={20} />
+                        </IconContainer>
+                    </AvatarContainer>
                     <Text fontSize={16} fontWeight={600} mt={16} mx="auto">
                         {userData.name}
                     </Text>
@@ -125,4 +155,18 @@ const Avatar = styled.Image`
     height: 100px;
     border-radius: 50px;
     margin: 0 auto;
+`;
+
+const IconContainer = styled.View`
+    background: #fff;
+    padding: 8px;
+    border-radius: 50px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+`;
+
+const AvatarContainer = styled.View`
+    margin: 0 auto;
+    position: relative;
 `;

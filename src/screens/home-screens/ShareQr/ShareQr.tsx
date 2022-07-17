@@ -10,10 +10,11 @@ import Icon from "../../../components/Icon";
 import * as FileSystem from "expo-file-system";
 import * as MediaLibrary from "expo-media-library";
 import Button from "../../../components/Button";
-import { ScrollView, Share } from "react-native";
+import { ScrollView } from "react-native";
 import * as Sharing from "expo-sharing";
 
 const qrLogo = require("../../../../assets/images/qr-logo.png");
+
 interface IQrCodeData {
     frontImage: string;
     backImage: string;
@@ -48,7 +49,7 @@ const ShareQr = () => {
         }
     }, []);
 
-    const handleSetImage = async () => {
+    const handleShareQr = async () => {
         try {
             const dataURL = await getDataURL();
 
@@ -122,7 +123,7 @@ const ShareQr = () => {
                     >
                         Scan the QR code above to easily save the cards.
                     </Text>
-                    <ShareIcon mt={50} onPress={handleSetImage}>
+                    <ShareIcon mt={50} onPress={handleShareQr}>
                         <Icon
                             mb={16}
                             name="share"
@@ -145,15 +146,11 @@ const Center = styled.View`
     align-items: center;
     ${Spacing}
 `;
+
 const ShareIcon = styled.Pressable`
     display: flex;
     align-items: center;
     ${Spacing}
-`;
-
-const Image = styled.Image`
-    height: 100px;
-    width: 100px;
 `;
 
 export default ShareQr;

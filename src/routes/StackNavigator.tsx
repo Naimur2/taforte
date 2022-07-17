@@ -55,8 +55,20 @@ const StackNavigator: React.FC = () => {
                 name="Home"
                 component={HomeScreen}
             />
-            <Stack.Screen name="Contact" component={ContactScreen} />
-            <Stack.Screen name="Faq" component={Faq} />
+            <Stack.Screen
+                name="Contact"
+                component={ContactScreen}
+                options={{
+                    title: "Contacts",
+                }}
+            />
+            <Stack.Screen
+                name="Faq"
+                component={Faq}
+                options={{
+                    title: "Faq",
+                }}
+            />
             <Stack.Screen
                 options={{
                     headerTitle: "",
@@ -64,28 +76,134 @@ const StackNavigator: React.FC = () => {
                 name="Privacy"
                 component={Privacy}
             />
-            <Stack.Screen name="AddCard" component={AddCard} />
-            <Stack.Screen name="Help" component={Help} />
-            <Stack.Screen name="ACGallery" component={ACGallery} />
-            <Stack.Screen name="ACManualy" component={ACManualy} />
-            <Stack.Screen name="AddContacts" component={AddContacts} />
-            <Stack.Screen name="MyCard" component={MyCard} />
-            <Stack.Screen name="Scanned" component={Scaned} />
-            <Stack.Screen name="Templates" component={Templates} />
+            <Stack.Screen
+                name="AddCard"
+                component={AddCard}
+                options={{
+                    title: "Add Card",
+                }}
+            />
+            <Stack.Screen
+                name="Help"
+                component={Help}
+                options={{
+                    title: "Help",
+                }}
+            />
+            <Stack.Screen
+                name="ACGallery"
+                component={ACGallery}
+                options={{
+                    title: "Add Card",
+                }}
+            />
+            <Stack.Screen
+                name="ACManualy"
+                component={ACManualy}
+                options={{
+                    title: "Add Card",
+                }}
+            />
+            <Stack.Screen
+                name="AddContacts"
+                component={AddContacts}
+                options={{
+                    title: "Add Contacts",
+                }}
+            />
+            <Stack.Screen
+                name="MyCard"
+                component={MyCard}
+                options={{
+                    title: "My Card",
+                }}
+            />
+            <Stack.Screen
+                name="Scanned"
+                component={Scaned}
+                options={{
+                    title: "Scanned",
+                }}
+            />
+            <Stack.Screen
+                name="Templates"
+                component={Templates}
+                options={{
+                    title: "Templates",
+                }}
+            />
             <Stack.Screen name="TempGroup" component={TemplateGroup} />
             <Stack.Screen name="TempCard" component={TemplateCard} />
-            <Stack.Screen name="Scan" component={Scan} />
-            <Stack.Screen name="ViewMyCard" component={ViewMyCard} />
-            <Stack.Screen name="ShareQr" component={ShareQr} />
-            <Stack.Screen name="EditName" component={EditName} />
-            <Stack.Screen name="EditEmail" component={EditEmail} />
-            <Stack.Screen name="EditContact" component={EditContact} />
-            <Stack.Screen name="EditAddress" component={EditAddress} />
-            <Stack.Screen name="EditPassword" component={EditPassword} />
-            <Stack.Screen name="EditDOB" component={EditDOB} />
+            <Stack.Screen
+                name="Scan"
+                component={Scan}
+                options={{
+                    title: "Scan",
+                }}
+            />
+            <Stack.Screen
+                name="ViewMyCard"
+                component={ViewMyCard}
+                options={{
+                    title: "View My Card",
+                }}
+            />
+            <Stack.Screen
+                name="ShareQr"
+                component={ShareQr}
+                options={{
+                    title: "Share QR",
+                }}
+            />
+
+            <Stack.Screen
+                name="EditName"
+                component={EditName}
+                options={{
+                    title: "Edit Name",
+                }}
+            />
+            <Stack.Screen
+                name="EditEmail"
+                component={EditEmail}
+                options={{
+                    title: "Edit Email",
+                }}
+            />
+            <Stack.Screen
+                name="EditContact"
+                component={EditContact}
+                options={{
+                    title: "Edit Contact",
+                }}
+            />
+            <Stack.Screen
+                name="EditAddress"
+                component={EditAddress}
+                options={{
+                    title: "Edit Address",
+                }}
+            />
+            <Stack.Screen
+                name="EditPassword"
+                component={EditPassword}
+                options={{
+                    title: "Edit Password",
+                }}
+            />
+            <Stack.Screen
+                name="EditDOB"
+                component={EditDOB}
+                options={{
+                    title: "Edit DOB",
+                }}
+            />
             <Stack.Screen
                 name="RecomendToFriends"
                 component={RecomendToFriends}
+                options={{
+                    title: "Recomend To Friends",
+                }}
             />
         </Stack.Navigator>
     );

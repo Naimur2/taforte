@@ -11,6 +11,8 @@ import { AddNewContactsSchema } from "../../../schemas/index";
 import { Image as RNImage } from "react-native";
 import useImagePicker from "../../../hooks/use-image-picker";
 import Button from "../../../components/Button";
+import { insertContact } from "../../../../DB/contacts";
+import { useNavigation } from "@react-navigation/native";
 
 const profileCircle = require("../../../../assets/images/profile-circle.png");
 const defaultImage = RNImage.resolveAssetSource(profileCircle).uri;
@@ -23,6 +25,7 @@ interface Props {
 
 export default function AddContacts() {
     const { pickImage, image } = useImagePicker({});
+    const navigation = useNavigation();
 
     const initialValues: Props = {
         name: "",
@@ -31,7 +34,16 @@ export default function AddContacts() {
 
     const formik = useFormik({
         initialValues,
-        onSubmit: (data) => console.log(data),
+        onSubmit: (data) => {
+            const { name, phone } = data;
+            const newData = {
+                name,
+                phone,
+                avatar: image || defaultImage,
+            };
+            insertContact(newData);
+            navigation.goBack();
+        },
         validationSchema: AddNewContactsSchema,
     });
 

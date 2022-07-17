@@ -26,11 +26,26 @@ export default function AuthRoute() {
                     headerLeft: () => <HeaderBack />,
                 }}
             >
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Register" component={Register} />
+                <Stack.Screen
+                    name="Login"
+                    component={Login}
+                    options={{
+                        title: "Login",
+                    }}
+                />
+                <Stack.Screen
+                    name="Register"
+                    component={Register}
+                    options={{
+                        title: "Register",
+                    }}
+                />
                 <Stack.Screen
                     name="ForgetPassword"
                     component={ForgetPassword}
+                    options={{
+                        title: "Forget Password",
+                    }}
                 />
                 <Stack.Screen
                     options={{
@@ -39,7 +54,13 @@ export default function AuthRoute() {
                     name="Onboarding"
                     component={Onboarding}
                 />
-                <Stack.Screen name="ValidateOtp" component={ValidateOtp} />
+                <Stack.Screen
+                    name="ValidateOtp"
+                    component={ValidateOtp}
+                    options={{
+                        title: "Validate OTP",
+                    }}
+                />
             </Stack.Navigator>
         </React.Fragment>
     );

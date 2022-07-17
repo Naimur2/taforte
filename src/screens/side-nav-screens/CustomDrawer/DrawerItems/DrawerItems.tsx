@@ -8,6 +8,9 @@ import { useNavigation } from "@react-navigation/native";
 import AuthContext from "../../../../context/AuthContext";
 import { AuthContextProps } from "../../../../interfaces/context";
 import Popup from "../../../common/Modal/Modal";
+import { Spacing } from "../../../../styled/spacing";
+const emotion = require("../../../../../assets/images/emotion.png");
+import { Rating, AirbnbRating } from "react-native-ratings";
 
 interface DrawerItemProps {
     icon: string;
@@ -64,7 +67,7 @@ const DrawerItems = () => {
             icon: "star",
             title: "Rate Us",
             onPress: () => {
-                console.log("Rate Us");
+                setRateUs(true);
             },
         },
     ];
@@ -86,7 +89,33 @@ const DrawerItems = () => {
                 }}
             />
 
-            <Popup isVisible={rateUs} onClose={() => setRateUs(false)}></Popup>
+            <Popup isVisible={rateUs} onClose={() => setRateUs(false)}>
+                <Image my={10} mx={"auto"} source={emotion} />
+                <Text mx="auto" fontWeight={600} fontSize={24}>
+                    Enjoying the App?
+                </Text>
+                <Text
+                    my={16}
+                    color="#909090"
+                    mx="auto"
+                    fontWeight={500}
+                    fontSize={14}
+                >
+                    Would you mind rating us?
+                </Text>
+                <Rating
+                    ratingCount={5}
+                    imageSize={35}
+                    onFinishRating={(rating) => {
+                        console.log(rating);
+                    }}
+                    jumpValue={1}
+                    startingValue={5}
+                    style={{
+                        marginBottom: 10,
+                    }}
+                />
+            </Popup>
 
             <View>
                 {drawerItems.map((item, index) => (
@@ -114,6 +143,10 @@ const DrawerItem = styled.Pressable`
     flex-direction: row;
     align-items: center;
     padding: 16px 16px;
+`;
+
+const Image = styled.Image`
+    ${Spacing}
 `;
 
 export default DrawerItems;

@@ -27,6 +27,7 @@ import EditName from "../screens/profile-screens/EditName/EditName";
 import EditPassword from "../screens/profile-screens/EditPassword/EditPassword";
 import Scan from "../screens/scan-screen/Scan/Scan";
 import AppTab from "./AppTab";
+import RecomendToFriends from "../screens/side-nav-screens/RecomendToFriends/RecomendToFriends";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();
@@ -82,6 +83,10 @@ const StackNavigator: React.FC = () => {
             <Stack.Screen name="EditAddress" component={EditAddress} />
             <Stack.Screen name="EditPassword" component={EditPassword} />
             <Stack.Screen name="EditDOB" component={EditDOB} />
+            <Stack.Screen
+                name="RecomendToFriends"
+                component={RecomendToFriends}
+            />
         </Stack.Navigator>
     );
 };

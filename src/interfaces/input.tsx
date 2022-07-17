@@ -43,12 +43,16 @@ export interface InputProps
         | "twitter"
         | "web-search";
     returnKeyType?: "done" | "go" | "next" | "search" | "send";
+    textAlign?: "left" | "center" | "right";
     onLeftIconPress?: () => void;
     onRightIconPress?: () => void;
     onSubmitEditing?: () => void;
     onBlur?: () => void;
     onFocus?: () => void;
     onChangeText?: (text: string) => void;
+    bg?: string;
+    borderColor?: string;
+    numberOfLines?: number;
 }
 
 export interface FormGroupStyles extends SizeProps, SpacingProps {
@@ -63,4 +67,6 @@ export interface FormInputStyles extends SizeProps, SpacingProps {
     fontSize?: number;
     fontWeight?: number;
     fontFamily?: string;
+    textAlign?: "left" | "right" | "center";
+    bg?: string;
 }

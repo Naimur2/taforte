@@ -5,6 +5,7 @@ import ForgetPassword from "../screens/auth-based-screens/ForgetPassword/ForgetP
 import Login from "../screens/auth-based-screens/Login/Login";
 import Onboarding from "../screens/auth-based-screens/Onboarding/Onboarding";
 import Register from "../screens/auth-based-screens/RegisterScreen/Register";
+import ValidateOtp from "../screens/auth-based-screens/ValidateOTP/ValidateOtp";
 
 export default function AuthRoute() {
     type AuthStackParamList = {
@@ -38,6 +39,7 @@ export default function AuthRoute() {
                     name="Onboarding"
                     component={Onboarding}
                 />
+                <Stack.Screen name="ValidateOtp" component={ValidateOtp} />
             </Stack.Navigator>
         </React.Fragment>
     );

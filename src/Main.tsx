@@ -46,9 +46,5 @@ export default function Main() {
         return null;
     }
 
-    return (
-        <NavigationContainer>
-            {authCtx?.isLoggedIN ? <Home /> : <AuthRoute />}
-        </NavigationContainer>
-    );
+    return <>{authCtx?.isLoggedIN ? <Home /> : <AuthRoute />}</>;
 }

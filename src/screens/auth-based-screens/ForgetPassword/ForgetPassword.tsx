@@ -13,9 +13,11 @@ import { ForgetPasswordSchema } from "../../../schemas";
 import { KeyboardView, Size } from "../../../styled";
 import { Spacing } from "../../../styled/spacing";
 import AuthHeader from "../../common/AuthHeader/AuthHeader";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ForgetPassword() {
     const authCtx = React.useContext<AuthContextProps>(AuthContext);
+    const navigation = useNavigation();
 
     const initialValues: ForgetPasswordProps = {
         email: "",
@@ -23,7 +25,14 @@ export default function ForgetPassword() {
 
     const formik = useFormik({
         initialValues,
-        onSubmit: (data) => authCtx.sendCode(data),
+        onSubmit: (data) => {
+            try {
+                authCtx?.sendCode?.(data);
+                navigation.navigate("ValidateOtp", { data });
+            } catch (error) {
+                console.log(error);
+            }
+        },
         validationSchema: ForgetPasswordSchema,
     });
 

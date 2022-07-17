@@ -1,20 +1,20 @@
 import React from "react";
 
-import Screen from "../../../components/Screen";
-import IconCard from "../../../components/IconCard";
-import styled from "styled-components/native";
-import { Spacing } from "../../../styled/spacing";
-import Button from "../../../components/Button";
-import { Text } from "../../../styled/typography";
 import { ScrollView } from "react-native";
-import { ICollapsibleProps } from "../../../interfaces";
+import styled from "styled-components/native";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
+import Screen from "../../../components/Screen";
+import { Spacing } from "../../../styled/spacing";
+import { Text } from "../../../styled/typography";
 import { Collapseable } from "../../common/Collapsable/Collapsable";
+import Popup from "../../common/Modal/Modal";
 
 interface REsources {
     id: number;
     title: string;
 }
-const accordions: ICollapsibleProps = [
+const accordions: REsources = [
     {
         title: "What is the purpose of this app?",
         text: "This app is designed to help you keep track of your business cards. It will help you to keep track of your business cards and personal cards. You can also add new cards to your list.",
@@ -34,8 +34,19 @@ const accordions: ICollapsibleProps = [
 ];
 
 const Help = () => {
+    const [showPopup, setShowPopup] = React.useState(false);
+
     return (
         <Screen>
+            <Popup
+                title="Give us Feedback"
+                rightButtonTitle="Send"
+                isVisible={showPopup}
+                onClose={() => setShowPopup(false)}
+            >
+                <Input numberOfLines={4} placeholder="Tell us more..." />
+            </Popup>
+
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Vstack pt={50} px={16}>
                     <Text fontWeight={600} fontSize={18} mb={20}>
@@ -49,7 +60,11 @@ const Help = () => {
                         />
                     ))}
 
-                    <Button my={20} text="Send Feedback" />
+                    <Button
+                        onPress={() => setShowPopup((prev) => !prev)}
+                        my={20}
+                        text="Send Feedback"
+                    />
                 </Vstack>
             </ScrollView>
         </Screen>

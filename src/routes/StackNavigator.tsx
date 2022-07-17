@@ -16,17 +16,17 @@ import Privacy from "../screens/side-nav-screens/Privacy/Privacy";
 import ACGallery from "../screens/home-screens/AddCardScreens/ACGallery/ACGallery";
 import ACManualy from "../screens/home-screens/AddCardScreens/ACManualy/ACManualy";
 import AddCard from "../screens/home-screens/AddCardScreens/AddCard/AddCard";
-import AppTab from "./AppTab";
-import TemplateCard from "../screens/home-screens/TemplateScreens/TemplateCard/TemplateCard";
-import Scan from "../screens/scan-screen/Scan/Scan";
-import ViewMyCard from "../screens/home-screens/ViewMyCard/ViewMyCard";
 import ShareQr from "../screens/home-screens/ShareQr/ShareQr";
-import EditName from "../screens/profile-screens/EditName/EditName";
-import EditEmail from "../screens/profile-screens/EditEmail/EditEmail";
-import EditContact from "../screens/profile-screens/EditContact/EditContact";
+import TemplateCard from "../screens/home-screens/TemplateScreens/TemplateCard/TemplateCard";
+import ViewMyCard from "../screens/home-screens/ViewMyCard/ViewMyCard";
 import EditAddress from "../screens/profile-screens/EditAddress/EditAddress";
-import EditPassword from "../screens/profile-screens/EditPassword/EditPassword";
+import EditContact from "../screens/profile-screens/EditContact/EditContact";
 import EditDOB from "../screens/profile-screens/EditDOB/EditDOB";
+import EditEmail from "../screens/profile-screens/EditEmail/EditEmail";
+import EditName from "../screens/profile-screens/EditName/EditName";
+import EditPassword from "../screens/profile-screens/EditPassword/EditPassword";
+import Scan from "../screens/scan-screen/Scan/Scan";
+import AppTab from "./AppTab";
 
 const StackNavigator: React.FC = () => {
     const Stack = createNativeStackNavigator();

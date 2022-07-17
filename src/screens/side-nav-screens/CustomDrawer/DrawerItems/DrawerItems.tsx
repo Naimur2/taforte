@@ -7,6 +7,7 @@ import colors from "../../../../themes/colors";
 import { useNavigation } from "@react-navigation/native";
 import AuthContext from "../../../../context/AuthContext";
 import { AuthContextProps } from "../../../../interfaces/context";
+import Popup from "../../../common/Modal/Modal";
 
 interface DrawerItemProps {
     icon: string;
@@ -25,6 +26,8 @@ const Item = ({ icon, title, onPress }: DrawerItemProps) => (
 
 const DrawerItems = () => {
     const authCtx = React.useContext<AuthContextProps>(AuthContext);
+    const [isModalVisible, setIsModalVisible] = React.useState(false);
+    const [rateUs, setRateUs] = React.useState(false);
 
     const navigation = useNavigation();
 
@@ -68,6 +71,23 @@ const DrawerItems = () => {
 
     return (
         <DrawerItemsContainer>
+            <Popup
+                title="Are You Sure Want to Sign Out?"
+                isVisible={isModalVisible}
+                leftButtonTitle="Cancel"
+                rightButtonTitle="Logout"
+                onClose={() => setIsModalVisible(false)}
+                onAccept={authCtx.logout}
+                _titleStyle={{
+                    fontSize: 20,
+                    maxWidth: 210,
+                    pb: 30,
+                    pt: 16,
+                }}
+            />
+
+            <Popup isVisible={rateUs} onClose={() => setRateUs(false)}></Popup>
+
             <View>
                 {drawerItems.map((item, index) => (
                     <Item key={index.toString()} {...item} />
@@ -76,7 +96,7 @@ const DrawerItems = () => {
             <Item
                 title="Log Out"
                 icon="exit"
-                onPress={() => authCtx.logout()}
+                onPress={() => setIsModalVisible(true)}
             />
         </DrawerItemsContainer>
     );

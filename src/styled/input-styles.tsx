@@ -17,6 +17,7 @@ export const FormInput = styled.TextInput<FormInputStyles>`
     ${({ fontSize }) => fontSize && `font-size: ${fontSize}px`}
     ${({ fontWeight }) => fontWeight && `font-weight: ${fontWeight}`}
     ${({ fontFamily }) => fontFamily && `font-family: ${fontFamily}`}
+    ${({ textAlign }) => textAlign && `text-align: ${textAlign}`}
     ${Size}
     ${Spacing}
 `;

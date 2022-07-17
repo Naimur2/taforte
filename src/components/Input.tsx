@@ -10,37 +10,50 @@ import { Text } from "../styled/typography";
 import colors from "../themes/colors";
 import Icon from "./Icon";
 
-export default function Input({
-    label,
-    placeholder,
-    value,
-    type,
-    placeholderTextColor,
-    autoCapitalize,
-    autoCorrect,
-    autoComplete,
-    autofocus,
-    defaultValue,
-    keyboardType,
-    returnKeyType,
-    leftIcon,
-    rightIcon,
-    _leftIconStyle,
-    leftIconComponent,
-    rightIconComponent,
-    _rightIconStyle,
-    error,
-    disabled,
-    onChangeText,
-    onSubmitEditing,
-    onBlur,
-    onFocus,
-    onLeftIconPress,
-    onRightIconPress,
-    ...rest
-}: InputProps) {
+const Input = (
+    {
+        label,
+        placeholder,
+        value,
+        type,
+        placeholderTextColor,
+        autoCapitalize,
+        autoCorrect,
+        autoComplete,
+        autofocus,
+        defaultValue,
+        keyboardType,
+        returnKeyType,
+        leftIcon,
+        rightIcon,
+        _leftIconStyle,
+        leftIconComponent,
+        rightIconComponent,
+        _rightIconStyle,
+        error,
+        disabled,
+        onChangeText,
+        onSubmitEditing,
+        onBlur,
+        onFocus,
+        onLeftIconPress,
+        onRightIconPress,
+        textAlign,
+        bg,
+        borderColor,
+        numberOfLines,
+        ...rest
+    }: InputProps,
+    ref
+) => {
     const inputRef = React.useRef<any>(null);
     const [focused, setFocused] = React.useState<boolean>(false);
+
+    React.useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current?.focus();
+        },
+    }));
 
     type StrOreNum = string | number;
 
@@ -96,9 +109,9 @@ export default function Input({
             )}
             <InputGroup
                 mt={8}
-                bg={disabled && colors.light300}
+                bg={bg ? bg : disabled && colors.light300}
                 pointerEvent={disabled ? "none" : "auto"}
-                borderColor={getInputBorderColor()}
+                borderColor={borderColor ? borderColor : getInputBorderColor()}
             >
                 {leftIcon && (
                     <FormIcon width={"10%"}>
@@ -134,6 +147,10 @@ export default function Input({
                     returnKeyType={returnKeyType}
                     width={getInputWidth()}
                     editable={!disabled}
+                    textAlign={textAlign}
+                    numberOfLines={numberOfLines}
+                    multiline={numberOfLines > 1}
+                    textAlignVertical={numberOfLines > 1 ? "top" : "center"}
                 />
                 {rightIcon && (
                     <FormIcon width={"10%"}>
@@ -162,4 +179,6 @@ export default function Input({
             )}
         </FormGroup>
     );
-}
+};
+
+export default React.forwardRef(Input);

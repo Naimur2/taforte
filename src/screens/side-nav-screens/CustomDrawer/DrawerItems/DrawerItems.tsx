@@ -53,7 +53,7 @@ const DrawerItems = () => {
             icon: "peoples",
             title: "Recommend To Friends",
             onPress: () => {
-                console.log("Help & Feedback");
+                navigation.navigate("RecomendToFriends");
             },
         },
         {

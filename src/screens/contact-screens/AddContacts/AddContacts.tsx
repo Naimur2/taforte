@@ -57,7 +57,7 @@ export default function AddContacts() {
     } = formik;
 
     return (
-        <Screen padding={0}>
+        <Screen>
             <KeyboardView
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}

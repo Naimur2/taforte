@@ -25,9 +25,7 @@ export default function Home() {
             <Drawer.Navigator
                 initialRouteName="Tab"
                 screenOptions={options}
-                drawerContent={({ navigation }) => (
-                    <CustomDrawerContent navigation={navigation} />
-                )}
+                drawerContent={CustomDrawerContent}
             >
                 <Drawer.Screen
                     name="StackNavigator"

@@ -81,10 +81,7 @@ const AppTab = () => {
                 style={{ backgroundColor: colors.secondary }}
                 edges={["left", "top", "right"]}
             />
-            <SafeAreaView
-                edges={["bottom"]}
-                style={{ flex: 1, backgroundColor: "#fff" }}
-            >
+            <SafeAreaView edges={["bottom"]} style={{ flex: 1 }}>
                 <View style={{ flex: 1, backgroundColor: colors.secondary }}>
                     <CurvedBottomBar.Navigator
                         style={styles.bottomBar}
@@ -112,34 +109,37 @@ const AppTab = () => {
                             </Animated.View>
                         )}
                         tabBar={renderTabBar}
+                        screenOptions={{
+                            headerShown: false,
+                            tabBarStyle: {
+                                backgroundColor: colors.secondary,
+                            },
+                        }}
+                        defaultScreenOptions={{
+                            tabBarStyle: {
+                                backgroundColor: colors.secondary,
+                            },
+                        }}
                     >
                         <CurvedBottomBar.Screen
                             name="home"
-                            position="left"
-                            component={({ navigate }) => (
-                                <HomeScreen navigate={navigate} />
-                            )}
+                            position="LEFT"
+                            component={HomeScreen}
                         />
                         <CurvedBottomBar.Screen
                             name="contacts"
-                            position="left"
-                            component={({ navigate }) => (
-                                <ContactScreen navigate={navigate} />
-                            )}
+                            position="LEFT"
+                            component={ContactScreen}
                         />
                         <CurvedBottomBar.Screen
                             name="notifications"
-                            position="right"
-                            component={({ navigate }) => (
-                                <NotificationsScreen navigate={navigate} />
-                            )}
+                            position="RIGHT"
+                            component={NotificationsScreen}
                         />
                         <CurvedBottomBar.Screen
                             name="profile"
-                            position="right"
-                            component={({ navigate }) => (
-                                <ProfileSCreen navigate={navigate} />
-                            )}
+                            position="RIGHT"
+                            component={ProfileSCreen}
                         />
                     </CurvedBottomBar.Navigator>
                 </View>

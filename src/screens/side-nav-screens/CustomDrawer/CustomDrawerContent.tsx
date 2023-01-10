@@ -12,7 +12,7 @@ interface CustomDrawerContentProps {
     navigation: any;
 }
 
-const CustomDrawerContent = (props: CustomDrawerContentProps) => {
+function CustomDrawerContent() {
     return (
         <Background source={homeBg}>
             <UserInfoContainer>
@@ -34,7 +34,7 @@ const CustomDrawerContent = (props: CustomDrawerContentProps) => {
             <DrawerItems />
         </Background>
     );
-};
+}
 
 const UserInfoContainer = styled.View`
     padding: 0 8px;
